@@ -1,6 +1,6 @@
 import { LitElement, html } from '@polymer/lit-element';
 
-class AnimatedPages extends LitElement {
+class HeliumAnimatedPages extends LitElement {
   _render(props) {
     return html `
       <style>
@@ -132,4 +132,4 @@ class AnimatedPages extends LitElement {
     }
   }
 }
-window.customElements.define('animated-pages', AnimatedPages);
+window.customElements.define('helium-animated-pages', HeliumAnimatedPages);

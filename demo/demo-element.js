@@ -1,5 +1,5 @@
 import { LitElement, html } from '@polymer/lit-element';
-import '../animated-pages.js';
+import '../helium-animated-pages.js';
 import { FadeIn } from '../in-animations.js';
 import { FadeOut } from '../out-animations.js';
 
@@ -31,12 +31,12 @@ class DemoElement extends LitElement {
           <option value="page3">Page 3</option>
         </select>
       </section>
-      <animated-pages id="main" attrForSelected="name"
+      <helium-animated-pages id="main" attrForSelected="name"
         animationClasses="${_mainAnimationClasses}">
         <section name="page1">Page 1</section>
         <section name="page2">Page 2</section>
         <section name="page3">Page 3</section>
-      </animated-pages>
+      </helium-animated-pages>
     `;
   }
 
