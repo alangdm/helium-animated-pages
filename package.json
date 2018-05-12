@@ -1,0 +1,14 @@
+{
+  "name": "animated-pages",
+  "version": "0.1.0",
+  "flat": true,
+  "description": "An spiritual succesor to neon-animated-pages using only css animations",
+  "main": "index.html",
+  "repository": "https://github.com/alangdm/animated-pages",
+  "author": "alangdm",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@polymer/lit-element": "^0.4.0",
+    "@webcomponents/webcomponentsjs": "^1.0.20"
+  }
+}
