@@ -11,6 +11,8 @@ It works with css animations and only depends on [lit-element](https://github.co
 
 This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations (or just use the animations included here if you don't want to bother with those either 😉.)
 
+It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starter-kit/)(a guide is coming soon.)
+
 To begin using it just follow this simple steps:
 
 1. Install it:
