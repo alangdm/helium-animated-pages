@@ -65,7 +65,7 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _shouldRender(props, changedProps, old) {
-    return props.animationClasses && props.attrForSelected;
+    return props.animationClasses;
   }
 
   isAnimating() {
@@ -73,24 +73,113 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   select(next) {
-    if (!this.animationClasses || !this.attrForSelected) {
-      throw new Error('animationClasses and attrForSelected must be defined');
+    if (!this.animationClasses) {
+      throw new Error('animationClasses must be defined');
     }
-
     // Do nothing if the animation is running
     if (this._animating) return;
 
-    this._inPage = this.querySelector(`[${this.attrForSelected}=${next}]`);
+    const stringMode = this._isStringMode(next);
+    if(stringMode && !this.attrForSelected) {
+      throw new Error('attrForSelected must be defined if next is a string');
+    }
+
+    this._inPage = stringMode ?
+      this.querySelector(`[${this.attrForSelected}="${next}"]`) :
+      this.children[next];
     this._outPage = this.querySelector(`[active]`);
 
     if(!this._inPage) {
-      throw new Error(`No page found with ${this.attrForSelected}=${next}`);
+      const msg = stringMode ?
+        `No page found with ${this.attrForSelected}="${next}"` :
+        `No page found with index ${next}`;
+      throw new Error(msg);
     }
 
     // Do nothing if the same page is being selected
     if(this._inPage === this._outPage) return;
 
-    const prev = this._outPage ? this._outPage.getAttribute(this.attrForSelected) : '';
+    const prev = this._outPage && stringMode ?
+      this._outPage.getAttribute(this.attrForSelected) :
+      this._outPage ? Array.from(this.children).indexOf(this._outPage) :
+      '';
+    this._currentClasses = this._animationClasses(next, prev);
+    this._beginAnimation();
+  }
+
+  selectNext() {
+    if (!this.animationClasses) {
+      throw new Error('animationClasses must be defined');
+    }
+    // Do nothing if the animation is running
+    if (this._animating) return;
+    const children = Array.from(this.children);
+    this._outPage = this.querySelector(`[active]`);
+    let prevIndex;
+    let nextIndex = 0;
+    if (this._outPage) {
+      prevIndex = children.indexOf(this._outPage);
+      nextIndex = prevIndex + 1;
+      if(nextIndex >= children.length) {
+        nextIndex = 0;
+        this._inPage = children[0];
+      } else{
+        this._inPage = children[nextIndex];
+      }
+    } else if (children){
+      prevIndex = '';
+      this._inPage = children[0];
+    } else {
+      throw new Error('This component has no children to animate');
+    }
+    // Do nothing if the same page is being selected
+    if(this._inPage === this._outPage) return;
+
+    let next = this.attrForSelected ?
+      this._inPage.getAttribute(this.attrForSelected) :
+      nextIndex;
+    let prev = this._outPage && this.attrForSelected ?
+      this._outPage.getAttribute(this.attrForSelected) :
+      prevIndex;
+    this._currentClasses = this._animationClasses(next, prev);
+    this._beginAnimation();
+  }
+
+  selectPrevious() {
+    if (!this.animationClasses) {
+      throw new Error('animationClasses must be defined');
+    }
+    // Do nothing if the animation is running
+    if (this._animating) return;
+    const children = Array.from(this.children);
+    this._outPage = this.querySelector(`[active]`);
+    let prevIndex;
+    const last = children.length - 1;
+    let nextIndex = last;
+    if (this._outPage) {
+      prevIndex = children.indexOf(this._outPage);
+      nextIndex = prevIndex - 1;
+      if(nextIndex < 0) {
+        nextIndex = last;
+        this._inPage = children[last];
+      } else{
+        this._inPage = children[nextIndex];
+      }
+    } else if (children){
+      prevIndex = '';
+      this._inPage = children[last];
+    } else {
+      throw new Error('This component has no children to animate');
+    }
+    // Do nothing if the same page is being selected
+    if(this._inPage === this._outPage) return;
+
+    let next = this.attrForSelected ?
+      this._inPage.getAttribute(this.attrForSelected) :
+      nextIndex;
+    let prev = this._outPage && this.attrForSelected ?
+      this._outPage.getAttribute(this.attrForSelected) :
+      prevIndex;
     this._currentClasses = this._animationClasses(next, prev);
     this._beginAnimation();
   }
@@ -109,9 +198,9 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _animationClasses(next, prev) {
-    const fullId = `${next}_${prev}`;
-    const toId = `_${prev}`;
-    const fromId = `${next}_`;
+    const fullId = `${prev}_${next}`;
+    const toId = `*_${next}`;
+    const fromId = `${prev}_*`;
     if (fullId in this.animationClasses) {
       return this.animationClasses[fullId];
     } else if (toId in this.animationClasses) {
@@ -148,6 +237,21 @@ class HeliumAnimatedPages extends LitElement {
       this._inPage = null;
       this._outPage = null;
       this._currentClasses = null;
+    }
+  }
+
+  _isStringMode(next) {
+    const type = typeof next;
+    switch(type){
+    	case 'string':
+      	return true
+        break;
+      case 'number':
+        if(next >= 0 && Number.isInteger(next)) {
+          return false;
+        }
+      default:
+      	throw new Error('next must be a string or a positive integer');
     }
   }
 }

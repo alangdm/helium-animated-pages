@@ -1,4 +1,6 @@
 import { LitElement, html } from '@polymer/lit-element';
+import './noattr-demo.js';
+import './prevnext-demo.js';
 import '../helium-animated-pages.js';
 import { FadeIn } from '../in-animations.js';
 import { FadeOut } from '../out-animations.js';
@@ -27,6 +29,8 @@ class DemoElement extends LitElement {
         <h2>Select a page</h2>
         <select onchange="${(e) => this._selectMainPage(e)}">
           <option value="">Select page...</option>
+          <option value="noattr">No attrForSelected Demo</option>
+          <option value="prevnext">selectPrevious()/selectNext() Demo</option>
           <option value="page1">Page 1</option>
           <option value="page2">Page 2</option>
           <option value="page3">Page 3</option>
@@ -34,6 +38,8 @@ class DemoElement extends LitElement {
       </section>
       <helium-animated-pages id="main" attrForSelected="name"
         animationClasses="${_mainAnimationClasses}">
+        <noattr-demo name="noattr"></noattr-demo>
+        <prevnext-demo name="prevnext"></prevnext-demo>
         <section name="page1">Page 1</section>
         <section name="page2">Page 2</section>
         <section name="page3">Page 3</section>
