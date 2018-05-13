@@ -101,7 +101,7 @@ To begin using it just follow this simple steps:
 ## Known Issues
 
 ## TODOs
-- [ ] add selectNext() and selectPrevious() methods
+- [ ] change animationClasses syntax to make it more natural
 - [ ] add customizable 'active' attribute
 - [ ] add class mode in addition to attribute mode
 - [ ] add more sample animations in it's own dedicated folder
