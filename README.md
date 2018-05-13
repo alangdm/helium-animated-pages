@@ -17,9 +17,9 @@ To begin using it just follow this simple steps:
 
 1. Install it:
 
-  `npm i --save helium-animated-pages` (it's not currently published yet 😅)
+  `npm i --save helium-animated-pages`
 
-1. Import the script:
+2. Import the script:
 
   In html:
   ```html
@@ -33,7 +33,7 @@ To begin using it just follow this simple steps:
     import 'helium-animated-pages/helium-animated-pages.js';
   ```
 
-1. Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
+3. Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
 
   ```html
     <style>
