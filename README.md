@@ -106,6 +106,8 @@ To begin using it just follow this simple steps:
 - [ ] add numeric index selection without the need for attrForSelected
 - [ ] add customizable 'active' attribute
 - [ ] add class mode in addition to attribute mode
+- [ ] add more sample animations in it's own dedicated folder
+- [ ] make a prettier, more extensive demo
 
 ## Credits
 Almost all sample animations and the overall flow of the page selection are based on an article by [Pedro Botelho@Codrops](https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/).
