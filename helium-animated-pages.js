@@ -198,9 +198,9 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _animationClasses(next, prev) {
-    const fullId = `${next}_${prev}`;
-    const toId = `_${prev}`;
-    const fromId = `${next}_`;
+    const fullId = `${prev}_${next}`;
+    const toId = `*_${next}`;
+    const fromId = `${prev}_*`;
     if (fullId in this.animationClasses) {
       return this.animationClasses[fullId];
     } else if (toId in this.animationClasses) {

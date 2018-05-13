@@ -84,21 +84,29 @@ class PrevnextDemo extends PageViewElement {
   constructor() {
     super();
     this._noattrAnimationClasses = {
-      '1_0': {
+      '0_1': {
         in: 'page-rotateUnfoldRight',
         out: 'page-moveToLeft'
       },
-      '1_2': {
+      '2_1': {
         in: 'page-rotateUnfoldLeft',
         out: 'page-moveToRight'
       },
-      '0_': {
+      '*_0': {
         in: 'page-rotateUnfoldLeft',
         out: 'page-moveToRight'
       },
-      '2_': {
+      '*_2': {
         in: 'page-rotateUnfoldRight',
         out: 'page-moveToLeft'
+      },
+      '_0': {
+        in: 'page-fadeIn',
+        out: 'page-fadeOut'
+      },
+      '_2': {
+        in: 'page-fadeIn',
+        out: 'page-fadeOut'
       },
       default: {
         in: 'page-fadeIn',
@@ -106,21 +114,29 @@ class PrevnextDemo extends PageViewElement {
       }
     };
     this._attrAnimationClasses = {
-      'slide2_slide1': {
+      'slide1_slide2': {
         in: 'page-rotateUnfoldRight',
         out: 'page-moveToLeft'
       },
-      'slide2_slide3': {
+      'slide3_slide2': {
         in: 'page-rotateUnfoldLeft',
         out: 'page-moveToRight'
       },
-      'slide1_': {
+      '*_slide1': {
         in: 'page-rotateUnfoldLeft',
         out: 'page-moveToRight'
       },
-      'slide3_': {
+      '*_slide3': {
         in: 'page-rotateUnfoldRight',
         out: 'page-moveToLeft'
+      },
+      '_slide1': {
+        in: 'page-fadeIn',
+        out: 'page-fadeOut'
+      },
+      '_slide3': {
+        in: 'page-fadeIn',
+        out: 'page-fadeOut'
       },
       default: {
         in: 'page-fadeIn',

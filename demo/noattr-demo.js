@@ -53,11 +53,11 @@ class NoattrDemo extends PageViewElement {
   constructor() {
     super();
     this._noattrAnimationClasses = {
-      '1_': {
+      '*_1': {
         in: 'page-rotateUnfoldRight',
         out: 'page-moveToLeft'
       },
-      '0_': {
+      '*_0': {
         in: 'page-rotateUnfoldLeft',
         out: 'page-moveToRight'
       }
