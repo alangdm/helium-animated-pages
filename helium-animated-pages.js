@@ -8,7 +8,7 @@ class HeliumAnimatedPages extends LitElement {
           position: absolute;
         	width: 100%;
         	height: 100%;
-        	perspective: var(--animation-perspective, 1200px);
+        	perspective: var(--helium-animation-perspective, 1200px);
         	transform-style: preserve-3d;
         }
         ::slotted(*) {
@@ -23,7 +23,7 @@ class HeliumAnimatedPages extends LitElement {
         	transform: translate3d(0, 0, 0);
         }
         ::slotted([active]) {
-          visibility: visible;
+          visibility: var(--helium-children-visible, visible);
         }
       </style>
       <slot></slot>
@@ -62,10 +62,6 @@ class HeliumAnimatedPages extends LitElement {
     }
     this._inAnimationBound = this._inAnimation.bind(this);
     this._outAnimationBound = this._outAnimation.bind(this);
-  }
-
-  _shouldRender(props, changedProps, old) {
-    return props.animationClasses;
   }
 
   isAnimating() {

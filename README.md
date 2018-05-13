@@ -75,7 +75,11 @@ To begin using it just follow this simple steps:
       <!-- It is recommended that custom elements
         used as a page all extend an element like pwa-starter-kit's
         page-view-element
-        https://github.com/Polymer/pwa-starter-kit/blob/master/src/components/page-view-element.js-->
+        https://github.com/Polymer/pwa-starter-kit/blob/master/src/components/page-view-element.js
+        unless they have other helium-animated-pages children in which case
+        you should always render and update
+        the helium-children-visible css variable
+      -->
       <custom-element name="page3"></custom-element>
     </helium-animated-pages>
     <script>
