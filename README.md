@@ -101,7 +101,7 @@ To begin using it just follow this simple steps:
 ## Known Issues
 
 ## TODOs
-- [ ] add numeric index selection without the need for attrForSelected
+- [ ] add selectNext() and selectPrevious() methods
 - [ ] add customizable 'active' attribute
 - [ ] add class mode in addition to attribute mode
 - [ ] add more sample animations in it's own dedicated folder

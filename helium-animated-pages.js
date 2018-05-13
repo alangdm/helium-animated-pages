@@ -65,7 +65,7 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _shouldRender(props, changedProps, old) {
-    return props.animationClasses && props.attrForSelected;
+    return props.animationClasses;
   }
 
   isAnimating() {
@@ -73,24 +73,38 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   select(next) {
-    if (!this.animationClasses || !this.attrForSelected) {
-      throw new Error('animationClasses and attrForSelected must be defined');
+    if (!this.animationClasses) {
+      throw new Error('animationClasses must be defined');
     }
 
     // Do nothing if the animation is running
     if (this._animating) return;
 
-    this._inPage = this.querySelector(`[${this.attrForSelected}=${next}]`);
+    const stringMode = this._isStringMode(next);
+
+    if(stringMode && !this.attrForSelected) {
+      throw new Error('attrForSelected must be defined if next is a string');
+    }
+
+    this._inPage = stringMode ?
+      this.querySelector(`[${this.attrForSelected}="${next}"]`) :
+      this.children[next];
     this._outPage = this.querySelector(`[active]`);
 
     if(!this._inPage) {
-      throw new Error(`No page found with ${this.attrForSelected}=${next}`);
+      const msg = stringMode ?
+        `No page found with ${this.attrForSelected}="${next}"` :
+        `No page found with index ${next}`;
+      throw new Error(msg);
     }
 
     // Do nothing if the same page is being selected
     if(this._inPage === this._outPage) return;
 
-    const prev = this._outPage ? this._outPage.getAttribute(this.attrForSelected) : '';
+    const prev = this._outPage && stringMode ?
+      this._outPage.getAttribute(this.attrForSelected) :
+      this._outPage ? Array.from(this.children).indexOf(this._outPage) :
+      '';
     this._currentClasses = this._animationClasses(next, prev);
     this._beginAnimation();
   }
@@ -148,6 +162,21 @@ class HeliumAnimatedPages extends LitElement {
       this._inPage = null;
       this._outPage = null;
       this._currentClasses = null;
+    }
+  }
+
+  _isStringMode(next) {
+    const type = typeof next;
+    switch(type){
+    	case 'string':
+      	return true
+        break;
+      case 'number':
+        if(next >= 0 && Number.isInteger(next)) {
+          return false;
+        }
+      default:
+      	throw new Error('next must be a string or a positive integer');
     }
   }
 }
