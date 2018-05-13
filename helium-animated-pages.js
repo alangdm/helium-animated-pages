@@ -68,18 +68,37 @@ class HeliumAnimatedPages extends LitElement {
     return props.animationClasses && props.attrForSelected;
   }
 
+  isAnimating() {
+    return this._animating;
+  }
+
   select(next) {
     if (!this.animationClasses || !this.attrForSelected) {
       throw new Error('animationClasses and attrForSelected must be defined');
     }
+
+    // Do nothing if the animation is running
     if (this._animating) return;
+
     this._inPage = this.querySelector(`[${this.attrForSelected}=${next}]`);
     this._outPage = this.querySelector(`[active]`);
+
+    if(!this._inPage) {
+      throw new Error(`No page found with ${this.attrForSelected}=${next}`);
+    }
+
+    // Do nothing if the same page is being selected
+    if(this._inPage === this._outPage) return;
+
     const prev = this._outPage ? this._outPage.getAttribute(this.attrForSelected) : '';
     this._currentClasses = this._animationClasses(next, prev);
+    this._beginAnimation();
+  }
+
+  _beginAnimation() {
     this._animating = true;
     this._inPage.addEventListener(this._animationEvent, this._inAnimationBound);
-    if (prev) {
+    if (this._outPage) {
       this._outPage.addEventListener(this._animationEvent, this._outAnimationBound);
       this._outPage.classList.add(this._currentClasses.out);
     } else {

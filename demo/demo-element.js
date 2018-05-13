@@ -26,6 +26,7 @@ class DemoElement extends LitElement {
       <section>
         <h2>Select a page</h2>
         <select onchange="${(e) => this._selectMainPage(e)}">
+          <option value="">Select page...</option>
           <option value="page1">Page 1</option>
           <option value="page2">Page 2</option>
           <option value="page3">Page 3</option>
@@ -54,14 +55,6 @@ class DemoElement extends LitElement {
         out: 'page-fadeOut'
       }
     };
-  }
-
-  _firstRendered() {
-    this._selectMainPage({
-      target: {
-        value: 'page1'
-      }
-    });
   }
 
   _selectMainPage(e) {

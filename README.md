@@ -99,8 +99,6 @@ To begin using it just follow this simple steps:
   ```
 
 ## Known Issues
-- Selecting the same page results on it disappearing
-- Selecting an invalid page might have unexpected results
 
 ## TODOs
 - [ ] add numeric index selection without the need for attrForSelected
