@@ -104,7 +104,6 @@ To begin using it just follow this simple steps:
 ## TODOs
 - [ ] add customizable 'active' attribute
 - [ ] add class mode in addition to attribute mode
-- [ ] add more sample animations in it's own dedicated folder
 - [ ] make a prettier, more extensive demo
 
 ## Credits
