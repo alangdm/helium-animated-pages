@@ -1,8 +1,9 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
-import { FadeIn, RotateUnfoldLeft, RotateUnfoldRight} from '../in-animations.js';
-import { FadeOut, MoveToLeft, MoveToRight } from '../out-animations.js';
+import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
+import { RotateUnfoldLeft, RotateUnfoldRight } from '../sample-animations/rotate-animations.js';
+import { MoveToLeft, MoveToRight } from '../sample-animations/move-animations.js';
 
 class PrevnextDemo extends PageViewElement {
   _render(props) {

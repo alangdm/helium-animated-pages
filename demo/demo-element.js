@@ -2,8 +2,7 @@ import { LitElement, html } from '@polymer/lit-element';
 import './noattr-demo.js';
 import './prevnext-demo.js';
 import '../helium-animated-pages.js';
-import { FadeIn } from '../in-animations.js';
-import { FadeOut } from '../out-animations.js';
+import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class DemoElement extends LitElement {
 
