@@ -1,16 +1,16 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
-import { RotateUnfoldLeft, RotateUnfoldRight } from '../sample-animations/fold-unfold-animations.js';
-import { MoveToLeft, MoveToRight } from '../sample-animations/move-animations.js';
+import { RotatePullLeft, RotatePullRight,
+  RotatePushLeft, RotatePushRight } from '../sample-animations/push-pull-animations.js';
 
 class NoattrDemo extends PageViewElement {
   _render({_noattrAnimationClasses, active}) {
     return html`
-    ${RotateUnfoldLeft}
-    ${RotateUnfoldRight}
-    ${MoveToLeft}
-    ${MoveToRight}
+    ${RotatePullLeft}
+    ${RotatePullRight}
+    ${RotatePushLeft}
+    ${RotatePushRight}
     <style>
       :host {
         background: lightpink;
@@ -57,12 +57,12 @@ class NoattrDemo extends PageViewElement {
     super();
     this._noattrAnimationClasses = {
       '*_1': {
-        in: 'page-rotateUnfoldRight',
-        out: 'page-moveToLeft'
+        in: 'page-rotatePullRight',
+        out: 'page-rotatePushLeft'
       },
       '*_0': {
-        in: 'page-rotateUnfoldLeft',
-        out: 'page-moveToRight'
+        in: 'page-rotatePullLeft',
+        out: 'page-rotatePushRight'
       }
     };
   }

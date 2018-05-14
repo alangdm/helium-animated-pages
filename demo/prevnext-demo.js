@@ -2,18 +2,24 @@ import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
-import { RotateUnfoldLeft, RotateUnfoldRight } from '../sample-animations/fold-unfold-animations.js';
-import { MoveToLeft, MoveToRight } from '../sample-animations/move-animations.js';
+import { RotateCarouselLeftIn, RotateCarouselRightIn,
+  RotateCarouselLeftOut, RotateCarouselRightOut } from '../sample-animations/carousel-animations.js';
+import { RotateCubeLeftIn, RotateCubeRightIn,
+  RotateCubeLeftOut, RotateCubeRightOut } from '../sample-animations/cube-animations.js';
 
 class PrevnextDemo extends PageViewElement {
   _render(props) {
     return html`
     ${FadeIn}
     ${FadeOut}
-    ${RotateUnfoldLeft}
-    ${RotateUnfoldRight}
-    ${MoveToLeft}
-    ${MoveToRight}
+    ${RotateCarouselLeftIn}
+    ${RotateCarouselRightIn}
+    ${RotateCarouselLeftOut}
+    ${RotateCarouselRightOut}
+    ${RotateCubeLeftIn}
+    ${RotateCubeRightIn}
+    ${RotateCubeLeftOut}
+    ${RotateCubeRightOut}
     <style>
       :host {
         background: lightyellow;
@@ -31,7 +37,8 @@ class PrevnextDemo extends PageViewElement {
         color: white;
       }
       div:nth-of-type(even) {
-        background-color: white;
+        background-color: brown;
+        color: white;
       }
     </style>
     <section>
@@ -89,20 +96,20 @@ class PrevnextDemo extends PageViewElement {
     super();
     this._noattrAnimationClasses = {
       '0_1': {
-        in: 'page-rotateUnfoldRight',
-        out: 'page-moveToLeft'
+        in: 'page-rotateCubeLeftIn',
+        out: 'page-rotateCubeLeftOut'
       },
       '2_1': {
-        in: 'page-rotateUnfoldLeft',
-        out: 'page-moveToRight'
+        in: 'page-rotateCubeRightIn',
+        out: 'page-rotateCubeRightOut'
       },
       '*_0': {
-        in: 'page-rotateUnfoldLeft',
-        out: 'page-moveToRight'
+        in: 'page-rotateCubeRightIn',
+        out: 'page-rotateCubeRightOut'
       },
       '*_2': {
-        in: 'page-rotateUnfoldRight',
-        out: 'page-moveToLeft'
+        in: 'page-rotateCubeLeftIn',
+        out: 'page-rotateCubeLeftOut'
       },
       '_0': {
         in: 'page-fadeIn',
@@ -119,20 +126,20 @@ class PrevnextDemo extends PageViewElement {
     };
     this._attrAnimationClasses = {
       'slide1_slide2': {
-        in: 'page-rotateUnfoldRight',
-        out: 'page-moveToLeft'
+        in: 'page-rotateCarouselLeftIn',
+        out: 'page-rotateCarouselLeftOut'
       },
       'slide3_slide2': {
-        in: 'page-rotateUnfoldLeft',
-        out: 'page-moveToRight'
+        in: 'page-rotateCarouselRightIn',
+        out: 'page-rotateCarouselRightOut'
       },
       '*_slide1': {
-        in: 'page-rotateUnfoldLeft',
-        out: 'page-moveToRight'
+        in: 'page-rotateCarouselRightIn',
+        out: 'page-rotateCarouselRightOut'
       },
       '*_slide3': {
-        in: 'page-rotateUnfoldRight',
-        out: 'page-moveToLeft'
+        in: 'page-rotateCarouselLeftIn',
+        out: 'page-rotateCarouselLeftOut'
       },
       '_slide1': {
         in: 'page-fadeIn',
