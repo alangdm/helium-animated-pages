@@ -1,9 +1,10 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
+import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, RotateUnfoldLeft, RotateUnfoldRight} from '../in-animations.js';
 import { FadeOut, MoveToLeft, MoveToRight } from '../out-animations.js';
 
-class PrevnextDemo extends LitElement {
+class PrevnextDemo extends PageViewElement {
   _render(props) {
     return html`
     ${FadeIn}
@@ -15,7 +16,9 @@ class PrevnextDemo extends LitElement {
     <style>
       :host {
         background: lightyellow;
-        --helium-children-visible: ${props.active ? 'visible' : 'hidden'};
+      }
+      :host(:not([active])) {
+        --helium-children-visible: hidden;
       }
       section.container {
         width: 50vw;
@@ -63,7 +66,6 @@ class PrevnextDemo extends LitElement {
   }
   static get properties() {
     return {
-      active: Boolean,
       _attrAnimationClasses: Object,
       _noattrAnimationClasses: Object,
     };

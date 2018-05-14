@@ -1,9 +1,10 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { html } from '@polymer/lit-element';
+import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { RotateUnfoldLeft, RotateUnfoldRight } from '../in-animations.js';
 import { MoveToLeft, MoveToRight } from '../out-animations.js';
 
-class NoattrDemo extends LitElement {
+class NoattrDemo extends PageViewElement {
   _render({_noattrAnimationClasses, active}) {
     return html`
     ${RotateUnfoldLeft}
@@ -13,7 +14,9 @@ class NoattrDemo extends LitElement {
     <style>
       :host {
         background: lightpink;
-        --helium-children-visible: ${active ? 'visible' : 'hidden'};
+      }
+      :host(:not([active])) {
+        --helium-children-visible: hidden;
       }
       section.container {
         width: 70vw;
@@ -47,7 +50,6 @@ class NoattrDemo extends LitElement {
   }
   static get properties() {
     return {
-      active: Boolean,
       _noattrAnimationClasses: Object,
     };
   }

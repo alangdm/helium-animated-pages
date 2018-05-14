@@ -15,11 +15,11 @@ It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starte
 
 To begin using it just follow this simple steps:
 
-1. Install it:
+- Install it:
 
   `npm i --save helium-animated-pages`
 
-2. Import the script:
+- Import the script:
 
   In html:
   ```html
@@ -33,7 +33,7 @@ To begin using it just follow this simple steps:
     import 'helium-animated-pages/helium-animated-pages.js';
   ```
 
-3. Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
+- Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
 
   ```html
     <style>
@@ -76,9 +76,6 @@ To begin using it just follow this simple steps:
         used as a page all extend an element like pwa-starter-kit's
         page-view-element
         https://github.com/Polymer/pwa-starter-kit/blob/master/src/components/page-view-element.js
-        unless they have other helium-animated-pages children in which case
-        you should always render and update
-        the helium-children-visible css variable
       -->
       <custom-element name="page3"></custom-element>
     </helium-animated-pages>
