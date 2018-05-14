@@ -1,7 +1,7 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
-import { RotateUnfoldLeft, RotateUnfoldRight } from '../sample-animations/rotate-animations.js';
+import { RotateUnfoldLeft, RotateUnfoldRight } from '../sample-animations/fold-unfold-animations.js';
 import { MoveToLeft, MoveToRight } from '../sample-animations/move-animations.js';
 
 class NoattrDemo extends PageViewElement {
