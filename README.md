@@ -67,7 +67,8 @@ To begin using it just follow this simple steps:
       </select>
     </section>
     <!-- attrForSelected is used to say which attribute
-      identifies the pages-->
+      identifies the pages
+      or you can just not use it and use numerical indexes -->
     <helium-animated-pages id="pages" attrForSelected="name">
       <!-- The pages can be almost anything -->
       <section name="page1">Page 1</section>
@@ -84,13 +85,38 @@ To begin using it just follow this simple steps:
       // or any other way you want
       document.querySelector('#selector').addEventListener('change',
       (e)=>{
-        // Change selected page
+        // Change selected page, can also receive and index
         document.querySelector('#pages').select(e.target.value);
+        // you can also use selectPrevious() or selectNext()
       });
 
       // defining the "rules" for which css classes to apply on
-      // diferent page transitions (a guide on this is coming soon)
+      // diferent page transitions
+      // I'm using css classes which aren't defined on this context but you
+      // must define them when actually using this
       document.querySelector('#pages').animationClasses = {
+        // animation classes rules are like css rules, the most specific ones apply first
+        // from page1 to page2
+        'page1_page2': {
+          in: 'page_moveFromRight',
+          out: 'page_moveToLeft'
+        },
+        // from anything (other than page1 to page2)
+        '*_page2': {
+          in: 'page_moveFromLeft',
+          out: 'page_moveToRight'
+        },
+        // from page1 to anything (other than page2)
+        'page1_*': {
+          in: 'page_moveFromTop',
+          out: 'page_moveToBottom'
+        },
+        // from nothing selected to page1
+        '_page1': {
+          in: 'page_moveFromBottom',
+          out: 'page_moveToTop'
+        },
+        // if none of the rules above apply
         default: {
           in: 'page-fadeIn',
           out: 'page-fadeOut'
