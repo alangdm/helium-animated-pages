@@ -20,6 +20,7 @@ export const RotateRightSideFirst = html`
 .page-rotateRightSideFirst {
 	transform-origin: 0% 50%;
 	animation: rotateRightSideFirst .8s both ease-in;
+  z-index: -1;
 }
 @keyframes rotateRightSideFirst {
 	0% { }
@@ -34,6 +35,7 @@ export const RotateLeftSideFirst = html`
 .page-rotateLeftSideFirst {
 	transform-origin: 100% 50%;
 	animation: rotateLeftSideFirst .8s both ease-in;
+  z-index: -1;
 }
 @keyframes rotateLeftSideFirst {
 	0% { }
@@ -48,6 +50,7 @@ export const RotateTopSideFirst = html`
 .page-rotateTopSideFirst {
 	transform-origin: 50% 100%;
 	animation: rotateTopSideFirst .8s both ease-in;
+  z-index: -1;
 }
 @keyframes rotateTopSideFirst {
 	0% { }
@@ -62,6 +65,7 @@ export const RotateBottomSideFirst = html`
 .page-rotateBottomSideFirst {
 	transform-origin: 50% 0%;
 	animation: rotateBottomSideFirst .8s both ease-in;
+  z-index: -1;
 }
 @keyframes rotateBottomSideFirst {
 	0% { }
@@ -76,6 +80,7 @@ export const RotateFall = html`
 .page-rotateFall {
 	transform-origin: 0% 0%;
 	animation: rotateFall 1s both ease-in;
+  z-index: 999;
 }
 @keyframes rotateFall {
 	0% { transform: rotateZ(0deg); }

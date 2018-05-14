@@ -20,6 +20,7 @@ export const FadeOut = html`
 <style>
 .page-fadeOut {
 	animation: fadeOut .7s ease both;
+  z-index: -1;
 }
 @keyframes fadeOut {
 	from { }

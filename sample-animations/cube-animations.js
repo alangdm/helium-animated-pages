@@ -59,6 +59,7 @@ export const RotateCubeLeftOut = html`
 .page-rotateCubeLeftOut {
 	transform-origin: 100% 50%;
 	animation: rotateCubeLeftOut .6s both ease-in;
+  z-index: 999;
 }
 @keyframes rotateCubeLeftOut {
 	0% { }
@@ -73,6 +74,7 @@ export const RotateCubeRightOut = html`
 .page-rotateCubeRightOut {
 	transform-origin: 0% 50%;
 	animation: rotateCubeRightOut .6s both ease-in;
+  z-index: 999;
 }
 @keyframes rotateCubeRightOut {
 	0% { }
@@ -87,6 +89,7 @@ export const RotateCubeTopOut = html`
 .page-rotateCubeTopOut {
 	transform-origin: 50% 100%;
 	animation: rotateCubeTopOut .6s both ease-in;
+  z-index: 999;
 }
 @keyframes rotateCubeTopOut {
 	0% {}
@@ -101,6 +104,7 @@ export const RotateCubeBottomOut = html`
 .page-rotateCubeBottomOut {
 	transform-origin: 50% 0%;
 	animation: rotateCubeBottomOut .6s both ease-in;
+  z-index: 999;
 }
 @keyframes rotateCubeBottomOut {
 	0% { }

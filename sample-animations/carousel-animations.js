@@ -55,6 +55,7 @@ export const RotateCarouselLeftOut = html`
 .page-rotateCarouselLeftOut {
 	transform-origin: 100% 50%;
 	animation: rotateCarouselLeftOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateCarouselLeftOut {
 	from { }
@@ -68,6 +69,7 @@ export const RotateCarouselRightOut = html`
 .page-rotateCarouselRightOut {
 	transform-origin: 0% 50%;
 	animation: rotateCarouselRightOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateCarouselRightOut {
 	from { }
@@ -81,6 +83,7 @@ export const RotateCarouselTopOut = html`
 .page-rotateCarouselTopOut {
 	transform-origin: 50% 100%;
 	animation: rotateCarouselTopOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateCarouselTopOut {
 	from { }
@@ -95,6 +98,7 @@ export const RotateCarouselBottomOut = html`
 .page-rotateCarouselBottomOut {
 	transform-origin: 50% 0%;
 	animation: rotateCarouselBottomOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateCarouselBottomOut {
 	from { }

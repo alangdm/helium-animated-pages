@@ -55,6 +55,7 @@ export const RotateRoomLeftOut = html`
 .page-rotateRoomLeftOut {
 	transform-origin: 100% 50%;
 	animation: rotateRoomLeftOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateRoomLeftOut {
 	from { }
@@ -68,6 +69,7 @@ export const RotateRoomRightOut = html`
 .page-rotateRoomRightOut {
 	transform-origin: 0% 50%;
 	animation: rotateRoomRightOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateRoomRightOut {
 	from { }
@@ -81,6 +83,7 @@ export const RotateRoomTopOut = html`
 .page-rotateRoomTopOut {
 	transform-origin: 50% 100%;
 	animation: rotateRoomTopOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateRoomTopOut {
 	from { }
@@ -94,6 +97,7 @@ export const RotateRoomBottomOut = html`
 .page-rotateRoomBottomOut {
 	transform-origin: 50% 0%;
 	animation: rotateRoomBottomOut .8s both ease;
+  z-index: 999;
 }
 @keyframes rotateRoomBottomOut {
 	from { }

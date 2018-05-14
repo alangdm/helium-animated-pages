@@ -6,6 +6,7 @@ export const ScaleUp = html`
 <style>
 .page-scaleUp {
 	animation: scaleUp .7s ease both;
+  z-index: -1;
 }
 @keyframes scaleUp {
 	from { opacity: 0; transform: scale(.8); }
@@ -41,6 +42,7 @@ export const ScaleDown = html`
 <style>
 .page-scaleDown {
 	animation: scaleDown .7s ease both;
+  z-index: -1;
 }
 @keyframes scaleDown {
 	from { }
