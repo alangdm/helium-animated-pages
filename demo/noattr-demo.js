@@ -1,12 +1,12 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
-import { RotatePullLeft, RotatePullRight,
-  RotatePushLeft, RotatePushRight } from '../sample-animations/push-pull-animations.js';
+import { RotatePullLeft, RotatePullRight, RotatePushLeft,
+  RotatePushRight } from '../sample-animations/push-pull-animations.js';
 
 class NoattrDemo extends PageViewElement {
-  _render({_noattrAnimationClasses, active}) {
-    return html`
+  _render({ _noattrAnimationClasses, active }) {
+    return html `
     ${RotatePullLeft}
     ${RotatePullRight}
     ${RotatePushLeft}
@@ -67,7 +67,7 @@ class NoattrDemo extends PageViewElement {
     };
   }
   _selectPage(e) {
-    if(e.target.value){
+    if (e.target.value) {
       const index = parseInt(e.target.value);
       this.shadowRoot.querySelector('#noattr').select(index);
     }

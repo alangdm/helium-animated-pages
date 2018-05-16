@@ -2,14 +2,14 @@ import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
-import { RotateCarouselLeftIn, RotateCarouselRightIn,
-  RotateCarouselLeftOut, RotateCarouselRightOut } from '../sample-animations/carousel-animations.js';
-import { RotateCubeLeftIn, RotateCubeRightIn,
-  RotateCubeLeftOut, RotateCubeRightOut } from '../sample-animations/cube-animations.js';
+import { RotateCarouselLeftIn, RotateCarouselRightIn, RotateCarouselLeftOut,
+  RotateCarouselRightOut } from '../sample-animations/carousel-animations.js';
+import { RotateCubeLeftIn, RotateCubeRightIn, RotateCubeLeftOut,
+  RotateCubeRightOut } from '../sample-animations/cube-animations.js';
 
 class PrevnextDemo extends PageViewElement {
   _render(props) {
-    return html`
+    return html `
     ${FadeIn}
     ${FadeOut}
     ${RotateCarouselLeftIn}
@@ -80,14 +80,14 @@ class PrevnextDemo extends PageViewElement {
   }
   _selectNoattr(e) {
     const pages = this.shadowRoot.querySelector('#noattr');
-    if(e.target.value === 'next') {
+    if (e.target.value === 'next') {
       pages.selectNext();
     }
     pages.selectPrevious();
   }
   _selectAttr(e) {
     const pages = this.shadowRoot.querySelector('#attr');
-    if(e.target.value === 'next') {
+    if (e.target.value === 'next') {
       pages.selectNext();
     }
     pages.selectPrevious();

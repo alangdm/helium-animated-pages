@@ -6,7 +6,7 @@ import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class DemoElement extends LitElement {
 
-  _render({_mainAnimationClasses}) {
+  _render({ _mainAnimationClasses }) {
     return html `
       ${FadeIn}
       ${FadeOut}
@@ -63,7 +63,7 @@ class DemoElement extends LitElement {
   }
 
   _selectMainPage(e) {
-    if(e.target.value){
+    if (e.target.value) {
       this.shadowRoot.querySelector('#main').select(e.target.value);
     }
   }

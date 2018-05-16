@@ -76,7 +76,7 @@ class HeliumAnimatedPages extends LitElement {
     if (this._animating) return;
 
     const stringMode = this._isStringMode(next);
-    if(stringMode && !this.attrForSelected) {
+    if (stringMode && !this.attrForSelected) {
       throw new Error('attrForSelected must be defined if next is a string');
     }
 
@@ -85,7 +85,7 @@ class HeliumAnimatedPages extends LitElement {
       this.children[next];
     this._outPage = this.querySelector(`[active]`);
 
-    if(!this._inPage) {
+    if (!this._inPage) {
       const msg = stringMode ?
         `No page found with ${this.attrForSelected}="${next}"` :
         `No page found with index ${next}`;
@@ -93,7 +93,7 @@ class HeliumAnimatedPages extends LitElement {
     }
 
     // Do nothing if the same page is being selected
-    if(this._inPage === this._outPage) return;
+    if (this._inPage === this._outPage) return;
 
     const prev = this._outPage && stringMode ?
       this._outPage.getAttribute(this.attrForSelected) :
@@ -116,20 +116,20 @@ class HeliumAnimatedPages extends LitElement {
     if (this._outPage) {
       prevIndex = children.indexOf(this._outPage);
       nextIndex = prevIndex + 1;
-      if(nextIndex >= children.length) {
+      if (nextIndex >= children.length) {
         nextIndex = 0;
         this._inPage = children[0];
-      } else{
+      } else {
         this._inPage = children[nextIndex];
       }
-    } else if (children){
+    } else if (children) {
       prevIndex = '';
       this._inPage = children[0];
     } else {
       throw new Error('This component has no children to animate');
     }
     // Do nothing if the same page is being selected
-    if(this._inPage === this._outPage) return;
+    if (this._inPage === this._outPage) return;
 
     let next = this.attrForSelected ?
       this._inPage.getAttribute(this.attrForSelected) :
@@ -155,20 +155,20 @@ class HeliumAnimatedPages extends LitElement {
     if (this._outPage) {
       prevIndex = children.indexOf(this._outPage);
       nextIndex = prevIndex - 1;
-      if(nextIndex < 0) {
+      if (nextIndex < 0) {
         nextIndex = last;
         this._inPage = children[last];
-      } else{
+      } else {
         this._inPage = children[nextIndex];
       }
-    } else if (children){
+    } else if (children) {
       prevIndex = '';
       this._inPage = children[last];
     } else {
       throw new Error('This component has no children to animate');
     }
     // Do nothing if the same page is being selected
-    if(this._inPage === this._outPage) return;
+    if (this._inPage === this._outPage) return;
 
     let next = this.attrForSelected ?
       this._inPage.getAttribute(this.attrForSelected) :
@@ -238,16 +238,16 @@ class HeliumAnimatedPages extends LitElement {
 
   _isStringMode(next) {
     const type = typeof next;
-    switch(type){
-    	case 'string':
-      	return true
+    switch (type) {
+      case 'string':
+        return true
         break;
       case 'number':
-        if(next >= 0 && Number.isInteger(next)) {
+        if (next >= 0 && Number.isInteger(next)) {
           return false;
         }
       default:
-      	throw new Error('next must be a string or a positive integer');
+        throw new Error('next must be a string or a positive integer');
     }
   }
 }
