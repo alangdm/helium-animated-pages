@@ -8,8 +8,11 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@polymer/lit-element": "^0.4.0",
-    "@webcomponents/webcomponentsjs": "^1.0.20"
+    "@polymer/lit-element": "^0.5.1"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "polymer-cli": "^1.7.2"
   },
   "scripts": {
     "start": "polymer serve"
