@@ -34,6 +34,7 @@ class HeliumAnimatedPages extends LitElement {
     return {
       animationClasses: Object,
       attrForSelected: String,
+      _selected: String,
       _animationEvent: String,
       _animating: Boolean,
       _inAnimationEnded: Boolean,
@@ -64,11 +65,15 @@ class HeliumAnimatedPages extends LitElement {
     this._outAnimationBound = this._outAnimation.bind(this);
   }
 
-  isAnimating() {
+  get isAnimating() {
     return this._animating;
   }
 
-  select(next) {
+  get selected() {
+    return this._selected;
+  }
+
+  set selected(next) {
     if (!this.animationClasses) {
       throw new Error('animationClasses must be defined');
     }
@@ -101,6 +106,10 @@ class HeliumAnimatedPages extends LitElement {
       '';
     this._currentClasses = this._animationClasses(next, prev);
     this._beginAnimation();
+  }
+
+  select(next) {
+    this.selected = next;
   }
 
   selectNext() {
