@@ -1,17 +1,20 @@
-> ## 🛠 Status: In Development
-> `<helium-animated-pages>` is still a work in progress, but feel free to try it out and give me your feedback on what you think could be improved, so far it works for some scenarios but not yet for every scenario you could use `<neon-animated-pages>` for.
+> ## Status: Waiting for feedback
+> `<helium-animated-pages>` can already be used in most of the scenarios you could use `<neon-animated-pages>` for and maybe even more.
 >
-> See the list of Known Issues and TODOs, below, for updates.
+> However before releasing a v1.0 I want feedback from other devs to see if what this component does so far is what people want from this kind of component.
+>
+> So feel free to try it out, and give me any kind of feedback, it'll be really helpful.
 
 # `<helium-animated-pages>`
+###### [API](https://github.com/alangdm/helium-animated-pages/wiki/API) | [Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
 
 It works with css animations and only depends on [lit-element](https://github.com/Polymer/lit-element) so you don't have to worry about including any heavy js libraries.
 
-This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations (or just use the animations included here if you don't want to bother with those either 😉.)
+This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations (or just use the animations included in the `sample-animations` folder if you don't want to bother with those either 😉.)
 
-It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starter-kit/)(a guide is coming soon.)
+It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starter-kit/) and [here's how](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit).
 
 To begin using it just follow this simple steps:
 
@@ -124,13 +127,6 @@ To begin using it just follow this simple steps:
       };
     </script>
   ```
-
-## Known Issues
-
-## TODOs
-- [ ] add customizable 'active' attribute
-- [ ] add class mode in addition to attribute mode
-- [ ] make a prettier, more extensive demo
 
 ## Credits
 Almost all sample animations and the overall flow of the page selection are based on an article by [Pedro Botelho@Codrops](https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/).
