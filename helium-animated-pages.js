@@ -88,7 +88,7 @@ class HeliumAnimatedPages extends LitElement {
     this._inPage = stringMode ?
       this.querySelector(`[${this.attrForSelected}="${next}"]`) :
       this.children[next];
-    this._outPage = this.querySelector(`[active]`);
+    this._outPage = this.selectedItem;
 
     if (!this._inPage) {
       const msg = stringMode ?
@@ -104,8 +104,21 @@ class HeliumAnimatedPages extends LitElement {
       this._outPage.getAttribute(this.attrForSelected) :
       this._outPage ? Array.from(this.children).indexOf(this._outPage) :
       '';
+
+    this._selected = this.attrForSelected ?
+      this._inPage.getAttribute(this.attrForSelected) :
+      next;
     this._currentClasses = this._animationClasses(next, prev);
     this._beginAnimation();
+  }
+
+  get selectedItem() {
+    if(this._selected || this._selected === 0) {
+      return this.attrForSelected ?
+        this.querySelector(`[${this.attrForSelected}="${this._selected}"]`) :
+        this.children[this._selected];
+    }
+    return null;
   }
 
   select(next) {
@@ -113,80 +126,25 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   selectNext() {
-    if (!this.animationClasses) {
-      throw new Error('animationClasses must be defined');
-    }
-    // Do nothing if the animation is running
-    if (this._animating) return;
     const children = Array.from(this.children);
-    this._outPage = this.querySelector(`[active]`);
-    let prevIndex;
-    let nextIndex = 0;
-    if (this._outPage) {
-      prevIndex = children.indexOf(this._outPage);
-      nextIndex = prevIndex + 1;
-      if (nextIndex >= children.length) {
-        nextIndex = 0;
-        this._inPage = children[0];
-      } else {
-        this._inPage = children[nextIndex];
-      }
-    } else if (children) {
-      prevIndex = '';
-      this._inPage = children[0];
-    } else {
+    if (!children || children.length === 0) {
       throw new Error('This component has no children to animate');
     }
-    // Do nothing if the same page is being selected
-    if (this._inPage === this._outPage) return;
-
-    let next = this.attrForSelected ?
-      this._inPage.getAttribute(this.attrForSelected) :
-      nextIndex;
-    let prev = this._outPage && this.attrForSelected ?
-      this._outPage.getAttribute(this.attrForSelected) :
-      prevIndex;
-    this._currentClasses = this._animationClasses(next, prev);
-    this._beginAnimation();
+    const selectedItem = this.selectedItem;
+    let prevIndex = children.indexOf(selectedItem);
+    let nextIndex = prevIndex + 1 >= children.length ? 0 : prevIndex + 1;
+    this.selected = nextIndex;
   }
 
   selectPrevious() {
-    if (!this.animationClasses) {
-      throw new Error('animationClasses must be defined');
-    }
-    // Do nothing if the animation is running
-    if (this._animating) return;
     const children = Array.from(this.children);
-    this._outPage = this.querySelector(`[active]`);
-    let prevIndex;
-    const last = children.length - 1;
-    let nextIndex = last;
-    if (this._outPage) {
-      prevIndex = children.indexOf(this._outPage);
-      nextIndex = prevIndex - 1;
-      if (nextIndex < 0) {
-        nextIndex = last;
-        this._inPage = children[last];
-      } else {
-        this._inPage = children[nextIndex];
-      }
-    } else if (children) {
-      prevIndex = '';
-      this._inPage = children[last];
-    } else {
+    if (!children || children.length === 0) {
       throw new Error('This component has no children to animate');
     }
-    // Do nothing if the same page is being selected
-    if (this._inPage === this._outPage) return;
-
-    let next = this.attrForSelected ?
-      this._inPage.getAttribute(this.attrForSelected) :
-      nextIndex;
-    let prev = this._outPage && this.attrForSelected ?
-      this._outPage.getAttribute(this.attrForSelected) :
-      prevIndex;
-    this._currentClasses = this._animationClasses(next, prev);
-    this._beginAnimation();
+    const selectedItem = this.selectedItem;
+    let prevIndex = children.indexOf(selectedItem);
+    let nextIndex = prevIndex - 1 < 0 ? children.length - 1 : prevIndex - 1;
+    this.selected = nextIndex;
   }
 
   _beginAnimation() {
