@@ -1,5 +1,12 @@
 import { LitElement, html } from '@polymer/lit-element';
 
+/**
+ * A light spiritual succesor to neon-animated-pages using only css animations
+ *
+ * @customElement
+ * @polymer
+ * @extends LitElement
+ */
 class HeliumAnimatedPages extends LitElement {
   _render(props) {
     return html `
@@ -32,7 +39,43 @@ class HeliumAnimatedPages extends LitElement {
 
   static get properties() {
     return {
+      /**
+       * This property is required for the animations to run, it maps which
+       * animations to run depending on what the transition will be.
+       *
+       * The properties of this object each represent a different transition
+       * rule, the transition rules can be of one of the following types (in
+       * order of priority, all the examples asume you have at least two pages
+       * which identify respectively as `page1` and `page2`):
+       * - `from_to`: The most specific kind of transition.
+       *   It defines an animation which will run when both the newly selected
+       *   page and the previously selected page match with the rule. For
+       *   example: `page1_page2`.
+       * - `_to ` is a special subtype of this rule when there was no
+       *   previously selected page. For example: `_page1`
+       * - `*_to`: It defines an animation which will run when only the newly
+       *   selected page matches this rule. For example: `*_page2`
+       * - `from_*`: It defines an animation which will run when only the
+       *   previously selected page matches this rule. For example: `page1_*`
+       * - `default`: It defines an animation which will run when none of the
+       *   other rules apply.
+       *
+       * Any transition rule should be an object with this format:
+       * ```javascript
+       * {
+       *   in: 'inbound_css_animation_class_name',
+       *   out: 'outbound_css_animation_class_name'
+       * }
+       * ```
+       */
       animationClasses: Object,
+      /**
+       * If set, it will be the name of the attribute used to identify
+       * different pages added inside the instance of `helium-animated-pages`
+       * (otherwise a the index of the children page will be used). Any page
+       * without this attribute will be ignored and if two pages are found with
+       * the same value for the attribute only the first one will be selectable.
+       */
       attrForSelected: String,
       _selected: String,
       _animationEvent: String,
@@ -65,14 +108,37 @@ class HeliumAnimatedPages extends LitElement {
     this._outAnimationBound = this._outAnimation.bind(this);
   }
 
+  /**
+   * get isAnimating - This property will get the state of the animation,
+   * whether it's currently in the middle of an animation or not.
+   *
+   * @readonly
+   * @returns {boolean}  true if an animation is currently running
+   */
   get isAnimating() {
     return this._animating;
   }
 
+  /**
+   * get selected - The index or value of the attribute of the currently
+   * selected node, it's only the index if `attrForSelected` isn't defined.
+   *
+   * @returns {string|number}  the index or attribute value
+   */
   get selected() {
     return this._selected;
   }
 
+  /**
+   * set selected - Modifying this property achieves the same results as invoking
+   * the `select(next)` method.
+   * Just be warned, if you use this property with a downwards only binding and
+   * also try to use any of the selection methods you might get state
+   * inconsistencies.
+   *
+   * @param  {string|number} next next page index or attribute value
+   * @returns {undefined}
+   */
   set selected(next) {
     if (!this.animationClasses) {
       throw new Error('animationClasses must be defined');
@@ -112,6 +178,12 @@ class HeliumAnimatedPages extends LitElement {
     this._beginAnimation();
   }
 
+  /**
+   * get selectedItem - The currently selected item's DOM node.
+   *
+   * @readonly
+   * @returns {Element}  the currently selected item
+   */
   get selectedItem() {
     if(this._selected || this._selected === 0) {
       return this.attrForSelected ?
@@ -121,10 +193,40 @@ class HeliumAnimatedPages extends LitElement {
     return null;
   }
 
+  /**
+   * select - Makes a transition into the page identified with next.
+   *
+   * - If `next` is a string the new page will be searched depending on
+   *   `attrForSelected`. It will throw an error if `attrForSelected` isn't
+   *   defined.
+   * - If `next` is a number the new page will be searched by index. It must be
+   *   a positive integer or else it will throw an error.
+   *
+   * If no page is found corresponding to the identifier or `animationClasses`
+   * isn't defined it will throw an error.
+   *
+   * If an animation is running or the new page is the same as the previous
+   * page it will do nothing.
+   *
+   * @param  {string|number} next next page index or attribute value
+   * @returns {undefined}
+   */
   select(next) {
     this.selected = next;
   }
 
+  /**
+   * selectNext - Makes a transition to the page which is the next sibling of
+   * the currently selected page.
+   * If the current page is undefined or is the last children the first
+   * children will be selected.
+   * An error will be thrown if there are no children or if `animationClasses`
+   * isn't defined.
+   * If an animation is running or the new page is the same as the previous
+   * page it will do nothing.
+   *
+   * @returns {undefined}
+   */
   selectNext() {
     const children = Array.from(this.children);
     if (!children || children.length === 0) {
@@ -136,6 +238,19 @@ class HeliumAnimatedPages extends LitElement {
     this.selected = nextIndex;
   }
 
+  /**
+   * selectPrevious - Makes a transition to the page which is the previous sibling
+   * of the currently selected page.
+   *
+   * If the current page is undefined or is the first children the last
+   * children will be selected.
+   * An error will be thrown if there are no children or if `animationClasses`
+   * isn't defined.
+   * If an animation is running or the new page is the same as the previous
+   * page it will do nothing.
+   *
+   * @returns {undefined}
+   */
   selectPrevious() {
     const children = Array.from(this.children);
     if (!children || children.length === 0) {
