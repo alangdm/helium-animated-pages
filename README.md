@@ -6,6 +6,7 @@
 > So feel free to try it out, and give me any kind of feedback, it'll be really helpful.
 
 # `<helium-animated-pages>`
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 ###### [API](https://github.com/alangdm/helium-animated-pages/wiki/API) | [Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
@@ -94,7 +95,8 @@ To begin using it just follow this simple steps:
       });
 
       // defining the "rules" for which css classes to apply on
-      // diferent page transitions
+      // diferent page transitions, for more info go to:
+      // https://github.com/alangdm/helium-animated-pages/wiki/API#attrforselected
       // I'm using css classes which aren't defined on this context but you
       // must define them when actually using this
       document.querySelector('#pages').animationClasses = {
