@@ -77,6 +77,27 @@ class HeliumAnimatedPages extends LitElement {
        * the same value for the attribute only the first one will be selectable.
        */
       attrForSelected: String,
+      /**
+       * This property will get the state of the animation,
+       * whether it's currently in the middle of an animation or not.
+       * @readonly
+       */
+      isAnimating: Boolean,
+      /**
+       * The index or value of the attribute of the currently
+       * selected node, it's only the index if `attrForSelected` isn't defined.
+       * Modifying this property achieves the same results as invoking
+       * the `select(next)` method.
+       * Just be warned, if you use this property with a downwards only binding and
+       * also try to use any of the selection methods you might get state
+       * inconsistencies.
+       */
+      selected: String,
+      /**
+       * The currently selected item's DOM node.
+       * @readonly
+       */
+      selectedItem: Object,
       _selected: String,
       _animationEvent: String,
       _animating: Boolean,
@@ -108,37 +129,14 @@ class HeliumAnimatedPages extends LitElement {
     this._outAnimationBound = this._outAnimation.bind(this);
   }
 
-  /**
-   * get isAnimating - This property will get the state of the animation,
-   * whether it's currently in the middle of an animation or not.
-   *
-   * @readonly
-   * @returns {boolean}  true if an animation is currently running
-   */
   get isAnimating() {
     return this._animating;
   }
 
-  /**
-   * get selected - The index or value of the attribute of the currently
-   * selected node, it's only the index if `attrForSelected` isn't defined.
-   *
-   * @returns {string|number}  the index or attribute value
-   */
   get selected() {
     return this._selected;
   }
 
-  /**
-   * set selected - Modifying this property achieves the same results as invoking
-   * the `select(next)` method.
-   * Just be warned, if you use this property with a downwards only binding and
-   * also try to use any of the selection methods you might get state
-   * inconsistencies.
-   *
-   * @param  {string|number} next next page index or attribute value
-   * @returns {undefined}
-   */
   set selected(next) {
     if (!this.animationClasses) {
       throw new Error('animationClasses must be defined');
@@ -178,12 +176,6 @@ class HeliumAnimatedPages extends LitElement {
     this._beginAnimation();
   }
 
-  /**
-   * get selectedItem - The currently selected item's DOM node.
-   *
-   * @readonly
-   * @returns {Element}  the currently selected item
-   */
   get selectedItem() {
     if(this._selected || this._selected === 0) {
       return this.attrForSelected ?
