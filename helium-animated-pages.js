@@ -24,13 +24,13 @@ class HeliumAnimatedPages extends LitElement {
         	position: absolute;
         	top: 0;
         	left: 0;
-        	visibility: hidden;
+        	visibility: var(--helium-children-visible, visible);
         	overflow: hidden;
         	backface-visibility: hidden;
         	transform: translate3d(0, 0, 0);
         }
-        ::slotted([active]) {
-          visibility: var(--helium-children-visible, visible);
+        ::slotted(:not([active])) {
+          visibility: hidden;
         }
       </style>
       <slot></slot>
