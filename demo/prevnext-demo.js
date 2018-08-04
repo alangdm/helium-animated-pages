@@ -24,9 +24,6 @@ class PrevnextDemo extends PageViewElement {
       :host {
         background: lightyellow;
       }
-      :host(:not([active])) {
-        --helium-children-visible: hidden;
-      }
       section.container {
         width: 50vw;
         height: 20vh;

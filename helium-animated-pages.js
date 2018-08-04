@@ -25,12 +25,15 @@ class HeliumAnimatedPages extends LitElement {
         	top: 0;
         	left: 0;
         	visibility: var(--helium-children-visible, visible);
+          will-change: visibility;
         	overflow: hidden;
         	backface-visibility: hidden;
         	transform: translate3d(0, 0, 0);
         }
         ::slotted(:not([active])) {
           visibility: hidden;
+          --helium-children-visible: hidden;
+          z-index: -1;
         }
       </style>
       <slot></slot>

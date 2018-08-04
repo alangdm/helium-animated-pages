@@ -15,9 +15,6 @@ class NoattrDemo extends PageViewElement {
       :host {
         background: lightpink;
       }
-      :host(:not([active])) {
-        --helium-children-visible: hidden;
-      }
       section.container {
         width: 70vw;
         height: 50vh;
