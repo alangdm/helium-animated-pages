@@ -108,8 +108,6 @@ class HeliumAnimatedPages extends LitElement {
       _outAnimationEnded: { type: Boolean },
       _inPage: { type: Object },
       _outPage: { type: Object },
-      _inAnimationBound: { type: Object },
-      _outAnimationBound: { type: Object },
       _currentClasses: { type: Object },
     };
   }
@@ -128,8 +126,8 @@ class HeliumAnimatedPages extends LitElement {
         break;
       }
     }
-    this._inAnimationBound = this._inAnimation.bind(this);
-    this._outAnimationBound = this._outAnimation.bind(this);
+    this._inAnimation = this._inAnimation.bind(this);
+    this._outAnimation = this._outAnimation.bind(this);
   }
 
   get isAnimating() {
@@ -259,9 +257,9 @@ class HeliumAnimatedPages extends LitElement {
 
   _beginAnimation() {
     this._animating = true;
-    this._inPage.addEventListener(this._animationEvent, this._inAnimationBound);
+    this._inPage.addEventListener(this._animationEvent, this._inAnimation);
     if (this._outPage) {
-      this._outPage.addEventListener(this._animationEvent, this._outAnimationBound);
+      this._outPage.addEventListener(this._animationEvent, this._outAnimation);
       this._outPage.classList.add(this._currentClasses.out);
     } else {
       this._outAnimationEnded = true;
@@ -286,13 +284,13 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _inAnimation() {
-    this._inPage.removeEventListener(this._animationEvent, this._inAnimationBound);
+    this._inPage.removeEventListener(this._animationEvent, this._inAnimation);
     this._inAnimationEnded = true;
     this._onAnimationEnd();
   }
 
   _outAnimation() {
-    this._outPage.removeEventListener(this._animationEvent, this._outAnimationBound);
+    this._outPage.removeEventListener(this._animationEvent, this._outAnimation);
     this._outAnimationEnded = true;
     this._onAnimationEnd();
   }
