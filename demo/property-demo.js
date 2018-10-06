@@ -4,7 +4,7 @@ import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class PropertyDemo extends PageViewElement {
-  _render(props) {
+  render() {
     return html `
     ${FadeIn}
     ${FadeOut}
@@ -29,15 +29,15 @@ class PropertyDemo extends PageViewElement {
     <section>
       <h3>This demo doesn't use select(next) but updates the selected property to achieve the same effect</h3>
       <div>Warning: If you decide changing selection like this do not use the select(), selectPrevious() or selectNext() methods to prevent weird state behavior</div>
-      <select onchange="${(e) => this._selectPage(e)}">
+      <select @change="${(e) => this._selectPage(e)}">
         <option value="">Select slide...</option>
         <option value="0">Slide 1</option>
         <option value="1">Slide 2</option>
       </select>
     </section>
     <section class="container">
-      <helium-animated-pages id="prop" selected="${props._selected}"
-        animationClasses="${props._propAnimationClasses}">
+      <helium-animated-pages id="prop" selected="${this._selected}"
+        .animationClasses="${this._propAnimationClasses}">
         <div>Slide 1</div>
         <div>Slide 2</div>
       </helium-animated-pages>
@@ -47,8 +47,8 @@ class PropertyDemo extends PageViewElement {
 
   static get properties() {
     return {
-      _selected: Number,
-      _propAnimationClasses: Object
+      _selected: { type: Number },
+      _propAnimationClasses: { type: Object },
     };
   }
 

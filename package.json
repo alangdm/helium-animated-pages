@@ -8,14 +8,15 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@polymer/lit-element": "^0.5.1"
+    "@polymer/lit-element": "^0.6.2"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "polymer-cli": "^1.7.2"
+    "eslint": "^5.6.1",
+    "polyserve": "^0.27.12"
   },
   "scripts": {
-    "start": "polymer serve"
+    "start": "polyserve --npm --port $PORT"
   },
   "keywords": [
     "web components",

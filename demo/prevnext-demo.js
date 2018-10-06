@@ -8,7 +8,7 @@ import { RotateCubeLeftIn, RotateCubeRightIn, RotateCubeLeftOut,
   RotateCubeRightOut } from '../sample-animations/cube-animations.js';
 
 class PrevnextDemo extends PageViewElement {
-  _render(props) {
+  render() {
     return html `
     ${FadeIn}
     ${FadeOut}
@@ -43,12 +43,12 @@ class PrevnextDemo extends PageViewElement {
     </section>
     <section>
       <h4>First slideshow, no attrForSelected</h4>
-      <input type="button" value="previous" onclick="${(e) => this._selectNoattr(e)}">
-      <input type="button" value="next" onclick="${(e) => this._selectNoattr(e)}">
+      <input type="button" value="previous" @click="${(e) => this._selectNoattr(e)}">
+      <input type="button" value="next" @click="${(e) => this._selectNoattr(e)}">
     </section>
     <section class="container">
       <helium-animated-pages id="noattr"
-        animationClasses="${props._noattrAnimationClasses}">
+        .animationClasses="${this._noattrAnimationClasses}">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
@@ -56,12 +56,12 @@ class PrevnextDemo extends PageViewElement {
     </section>
     <section>
       <h4>Second slideshow, with attrForSelected (the way of defining the animationClasses changes)</h4>
-      <input type="button" value="previous" onclick="${(e) => this._selectAttr(e)}">
-      <input type="button" value="next" onclick="${(e) => this._selectAttr(e)}">
+      <input type="button" value="previous" @click="${(e) => this._selectAttr(e)}">
+      <input type="button" value="next" @click="${(e) => this._selectAttr(e)}">
     </section>
     <section class="container">
       <helium-animated-pages id="attr" attrForSelected="name"
-        animationClasses="${props._attrAnimationClasses}">
+        .animationClasses="${this._attrAnimationClasses}">
         <div name="slide1">Slide 1</div>
         <div name="slide2">Slide 2</div>
         <div name="slide3">Slide 3</div>
@@ -71,8 +71,8 @@ class PrevnextDemo extends PageViewElement {
   }
   static get properties() {
     return {
-      _attrAnimationClasses: Object,
-      _noattrAnimationClasses: Object,
+      _attrAnimationClasses: { type: Object },
+      _noattrAnimationClasses: { type: Object },
     };
   }
   _selectNoattr(e) {

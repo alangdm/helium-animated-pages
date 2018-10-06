@@ -5,7 +5,7 @@ import { RotatePullLeft, RotatePullRight, RotatePushLeft,
   RotatePushRight } from '../sample-animations/push-pull-animations.js';
 
 class NoattrDemo extends PageViewElement {
-  _render({ _noattrAnimationClasses, active }) {
+  render() {
     return html `
     ${RotatePullLeft}
     ${RotatePullRight}
@@ -30,7 +30,7 @@ class NoattrDemo extends PageViewElement {
     </style>
     <section>
       <h3>This page has just 2 slides and it doesn't use an attribute for the selection</h3>
-      <select onchange="${(e) => this._selectPage(e)}">
+      <select @change="${(e) => this._selectPage(e)}">
         <option value="">Select slide...</option>
         <option value="0">Slide 1</option>
         <option value="1">Slide 2</option>
@@ -38,7 +38,7 @@ class NoattrDemo extends PageViewElement {
     </section>
     <section class="container">
       <helium-animated-pages id="noattr"
-        animationClasses="${_noattrAnimationClasses}">
+        .animationClasses="${this._noattrAnimationClasses}">
         <section class="slide1">Slide 1</section>
         <section class="slide2">Slide 2</section>
       </helium-animated-pages>
@@ -47,7 +47,7 @@ class NoattrDemo extends PageViewElement {
   }
   static get properties() {
     return {
-      _noattrAnimationClasses: Object,
+      _noattrAnimationClasses: { type: Object },
     };
   }
   constructor() {

@@ -7,7 +7,7 @@ import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class DemoElement extends LitElement {
 
-  _render({ _mainAnimationClasses }) {
+  render() {
     return html `
       ${FadeIn}
       ${FadeOut}
@@ -27,7 +27,7 @@ class DemoElement extends LitElement {
       </style>
       <section>
         <h2>Select a page</h2>
-        <select onchange="${(e) => this._selectMainPage(e)}">
+        <select @change="${(e) => this._selectMainPage(e)}">
           <option value="">Select page...</option>
           <option value="noattr">No attrForSelected Demo</option>
           <option value="prevnext">selectPrevious()/selectNext() Demo</option>
@@ -38,7 +38,7 @@ class DemoElement extends LitElement {
         </select>
       </section>
       <helium-animated-pages id="main" attrForSelected="name"
-        animationClasses="${_mainAnimationClasses}">
+        .animationClasses="${this._mainAnimationClasses}">
         <noattr-demo name="noattr"></noattr-demo>
         <prevnext-demo name="prevnext"></prevnext-demo>
         <property-demo name="property"></property-demo>
@@ -51,7 +51,7 @@ class DemoElement extends LitElement {
 
   static get properties() {
     return {
-      _mainAnimationClasses: Object
+      _mainAnimationClasses: { type: Object },
     };
   }
 

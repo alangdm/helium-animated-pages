@@ -8,7 +8,7 @@ import { LitElement, html } from '@polymer/lit-element';
  * @extends LitElement
  */
 class HeliumAnimatedPages extends LitElement {
-  _render(props) {
+  render() {
     return html `
       <style>
         :host {
@@ -71,7 +71,7 @@ class HeliumAnimatedPages extends LitElement {
        * }
        * ```
        */
-      animationClasses: Object,
+      animationClasses: { type: Object },
       /**
        * If set, it will be the name of the attribute used to identify
        * different pages added inside the instance of `helium-animated-pages`
@@ -79,13 +79,13 @@ class HeliumAnimatedPages extends LitElement {
        * without this attribute will be ignored and if two pages are found with
        * the same value for the attribute only the first one will be selectable.
        */
-      attrForSelected: String,
+      attrForSelected: { type: String },
       /**
        * This property will get the state of the animation,
        * whether it's currently in the middle of an animation or not.
        * @readonly
        */
-      isAnimating: Boolean,
+      isAnimating: { type: Boolean },
       /**
        * The index or value of the attribute of the currently
        * selected node, it's only the index if `attrForSelected` isn't defined.
@@ -95,22 +95,22 @@ class HeliumAnimatedPages extends LitElement {
        * also try to use any of the selection methods you might get state
        * inconsistencies.
        */
-      selected: String,
+      selected: { type: String },
       /**
        * The currently selected item's DOM node.
        * @readonly
        */
-      selectedItem: Object,
-      _selected: String,
-      _animationEvent: String,
-      _animating: Boolean,
-      _inAnimationEnded: Boolean,
-      _outAnimationEnded: Boolean,
-      _inPage: Object,
-      _outPage: Object,
-      _inAnimationBound: Object,
-      _outAnimationBound: Object,
-      _currentClasses: Object,
+      selectedItem: { type: Object },
+      _selected: { type: String },
+      _animationEvent: { type: String },
+      _animating: { type: Boolean },
+      _inAnimationEnded: { type: Boolean },
+      _outAnimationEnded: { type: Boolean },
+      _inPage: { type: Object },
+      _outPage: { type: Object },
+      _inAnimationBound: { type: Object },
+      _outAnimationBound: { type: Object },
+      _currentClasses: { type: Object },
     };
   }
 
@@ -285,13 +285,13 @@ class HeliumAnimatedPages extends LitElement {
     }
   }
 
-  _inAnimation(e) {
+  _inAnimation() {
     this._inPage.removeEventListener(this._animationEvent, this._inAnimationBound);
     this._inAnimationEnded = true;
     this._onAnimationEnd();
   }
 
-  _outAnimation(e) {
+  _outAnimation() {
     this._outPage.removeEventListener(this._animationEvent, this._outAnimationBound);
     this._outAnimationEnded = true;
     this._onAnimationEnd();
@@ -314,18 +314,17 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _isStringMode(next) {
-    const type = typeof next;
-    switch (type) {
-      case 'string':
-        return true
-        break;
-      case 'number':
-        if (next >= 0 && Number.isInteger(next)) {
-          return false;
-        }
-      default:
-        throw new Error('next must be a string or a positive integer');
+    const index = parseInt(next);
+    if (!isNaN(index)) {
+      return false;
     }
+
+    const type = typeof next;
+    if (type === 'string') {
+      return true;
+    }
+    
+    throw new Error('next must be a string or a positive integer');
   }
 }
 window.customElements.define('helium-animated-pages', HeliumAnimatedPages);
