@@ -79,6 +79,7 @@ class HeliumAnimatedPages extends LitElement {
        * (otherwise a the index of the children page will be used). Any page
        * without this attribute will be ignored and if two pages are found with
        * the same value for the attribute only the first one will be selectable.
+       * @default 'name'
        */
       attrForSelected: { type: String },
       /**
@@ -142,6 +143,7 @@ class HeliumAnimatedPages extends LitElement {
     }
     this._inAnimation = this._inAnimation.bind(this);
     this._outAnimation = this._outAnimation.bind(this);
+    this.attrForSelected = 'name';
   }
 
   /**
@@ -158,42 +160,46 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   set selected(next) {
-    if (!this.animationClasses) {
-      throw new Error('animationClasses must be defined');
+    if (typeof next === 'undefined' || next === null || this._animating) {
+      return;
     }
-    // Do nothing if the animation is running
-    if (this._animating) return;
 
     const stringMode = this._isStringMode(next);
-    if (stringMode && !this.attrForSelected) {
-      throw new Error('attrForSelected must be defined if next is a string');
-    }
 
     this._inPage = stringMode ?
       this.querySelector(`[${this.attrForSelected}="${next}"]`) :
       this.children[next];
     this._outPage = this.selectedItem;
 
-    if (!this._inPage) {
-      const msg = stringMode ?
-        `No page found with ${this.attrForSelected}="${next}"` :
-        `No page found with index ${next}`;
-      throw new Error(msg);
+    // Do nothing if no page was found or the same page is being selected
+    if (!this._inPage || this._inPage === this._outPage) return;
+
+    let prev = '';
+    if (this._outPage) {
+      if (stringMode) {
+        prev = this._outPage.getAttribute(this.attrForSelected);
+      } else {
+        prev = Array.from(this.children).indexOf(this._outPage);
+      }
     }
 
-    // Do nothing if the same page is being selected
-    if (this._inPage === this._outPage) return;
-
-    const prev = this._outPage && stringMode ?
-      this._outPage.getAttribute(this.attrForSelected) :
-      this._outPage ? Array.from(this.children).indexOf(this._outPage) :
-        '';
-
-    this._selected = this.attrForSelected ?
-      this._inPage.getAttribute(this.attrForSelected) :
-      next;
-    this._currentClasses = this._animationClasses(next, prev);
-    this._beginAnimation();
+    if (!this.animationClasses) {
+      // this is a fallback just in case animationClasses wasn't set
+      this._selected = stringMode ?
+        this._inPage.getAttribute(this.attrForSelected) :
+        next;
+      this._inPage.setAttribute('active', true);
+      if (this._outPage) {
+        this._outPage.removeAttribute('active');
+      }
+    }
+    else {
+      this._selected = stringMode ?
+        this._inPage.getAttribute(this.attrForSelected) :
+        next;
+      this._currentClasses = this._animationClasses(next, prev);
+      this._beginAnimation();
+    }
   }
   /**
    * The currently selected item's DOM node.
@@ -201,7 +207,8 @@ class HeliumAnimatedPages extends LitElement {
    */
   get selectedItem() {
     if (this._selected || this._selected === 0) {
-      return this.attrForSelected ?
+      const stringMode = this._isStringMode(this._selected);
+      return stringMode ?
         this.querySelector(`[${this.attrForSelected}="${this._selected}"]`) :
         this.children[this._selected];
     }
@@ -212,19 +219,14 @@ class HeliumAnimatedPages extends LitElement {
    * select - Makes a transition into the page identified with next.
    *
    * - If `next` is a string the new page will be searched depending on
-   *   `attrForSelected`. It will throw an error if `attrForSelected` isn't
-   *   defined.
-   * - If `next` is a number the new page will be searched by index. It must be
-   *   a positive integer or else it will throw an error.
+   *   `attrForSelected`.
+   * - If `next` is a number the new page will be searched by index.
    *
-   * If no page is found corresponding to the identifier or `animationClasses`
-   * isn't defined it will throw an error.
-   *
-   * If an animation is running or the new page is the same as the previous
-   * page it will do nothing.
+   * If no page is found corresponding to the identifier, an animation is 
+   * running, or the new page is the same as the previous page it will do 
+   * nothing.
    *
    * @param  {string|number} next next page index or attribute value
-   * @returns {undefined}
    */
   select(next) {
     this.selected = next;
@@ -235,17 +237,15 @@ class HeliumAnimatedPages extends LitElement {
    * the currently selected page.
    * If the current page is undefined or is the last children the first
    * children will be selected.
-   * An error will be thrown if there are no children or if `animationClasses`
+   * Nothing will happen if there are no children or if `animationClasses`
    * isn't defined.
    * If an animation is running or the new page is the same as the previous
    * page it will do nothing.
-   *
-   * @returns {undefined}
    */
   selectNext() {
     const children = Array.from(this.children);
     if (!children || children.length === 0) {
-      throw new Error('This component has no children to animate');
+      return;
     }
     const selectedItem = this.selectedItem;
     let prevIndex = children.indexOf(selectedItem);
@@ -259,17 +259,15 @@ class HeliumAnimatedPages extends LitElement {
    *
    * If the current page is undefined or is the first children the last
    * children will be selected.
-   * An error will be thrown if there are no children or if `animationClasses`
+   * Nothing will happen if there are no children or if `animationClasses`
    * isn't defined.
    * If an animation is running or the new page is the same as the previous
    * page it will do nothing.
-   *
-   * @returns {undefined}
    */
   selectPrevious() {
     const children = Array.from(this.children);
     if (!children || children.length === 0) {
-      throw new Error('This component has no children to animate');
+      return;
     }
     const selectedItem = this.selectedItem;
     let prevIndex = children.indexOf(selectedItem);
@@ -335,16 +333,7 @@ class HeliumAnimatedPages extends LitElement {
 
   _isStringMode(next) {
     const index = parseInt(next);
-    if (!isNaN(index)) {
-      return false;
-    }
-
-    const type = typeof next;
-    if (type === 'string') {
-      return true;
-    }
-
-    throw new Error('next must be a string or a positive integer');
+    return isNaN(index);
   }
 }
 window.customElements.define('helium-animated-pages', HeliumAnimatedPages);
