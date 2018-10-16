@@ -1,4 +1,5 @@
 import { LitElement, html } from '@polymer/lit-element';
+import { jsonSerializer, stringOrIntSerializer } from './serializers.js';
 
 /**
  * A light spiritual succesor to neon-animated-pages using only css animations
@@ -9,7 +10,7 @@ import { LitElement, html } from '@polymer/lit-element';
  */
 class HeliumAnimatedPages extends LitElement {
   render() {
-    return html `
+    return html`
       <style>
         :host {
           position: absolute;
@@ -71,7 +72,7 @@ class HeliumAnimatedPages extends LitElement {
        * }
        * ```
        */
-      animationClasses: { type: Object },
+      animationClasses: { type: jsonSerializer },
       /**
        * If set, it will be the name of the attribute used to identify
        * different pages added inside the instance of `helium-animated-pages`
@@ -95,20 +96,44 @@ class HeliumAnimatedPages extends LitElement {
        * also try to use any of the selection methods you might get state
        * inconsistencies.
        */
-      selected: { type: String },
+      selected: { type: stringOrIntSerializer },
       /**
        * The currently selected item's DOM node.
        * @readonly
        */
       selectedItem: { type: Object },
-      _selected: { type: String },
-      _animationEvent: { type: String },
-      _animating: { type: Boolean },
-      _inAnimationEnded: { type: Boolean },
-      _outAnimationEnded: { type: Boolean },
-      _inPage: { type: Object },
-      _outPage: { type: Object },
-      _currentClasses: { type: Object },
+      _selected: {
+        type: String,
+        attribute: false
+      },
+      _animationEvent: {
+        type: String,
+        attribute: false
+      },
+      _animating: {
+        type: Boolean,
+        attribute: false
+      },
+      _inAnimationEnded: {
+        type: Boolean,
+        attribute: false
+      },
+      _outAnimationEnded: {
+        type: Boolean,
+        attribute: false
+      },
+      _inPage: {
+        type: Object,
+        attribute: false
+      },
+      _outPage: {
+        type: Object,
+        attribute: false
+      },
+      _currentClasses: {
+        type: Object,
+        attribute: false
+      },
     };
   }
 
@@ -168,7 +193,7 @@ class HeliumAnimatedPages extends LitElement {
     const prev = this._outPage && stringMode ?
       this._outPage.getAttribute(this.attrForSelected) :
       this._outPage ? Array.from(this.children).indexOf(this._outPage) :
-      '';
+        '';
 
     this._selected = this.attrForSelected ?
       this._inPage.getAttribute(this.attrForSelected) :
@@ -178,7 +203,7 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   get selectedItem() {
-    if(this._selected || this._selected === 0) {
+    if (this._selected || this._selected === 0) {
       return this.attrForSelected ?
         this.querySelector(`[${this.attrForSelected}="${this._selected}"]`) :
         this.children[this._selected];
@@ -321,7 +346,7 @@ class HeliumAnimatedPages extends LitElement {
     if (type === 'string') {
       return true;
     }
-    
+
     throw new Error('next must be a string or a positive integer');
   }
 }
