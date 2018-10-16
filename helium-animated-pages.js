@@ -82,12 +82,6 @@ class HeliumAnimatedPages extends LitElement {
        */
       attrForSelected: { type: String },
       /**
-       * This property will get the state of the animation,
-       * whether it's currently in the middle of an animation or not.
-       * @readonly
-       */
-      isAnimating: { type: Boolean },
-      /**
        * The index or value of the attribute of the currently
        * selected node, it's only the index if `attrForSelected` isn't defined.
        * Modifying this property achieves the same results as invoking
@@ -96,12 +90,7 @@ class HeliumAnimatedPages extends LitElement {
        * also try to use any of the selection methods you might get state
        * inconsistencies.
        */
-      selected: { type: stringOrIntSerializer },
-      /**
-       * The currently selected item's DOM node.
-       * @readonly
-       */
-      selectedItem: { type: Object },
+      selected: { type: stringOrIntSerializer },      
       _selected: {
         type: String,
         attribute: false
@@ -155,6 +144,11 @@ class HeliumAnimatedPages extends LitElement {
     this._outAnimation = this._outAnimation.bind(this);
   }
 
+  /**
+   * This property will get the state of the animation,
+   * whether it's currently in the middle of an animation or not.
+   * @readonly
+   */
   get isAnimating() {
     return this._animating;
   }
@@ -201,7 +195,10 @@ class HeliumAnimatedPages extends LitElement {
     this._currentClasses = this._animationClasses(next, prev);
     this._beginAnimation();
   }
-
+  /**
+   * The currently selected item's DOM node.
+   * @readonly
+   */
   get selectedItem() {
     if (this._selected || this._selected === 0) {
       return this.attrForSelected ?
