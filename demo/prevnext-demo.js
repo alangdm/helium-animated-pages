@@ -79,15 +79,17 @@ class PrevnextDemo extends PageViewElement {
     const pages = this.shadowRoot.querySelector('#noattr');
     if (e.target.value === 'next') {
       pages.selectNext();
+    } else {
+      pages.selectPrevious();
     }
-    pages.selectPrevious();
   }
   _selectAttr(e) {
     const pages = this.shadowRoot.querySelector('#attr');
     if (e.target.value === 'next') {
       pages.selectNext();
+    } else {
+      pages.selectPrevious();
     }
-    pages.selectPrevious();
   }
   constructor() {
     super();
