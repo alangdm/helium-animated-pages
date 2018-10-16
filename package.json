@@ -1,6 +1,6 @@
 {
   "name": "helium-animated-pages",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "flat": true,
   "description": "A light spiritual succesor to neon-animated-pages using only css animations",
   "main": "index.html",
