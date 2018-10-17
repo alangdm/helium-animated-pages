@@ -46,6 +46,8 @@ class HeliumAnimatedPages extends LitElement {
       /**
        * This property is required for the animations to run, it maps which
        * animations to run depending on what the transition will be.
+       * 
+       * If it's not set the transitions will run without animations.
        *
        * The properties of this object each represent a different transition
        * rule, the transition rules can be of one of the following types (in
@@ -63,6 +65,8 @@ class HeliumAnimatedPages extends LitElement {
        *   previously selected page matches this rule. For example: `page1_*`
        * - `default`: It defines an animation which will run when none of the
        *   other rules apply.
+       * 
+       * Please bear in mind 'undefined' and 'null' are not valid identifiers.
        *
        * Any transition rule should be an object with this format:
        * ```javascript
@@ -220,7 +224,8 @@ class HeliumAnimatedPages extends LitElement {
    *
    * - If `next` is a string the new page will be searched depending on
    *   `attrForSelected`.
-   * - If `next` is a number the new page will be searched by index.
+   * - If next is a number or a string which can be parsed to an integer 
+   *   the new page will be searched by index.
    *
    * If no page is found corresponding to the identifier, an animation is 
    * running, or the new page is the same as the previous page it will do 
@@ -235,12 +240,12 @@ class HeliumAnimatedPages extends LitElement {
   /**
    * selectNext - Makes a transition to the page which is the next sibling of
    * the currently selected page.
+   * 
    * If the current page is undefined or is the last children the first
    * children will be selected.
-   * Nothing will happen if there are no children or if `animationClasses`
-   * isn't defined.
-   * If an animation is running or the new page is the same as the previous
-   * page it will do nothing.
+   * 
+   * If there are no children, an animation is running, or the new page is the 
+   * same as the previous page it will do nothing.
    */
   selectNext() {
     const children = Array.from(this.children);
@@ -259,10 +264,9 @@ class HeliumAnimatedPages extends LitElement {
    *
    * If the current page is undefined or is the first children the last
    * children will be selected.
-   * Nothing will happen if there are no children or if `animationClasses`
-   * isn't defined.
-   * If an animation is running or the new page is the same as the previous
-   * page it will do nothing.
+   * 
+   * If there are no children, an animation is running, or the new page is the 
+   * same as the previous page it will do nothing.
    */
   selectPrevious() {
     const children = Array.from(this.children);
