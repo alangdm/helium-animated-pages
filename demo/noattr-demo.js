@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element';
+import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { RotatePullLeft, RotatePullRight, RotatePushLeft,
@@ -6,28 +6,7 @@ import { RotatePullLeft, RotatePullRight, RotatePushLeft,
 
 class NoattrDemo extends PageViewElement {
   render() {
-    return html `
-    ${RotatePullLeft}
-    ${RotatePullRight}
-    ${RotatePushLeft}
-    ${RotatePushRight}
-    <style>
-      :host {
-        background: lightpink;
-      }
-      section.container {
-        width: 70vw;
-        height: 50vh;
-        position: relative;
-      }
-      section.slide1 {
-        background-color: black;
-        color: white;
-      }
-      section.slide2 {
-        background-color: white;
-      }
-    </style>
+    return html`
     <section>
       <h3>This page has just 2 slides and it doesn't use an attribute for the selection</h3>
       <select @change="${(e) => this._selectPage(e)}">
@@ -45,11 +24,39 @@ class NoattrDemo extends PageViewElement {
     </section>
     `;
   }
+
   static get properties() {
     return {
       _noattrAnimationClasses: { type: Object },
     };
   }
+
+  static get styles() {
+    return [
+      RotatePullLeft,
+      RotatePullRight,
+      RotatePushLeft,
+      RotatePushRight,
+      css`
+        :host {
+          background: lightpink;
+        }
+        section.container {
+          width: 70vw;
+          height: 50vh;
+          position: relative;
+        }
+        section.slide1 {
+          background-color: black;
+          color: white;
+        }
+        section.slide2 {
+          background-color: white;
+        }
+      `,
+    ];
+  }
+
   constructor() {
     super();
     this._noattrAnimationClasses = {

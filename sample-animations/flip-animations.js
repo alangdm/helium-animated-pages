@@ -1,8 +1,7 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
-export const FlipInLeft = html`
-<style>
+export const FlipInLeft = css`
 .page-flipInLeft {
 	transform-origin: 50% 50%;
 	animation: flipInLeft .5s both ease-out;
@@ -10,11 +9,9 @@ export const FlipInLeft = html`
 @keyframes flipInLeft {
 	from { transform: translateZ(-1000px) rotateY(-90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipInRight = html`
-<style>
+export const FlipInRight = css`
 .page-flipInRight {
 	transform-origin: 50% 50%;
 	animation: flipInRight .5s both ease-out;
@@ -22,11 +19,9 @@ export const FlipInRight = html`
 @keyframes flipInRight {
 	from { transform: translateZ(-1000px) rotateY(90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipInTop = html`
-<style>
+export const FlipInTop = css`
 .page-flipInTop {
 	transform-origin: 50% 50%;
 	animation: flipInTop .5s both ease-out;
@@ -34,11 +29,9 @@ export const FlipInTop = html`
 @keyframes flipInTop {
 	from { transform: translateZ(-1000px) rotateX(90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipInBottom = html`
-<style>
+export const FlipInBottom = css`
 .page-flipInBottom {
 	transform-origin: 50% 50%;
 	animation: flipInBottom .5s both ease-out;
@@ -46,12 +39,10 @@ export const FlipInBottom = html`
 @keyframes flipInBottom {
 	from { transform: translateZ(-1000px) rotateX(-90deg); opacity: 0.2; }
 }
-</style>
 `;
 
 /* Out animations */
-export const FlipOutLeft = html`
-<style>
+export const FlipOutLeft = css`
 .page-flipOutLeft {
 	transform-origin: 50% 50%;
 	animation: flipOutLeft .5s both ease-in;
@@ -60,11 +51,9 @@ export const FlipOutLeft = html`
 	from { }
 	to { transform: translateZ(-1000px) rotateY(-90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipOutRight = html`
-<style>
+export const FlipOutRight = css`
 .page-flipOutRight {
 	transform-origin: 50% 50%;
 	animation: flipOutRight .5s both ease-in;
@@ -73,11 +62,9 @@ export const FlipOutRight = html`
 	from { }
 	to { transform: translateZ(-1000px) rotateY(90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipOutTop = html`
-<style>
+export const FlipOutTop = css`
 .page-flipOutTop {
 	transform-origin: 50% 50%;
 	animation: flipOutTop .5s both ease-in;
@@ -86,11 +73,9 @@ export const FlipOutTop = html`
 	from { }
 	to { transform: translateZ(-1000px) rotateX(90deg); opacity: 0.2; }
 }
-</style>
 `;
 
-export const FlipOutBottom = html`
-<style>
+export const FlipOutBottom = css`
 .page-flipOutBottom {
 	transform-origin: 50% 50%;
 	animation: flipOutBottom .5s both ease-in;
@@ -99,5 +84,4 @@ export const FlipOutBottom = html`
 	from { }
 	to { transform: translateZ(-1000px) rotateX(-90deg); opacity: 0.2; }
 }
-</style>
 `;

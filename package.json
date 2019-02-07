@@ -1,6 +1,6 @@
 {
   "name": "helium-animated-pages",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "flat": true,
   "description": "A light spiritual succesor to neon-animated-pages using only css animations",
   "main": "index.html",
@@ -8,12 +8,12 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@polymer/lit-element": "^0.6.2"
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "eslint": "^5.6.1",
-    "polyserve": "^0.27.12"
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "eslint": "^5.13.0",
+    "polyserve": "^0.27.15"
   },
   "scripts": {
     "start": "polyserve --npm --port $PORT"

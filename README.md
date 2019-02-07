@@ -1,10 +1,3 @@
-> ## Status: Waiting for feedback
-> `<helium-animated-pages>` can already be used in most of the scenarios you could use `<neon-animated-pages>` for and maybe even more.
->
-> However before releasing a v1.0 I want feedback from other devs to see if what this component does so far is what people want from this kind of component.
->
-> So feel free to try it out, and give me any kind of feedback, it'll be really helpful.
-
 # `<helium-animated-pages>`
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 ###### [API](https://github.com/alangdm/helium-animated-pages/wiki/API) | [Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)

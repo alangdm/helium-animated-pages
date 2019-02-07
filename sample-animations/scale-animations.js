@@ -1,58 +1,49 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
 
-export const ScaleUp = html`
-<style>
+export const ScaleUp = css`
 .page-scaleUp {
 	animation: scaleUp .7s ease both;
-  z-index: -1;
+  	z-index: -1;
 }
 @keyframes scaleUp {
 	from { opacity: 0; transform: scale(.8); }
 }
-</style>
 `;
 
-export const ScaleUpDown = html`
-<style>
+export const ScaleUpDown = css`
 .page-scaleUpDown {
 	animation: scaleUpDown .5s ease both;
 }
 @keyframes scaleUpDown {
 	from { opacity: 0; transform: scale(1.2); }
 }
-</style>
 `;
 
-export const ScaleUpCenter = html`
-<style>
+export const ScaleUpCenter = css`
 .page-scaleUpCenter {
 	animation: scaleUpCenter .4s ease-out both;
 }
 @keyframes scaleUpCenter {
 	from { opacity: 0; transform: scale(.7); }
 }
-</style>
 `;
 
 /* Out animations */
 
-export const ScaleDown = html`
-<style>
+export const ScaleDown = css`
 .page-scaleDown {
 	animation: scaleDown .7s ease both;
-  z-index: -1;
+  	z-index: -1;
 }
 @keyframes scaleDown {
 	from { }
 	to { opacity: 0; transform: scale(.8); }
 }
-</style>
 `;
 
-export const ScaleDownUp = html`
-<style>
+export const ScaleDownUp = css`
 .page-scaleDownUp {
 	animation: scaleDownUp .5s ease both;
 }
@@ -60,11 +51,9 @@ export const ScaleDownUp = html`
 	from { }
 	to { opacity: 0; transform: scale(1.2); }
 }
-</style>
 `;
 
-export const ScaleDownCenter = html`
-<style>
+export const ScaleDownCenter = css`
 .page-scaleDownCenter {
 	animation: scaleDownCenter .4s ease-in both;
 }
@@ -72,5 +61,4 @@ export const ScaleDownCenter = html`
 	from { }
 	to { opacity: 0; transform: scale(.7); }
 }
-</style>
 `;

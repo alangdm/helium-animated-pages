@@ -1,8 +1,7 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
-export const RotateCubeLeftIn = html`
-<style>
+export const RotateCubeLeftIn = css`
 .page-rotateCubeLeftIn {
 	transform-origin: 0% 50%;
 	animation: rotateCubeLeftIn .6s both ease-in;
@@ -11,11 +10,9 @@ export const RotateCubeLeftIn = html`
 	0% { opacity: .3; transform: translateX(100%) rotateY(90deg); }
 	50% { animation-timing-function: ease-out; transform: translateX(50%) translateZ(-200px) rotateY(45deg); }
 }
-</style>
 `;
 
-export const RotateCubeRightIn = html`
-<style>
+export const RotateCubeRightIn = css`
 .page-rotateCubeRightIn {
 	transform-origin: 100% 50%;
 	animation: rotateCubeRightIn .6s both ease-in;
@@ -24,11 +21,9 @@ export const RotateCubeRightIn = html`
 	0% { opacity: .3; transform: translateX(-100%) rotateY(-90deg); }
 	50% { animation-timing-function: ease-out; transform: translateX(-50%) translateZ(-200px) rotateY(-45deg); }
 }
-</style>
 `;
 
-export const RotateCubeTopIn = html`
-<style>
+export const RotateCubeTopIn = css`
 .page-rotateCubeTopIn {
 	transform-origin: 50% 0%;
 	animation: rotateCubeTopIn .6s both ease-in;
@@ -37,11 +32,9 @@ export const RotateCubeTopIn = html`
 	0% { opacity: .3; transform: translateY(100%) rotateX(-90deg); }
 	50% { animation-timing-function: ease-out; transform: translateY(50%) translateZ(-200px) rotateX(-45deg); }
 }
-</style>
 `;
 
-export const RotateCubeBottomIn = html`
-<style>
+export const RotateCubeBottomIn = css`
 .page-rotateCubeBottomIn {
 	transform-origin: 50% 100%;
 	animation: rotateCubeBottomIn .6s both ease-in;
@@ -50,12 +43,10 @@ export const RotateCubeBottomIn = html`
 	0% { opacity: .3; transform: translateY(-100%) rotateX(90deg); }
 	50% { animation-timing-function: ease-out; transform: translateY(-50%) translateZ(-200px) rotateX(45deg); }
 }
-</style>
 `;
 
 /* Out animations */
-export const RotateCubeLeftOut = html`
-<style>
+export const RotateCubeLeftOut = css`
 .page-rotateCubeLeftOut {
 	transform-origin: 100% 50%;
 	animation: rotateCubeLeftOut .6s both ease-in;
@@ -66,11 +57,9 @@ export const RotateCubeLeftOut = html`
 	50% { animation-timing-function: ease-out; transform: translateX(-50%) translateZ(-200px) rotateY(-45deg); }
 	100% { opacity: .3; transform: translateX(-100%) rotateY(-90deg); }
 }
-</style>
 `;
 
-export const RotateCubeRightOut = html`
-<style>
+export const RotateCubeRightOut = css`
 .page-rotateCubeRightOut {
 	transform-origin: 0% 50%;
 	animation: rotateCubeRightOut .6s both ease-in;
@@ -81,11 +70,9 @@ export const RotateCubeRightOut = html`
 	50% { animation-timing-function: ease-out; transform: translateX(50%) translateZ(-200px) rotateY(45deg); }
 	100% { opacity: .3; transform: translateX(100%) rotateY(90deg); }
 }
-</style>
 `;
 
-export const RotateCubeTopOut = html`
-<style>
+export const RotateCubeTopOut = css`
 .page-rotateCubeTopOut {
 	transform-origin: 50% 100%;
 	animation: rotateCubeTopOut .6s both ease-in;
@@ -96,11 +83,9 @@ export const RotateCubeTopOut = html`
 	50% { animation-timing-function: ease-out; transform: translateY(-50%) translateZ(-200px) rotateX(45deg); }
 	100% { opacity: .3; transform: translateY(-100%) rotateX(90deg); }
 }
-</style>
 `;
 
-export const RotateCubeBottomOut = html`
-<style>
+export const RotateCubeBottomOut = css`
 .page-rotateCubeBottomOut {
 	transform-origin: 50% 0%;
 	animation: rotateCubeBottomOut .6s both ease-in;
@@ -111,5 +96,4 @@ export const RotateCubeBottomOut = html`
 	50% { animation-timing-function: ease-out; transform: translateY(50%) translateZ(-200px) rotateX(-45deg); }
 	100% { opacity: .3; transform: translateY(100%) rotateX(-90deg); }
 }
-</style>
 `;

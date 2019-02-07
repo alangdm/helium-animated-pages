@@ -1,5 +1,5 @@
-import { LitElement, html } from '@polymer/lit-element';
-import { jsonSerializer, stringOrIntSerializer } from './serializers.js';
+import { LitElement, html, css } from 'lit-element';
+import { stringOrIntSerializer } from './serializers.js';
 
 /**
  * A light spiritual succesor to neon-animated-pages using only css animations
@@ -11,32 +11,6 @@ import { jsonSerializer, stringOrIntSerializer } from './serializers.js';
 class HeliumAnimatedPages extends LitElement {
   render() {
     return html`
-      <style>
-        :host {
-          position: absolute;
-        	width: 100%;
-        	height: 100%;
-        	perspective: var(--helium-animation-perspective, 1200px);
-        	transform-style: preserve-3d;
-        }
-        ::slotted(*) {
-          width: 100%;
-        	height: 100%;
-        	position: absolute;
-        	top: 0;
-        	left: 0;
-        	visibility: var(--helium-children-visible, visible);
-          will-change: visibility;
-        	overflow: hidden;
-        	backface-visibility: hidden;
-        	transform: translate3d(0, 0, 0);
-        }
-        ::slotted(:not([active])) {
-          visibility: hidden;
-          --helium-children-visible: hidden;
-          z-index: -1;
-        }
-      </style>
       <slot></slot>
     `;
   }
@@ -76,7 +50,7 @@ class HeliumAnimatedPages extends LitElement {
        * }
        * ```
        */
-      animationClasses: { type: jsonSerializer },
+      animationClasses: { type: Object },
       /**
        * If set, it will be the name of the attribute used to identify
        * different pages added inside the instance of `helium-animated-pages`
@@ -95,7 +69,7 @@ class HeliumAnimatedPages extends LitElement {
        * also try to use any of the selection methods you might get state
        * inconsistencies.
        */
-      selected: { type: stringOrIntSerializer },      
+      selected: { converter: stringOrIntSerializer },      
       _selected: {
         type: String,
         attribute: false
@@ -129,6 +103,37 @@ class HeliumAnimatedPages extends LitElement {
         attribute: false
       },
     };
+  }
+
+  static get styles() {
+    return [
+      css`
+        :host {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          perspective: var(--helium-animation-perspective, 1200px);
+          transform-style: preserve-3d;
+        }
+        ::slotted(*) {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          visibility: var(--helium-children-visible, visible);
+          will-change: visibility;
+          overflow: hidden;
+          backface-visibility: hidden;
+          transform: translate3d(0, 0, 0);
+        }
+        ::slotted(:not([active])) {
+          visibility: hidden;
+          --helium-children-visible: hidden;
+          z-index: -1;
+        }
+      `,
+    ];
   }
 
   constructor() {

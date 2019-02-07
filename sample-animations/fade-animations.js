@@ -1,9 +1,8 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
 
-export const FadeIn = html`
-<style>
+export const FadeIn = css`
 .page-fadeIn {
 	animation: fadeIn .7s ease both;
 }
@@ -11,13 +10,11 @@ export const FadeIn = html`
 	from { opacity: 0.3; }
 	to { }
 }
-</style>
 `;
 
 /* Out animations */
 
-export const FadeOut = html`
-<style>
+export const FadeOut = css`
 .page-fadeOut {
 	animation: fadeOut .7s ease both;
   z-index: -1;
@@ -26,5 +23,4 @@ export const FadeOut = html`
 	from { }
 	to { opacity: 0.0; }
 }
-</style>
 `;

@@ -1,8 +1,7 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
-export const RotateInNewspaper = html`
-<style>
+export const RotateInNewspaper = css`
 .page-rotateInNewspaper {
 	transform-origin: 50% 50%;
 	animation: rotateInNewspaper .5s both ease-out;
@@ -10,77 +9,67 @@ export const RotateInNewspaper = html`
 @keyframes rotateInNewspaper {
 	from { transform: translateZ(-3000px) rotateZ(-360deg); opacity: 0; }
 }
-</style>
 `;
 
 /* Out animations */
 
-export const RotateRightSideFirst = html`
-<style>
+export const RotateRightSideFirst = css`
 .page-rotateRightSideFirst {
 	transform-origin: 0% 50%;
 	animation: rotateRightSideFirst .8s both ease-in;
-  z-index: -1;
+  	z-index: -1;
 }
 @keyframes rotateRightSideFirst {
 	0% { }
 	40% { transform: rotateY(15deg); opacity: .8; animation-timing-function: ease-out; }
 	100% { transform: scale(0.8) translateZ(-200px); opacity:0; }
 }
-</style>
 `;
 
-export const RotateLeftSideFirst = html`
-<style>
+export const RotateLeftSideFirst = css`
 .page-rotateLeftSideFirst {
 	transform-origin: 100% 50%;
 	animation: rotateLeftSideFirst .8s both ease-in;
-  z-index: -1;
+  	z-index: -1;
 }
 @keyframes rotateLeftSideFirst {
 	0% { }
 	40% { transform: rotateY(-15deg); opacity: .8; animation-timing-function: ease-out; }
 	100% { transform: scale(0.8) translateZ(-200px); opacity:0; }
 }
-</style>
 `;
 
-export const RotateTopSideFirst = html`
-<style>
+export const RotateTopSideFirst = css`
 .page-rotateTopSideFirst {
 	transform-origin: 50% 100%;
 	animation: rotateTopSideFirst .8s both ease-in;
-  z-index: -1;
+ 	z-index: -1;
 }
 @keyframes rotateTopSideFirst {
 	0% { }
 	40% { transform: rotateX(15deg); opacity: .8; animation-timing-function: ease-out; }
 	100% { transform: scale(0.8) translateZ(-200px); opacity:0; }
 }
-</style>
 `;
 
-export const RotateBottomSideFirst = html`
-<style>
+export const RotateBottomSideFirst = css`
 .page-rotateBottomSideFirst {
 	transform-origin: 50% 0%;
 	animation: rotateBottomSideFirst .8s both ease-in;
-  z-index: -1;
+  	z-index: -1;
 }
 @keyframes rotateBottomSideFirst {
 	0% { }
 	40% { transform: rotateX(-15deg); opacity: .8; animation-timing-function: ease-out; }
 	100% { transform: scale(0.8) translateZ(-200px); opacity:0; }
 }
-</style>
 `;
 
-export const RotateFall = html`
-<style>
+export const RotateFall = css`
 .page-rotateFall {
 	transform-origin: 0% 0%;
 	animation: rotateFall 1s both ease-in;
-  z-index: 999;
+  	z-index: 999;
 }
 @keyframes rotateFall {
 	0% { transform: rotateZ(0deg); }
@@ -89,11 +78,9 @@ export const RotateFall = html`
 	60% { transform: rotateZ(16deg); }
 	100% { transform: translateY(100%) rotateZ(17deg); }
 }
-</style>
 `;
 
-export const RotateOutNewspaper = html`
-<style>
+export const RotateOutNewspaper = css`
 .page-rotateOutNewspaper {
 	transform-origin: 50% 50%;
 	animation: rotateOutNewspaper .5s both ease-in;
@@ -102,5 +89,4 @@ export const RotateOutNewspaper = html`
 	from { }
 	to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
 }
-</style>
 `;

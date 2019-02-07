@@ -1,8 +1,7 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
-export const RotateUnfoldLeft = html`
-<style>
+export const RotateUnfoldLeft = css`
 .page-rotateUnfoldLeft {
 	transform-origin: 100% 50%;
 	animation: rotateUnfoldLeft .7s both ease;
@@ -10,11 +9,9 @@ export const RotateUnfoldLeft = html`
 @keyframes rotateUnfoldLeft {
 	from { opacity: 0; transform: translateX(-100%) rotateY(-90deg); }
 }
-</style>
 `;
 
-export const RotateUnfoldRight = html`
-<style>
+export const RotateUnfoldRight = css`
 .page-rotateUnfoldRight {
 	transform-origin: 0% 50%;
 	animation: rotateUnfoldRight .7s both ease;
@@ -22,11 +19,9 @@ export const RotateUnfoldRight = html`
 @keyframes rotateUnfoldRight {
 	from { opacity: 0; transform: translateX(100%) rotateY(90deg); }
 }
-</style>
 `;
 
-export const RotateUnfoldTop = html`
-<style>
+export const RotateUnfoldTop = css`
 .page-rotateUnfoldTop {
 	transform-origin: 50% 100%;
 	animation: rotateUnfoldTop .7s both ease;
@@ -34,11 +29,9 @@ export const RotateUnfoldTop = html`
 @keyframes rotateUnfoldTop {
 	from { opacity: 0; transform: translateY(-100%) rotateX(90deg); }
 }
-</style>
 `;
 
-export const RotateUnfoldBottom = html`
-<style>
+export const RotateUnfoldBottom = css`
 .page-rotateUnfoldBottom {
 	transform-origin: 50% 0%;
 	animation: rotateUnfoldBottom .7s both ease;
@@ -46,12 +39,10 @@ export const RotateUnfoldBottom = html`
 @keyframes rotateUnfoldBottom {
 	from { opacity: 0; transform: translateY(100%) rotateX(-90deg); }
 }
-</style>
 `;
-/* Out animations */
 
-export const RotateFoldLeft = html`
-<style>
+/* Out animations */
+export const RotateFoldLeft = css`
 .page-rotateFoldLeft {
 	transform-origin: 100% 50%;
 	animation: rotateFoldLeft .7s both ease;
@@ -60,11 +51,9 @@ export const RotateFoldLeft = html`
 	from { }
 	to { opacity: 0; transform: translateX(-100%) rotateY(-90deg); }
 }
-</style>
 `;
 
-export const RotateFoldRight = html`
-<style>
+export const RotateFoldRight = css`
 .page-rotateFoldRight {
 	transform-origin: 0% 50%;
 	animation: rotateFoldRight .7s both ease;
@@ -73,11 +62,9 @@ export const RotateFoldRight = html`
 	from { }
 	to { opacity: 0; transform: translateX(100%) rotateY(90deg); }
 }
-</style>
 `;
 
-export const RotateFoldTop = html`
-<style>
+export const RotateFoldTop = css`
 .page-rotateFoldTop {
 	transform-origin: 50% 100%;
 	animation: rotateFoldTop .7s both ease;
@@ -86,11 +73,9 @@ export const RotateFoldTop = html`
 	from { }
 	to { opacity: 0; transform: translateY(-100%) rotateX(90deg); }
 }
-</style>
 `;
 
-export const RotateFoldBottom = html`
-<style>
+export const RotateFoldBottom = css`
 .page-rotateFoldBottom {
 	transform-origin: 50% 0%;
 	animation: rotateFoldBottom .7s both ease;
@@ -99,5 +84,4 @@ export const RotateFoldBottom = html`
 	from { }
 	to { opacity: 0; transform: translateY(100%) rotateX(-90deg); }
 }
-</style>
 `;

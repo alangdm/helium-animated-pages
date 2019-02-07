@@ -1,9 +1,8 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
 
-export const RotatePullLeft = html`
-<style>
+export const RotatePullLeft = css`
 .page-rotatePullLeft {
 	transform-origin: 0% 50%;
 	animation: rotatePullLeft .5s both ease;
@@ -11,11 +10,9 @@ export const RotatePullLeft = html`
 @keyframes rotatePullLeft {
 	from { opacity: 0; transform: rotateY(90deg); }
 }
-</style>
 `;
 
-export const RotatePullRight = html`
-<style>
+export const RotatePullRight = css`
 .page-rotatePullRight {
 	transform-origin: 100% 50%;
 	animation: rotatePullRight .5s both ease;
@@ -23,11 +20,9 @@ export const RotatePullRight = html`
 @keyframes rotatePullRight {
 	from { opacity: 0; transform: rotateY(-90deg); }
 }
-</style>
 `;
 
-export const RotatePullTop = html`
-<style>
+export const RotatePullTop = css`
 .page-rotatePullTop {
 	transform-origin: 50% 0%;
 	animation: rotatePullTop .5s both ease;
@@ -35,11 +30,9 @@ export const RotatePullTop = html`
 @keyframes rotatePullTop {
 	from { opacity: 0; transform: rotateX(-90deg); }
 }
-</style>
 `;
 
-export const RotatePullBottom = html`
-<style>
+export const RotatePullBottom = css`
 .page-rotatePullBottom {
 	transform-origin: 50% 100%;
 	animation: rotatePullBottom .5s both ease;
@@ -47,13 +40,11 @@ export const RotatePullBottom = html`
 @keyframes rotatePullBottom {
 	from { opacity: 0; transform: rotateX(90deg); }
 }
-</style>
 `;
 
 /* Out animations */
 
-export const RotatePushLeft = html`
-<style>
+export const RotatePushLeft = css`
 .page-rotatePushLeft {
 	transform-origin: 0% 50%;
 	animation: rotatePushLeft .8s both ease;
@@ -62,12 +53,9 @@ export const RotatePushLeft = html`
 	from { }
 	to { opacity: 0; transform: rotateY(90deg); }
 }
-
-</style>
 `;
 
-export const RotatePushRight = html`
-<style>
+export const RotatePushRight = css`
 .page-rotatePushRight {
 	transform-origin: 100% 50%;
 	animation: rotatePushRight .8s both ease;
@@ -76,11 +64,9 @@ export const RotatePushRight = html`
 	from { }
 	to { opacity: 0; transform: rotateY(-90deg); }
 }
-</style>
 `;
 
-export const RotatePushTop = html`
-<style>
+export const RotatePushTop = css`
 .page-rotatePushTop {
 	transform-origin: 50% 0%;
 	animation: rotatePushTop .8s both ease;
@@ -89,11 +75,9 @@ export const RotatePushTop = html`
 	from { }
 	to { opacity: 0; transform: rotateX(-90deg); }
 }
-</style>
 `;
 
-export const RotatePushBottom = html`
-<style>
+export const RotatePushBottom = css`
 .page-rotatePushBottom {
 	transform-origin: 50% 100%;
 	animation: rotatePushBottom .8s both ease;
@@ -102,5 +86,4 @@ export const RotatePushBottom = html`
 	from { }
 	to { opacity: 0; transform: rotateX(90deg); }
 }
-</style>
 `;

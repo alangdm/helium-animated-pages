@@ -1,8 +1,7 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
-export const RotateSlideIn = html`
-<style>
+export const RotateSlideIn = css`
 .page-rotateSlideIn {
 	animation: rotateSlideIn 1s both ease;
 }
@@ -11,13 +10,10 @@ export const RotateSlideIn = html`
 	75% { opacity: .5; transform: translateZ(-500px); }
 	100% { opacity: 1; transform: translateZ(0) translateX(0); }
 }
-
-</style>
 `;
 
 /* Out animations */
-export const RotateSlideOut = html`
-<style>
+export const RotateSlideOut = css`
 .page-rotateSlideOut {
 	animation: rotateSlideOut 1s both ease;
 }
@@ -27,5 +23,4 @@ export const RotateSlideOut = html`
 	75% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
 	100% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
 }
-</style>
 `;

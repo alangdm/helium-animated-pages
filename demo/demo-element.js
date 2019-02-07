@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html, css } from 'lit-element';
 import './noattr-demo.js';
 import './prevnext-demo.js';
 import './property-demo.js';
@@ -8,23 +8,7 @@ import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 class DemoElement extends LitElement {
 
   render() {
-    return html `
-      ${FadeIn}
-      ${FadeOut}
-      <style>
-        :host {
-          font-family: sans-serif;
-        }
-        section[name="page1"] {
-          background-color: #bbbbbb;
-        }
-        section[name="page2"] {
-          background-color: lightblue;
-        }
-        section[name="page3"] {
-          background-color: lightgreen;
-        }
-      </style>
+    return html`
       <section>
         <h2>Select a page</h2>
         <select @change="${(e) => this._selectMainPage(e)}">
@@ -53,6 +37,27 @@ class DemoElement extends LitElement {
     return {
       _mainAnimationClasses: { type: Object },
     };
+  }
+
+  static get styles() {
+    return [
+      FadeIn,
+      FadeOut,
+      css`
+        :host {
+          font-family: sans-serif;
+        }
+        section[name="page1"] {
+          background-color: #bbbbbb;
+        }
+        section[name="page2"] {
+          background-color: lightblue;
+        }
+        section[name="page3"] {
+          background-color: lightgreen;
+        }
+      `,
+    ];
   }
 
   constructor() {

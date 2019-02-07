@@ -1,31 +1,11 @@
-import { html } from '@polymer/lit-element';
+import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class PropertyDemo extends PageViewElement {
   render() {
-    return html `
-    ${FadeIn}
-    ${FadeOut}
-    <style>
-      :host {
-        background: skyblue;
-      }
-      section.container {
-        width: 50vw;
-        height: 20vh;
-        position: relative;
-      }
-      div:nth-of-type(odd) {
-        background-color: black;
-        color: white;
-      }
-      div:nth-of-type(even) {
-        background-color: brown;
-        color: white;
-      }
-    </style>
+    return html`
     <section>
       <h3>This demo doesn't use select(next) but updates the selected property to achieve the same effect</h3>
       <div>Warning: If you decide changing selection like this do not use the select(), selectPrevious() or selectNext() methods to prevent weird state behavior</div>
@@ -50,6 +30,31 @@ class PropertyDemo extends PageViewElement {
       _selected: { type: Number },
       _propAnimationClasses: { type: Object },
     };
+  }
+
+  static get styles() {
+    return [
+      FadeIn,
+      FadeOut,
+      css`
+        :host {
+          background: skyblue;
+        }
+        section.container {
+          width: 50vw;
+          height: 20vh;
+          position: relative;
+        }
+        div:nth-of-type(odd) {
+          background-color: black;
+          color: white;
+        }
+        div:nth-of-type(even) {
+          background-color: brown;
+          color: white;
+        }
+      `,
+    ];
   }
 
   constructor(){

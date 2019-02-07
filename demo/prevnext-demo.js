@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element';
+import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
@@ -9,35 +9,7 @@ import { RotateCubeLeftIn, RotateCubeRightIn, RotateCubeLeftOut,
 
 class PrevnextDemo extends PageViewElement {
   render() {
-    return html `
-    ${FadeIn}
-    ${FadeOut}
-    ${RotateCarouselLeftIn}
-    ${RotateCarouselRightIn}
-    ${RotateCarouselLeftOut}
-    ${RotateCarouselRightOut}
-    ${RotateCubeLeftIn}
-    ${RotateCubeRightIn}
-    ${RotateCubeLeftOut}
-    ${RotateCubeRightOut}
-    <style>
-      :host {
-        background: lightyellow;
-      }
-      section.container {
-        width: 50vw;
-        height: 20vh;
-        position: relative;
-      }
-      div:nth-of-type(odd) {
-        background-color: black;
-        color: white;
-      }
-      div:nth-of-type(even) {
-        background-color: brown;
-        color: white;
-      }
-    </style>
+    return html`
     <section>
       <h3>This page has 2 slideshows which only use selectNext() and selectPrevious() to iterate</h3>
     </section>
@@ -69,12 +41,47 @@ class PrevnextDemo extends PageViewElement {
     </section>
     `;
   }
+
   static get properties() {
     return {
       _attrAnimationClasses: { type: Object },
       _noattrAnimationClasses: { type: Object },
     };
   }
+
+  static get styles() {
+    return [
+      FadeIn,
+      FadeOut,
+      RotateCarouselLeftIn,
+      RotateCarouselRightIn,
+      RotateCarouselLeftOut,
+      RotateCarouselRightOut,
+      RotateCubeLeftIn,
+      RotateCubeRightIn,
+      RotateCubeLeftOut,
+      RotateCubeRightOut,
+      css`
+        :host {
+          background: lightyellow;
+        }
+        section.container {
+          width: 50vw;
+          height: 20vh;
+          position: relative;
+        }
+        div:nth-of-type(odd) {
+          background-color: black;
+          color: white;
+        }
+        div:nth-of-type(even) {
+          background-color: brown;
+          color: white;
+        }
+      `,
+    ];
+  }
+
   _selectNoattr(e) {
     const pages = this.shadowRoot.querySelector('#noattr');
     if (e.target.value === 'next') {

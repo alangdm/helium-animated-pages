@@ -1,19 +1,3 @@
-export const jsonSerializer = {
-  fromAttribute(attr) {
-    if (!attr || attr.trim() === '') {
-      return undefined;
-    }
-    try {
-      return JSON.parse(attr);
-    } catch (err) {
-    return undefined;
-    }
-  },
-  toAttribute(value) {
-    JSON.stringify(value);
-  }
-};
-
 export const stringOrIntSerializer = {
   fromAttribute(attr) {
     if (!attr) {

@@ -1,102 +1,85 @@
-import { html } from '@polymer/lit-element';
+import { css } from 'lit-element';
 
 /* In animations */
 
 /* Just move */
-export const MoveFromLeft = html`
-<style>
+export const MoveFromLeft = css`
 .page-moveFromLeft {
 	animation: moveFromLeft .6s ease both;
 }
 @keyframes moveFromLeft {
 	from { transform: translateX(-100%); }
 }
-</style>
 `;
 
-export const MoveFromRight = html`
-<style>
+export const MoveFromRight = css`
 .page-moveFromRight {
 	animation: moveFromRight .6s ease both;
 }
 @keyframes moveFromRight {
 	from { transform: translateX(100%); }
 }
-</style>
 `;
 
-export const MoveFromTop = html`
-<style>
+export const MoveFromTop = css`
 .page-moveFromTop {
 	animation: moveFromTop .6s ease both;
 }
 @keyframes moveFromTop {
 	from { transform: translateY(-100%); }
 }
-</style>
 `;
 
-export const MoveFromBottom = html`
-<style>
+export const MoveFromBottom = css`
 .page-moveFromBottom {
 	animation: moveFromBottom .6s ease both;
 }
 @keyframes moveFromBottom {
   from { transform: translateY(100%); }
 }
-</style>
 `;
 
 /* Move and Fade */
-export const MoveFromLeftFade = html`
-<style>
+export const MoveFromLeftFade = css`
 .page-moveFromLeftFade {
 	animation: moveFromLeftFade .6s ease both;
 }
 @keyframes moveFromLeftFade {
 	from { opacity: 0.3; transform: translateX(-100%); }
 }
-</style>
 `;
 
-export const MoveFromRightFade = html`
-<style>
+export const MoveFromRightFade = css`
 .page-moveFromRightFade {
 	animation: moveFromRightFade .6s ease both;
 }
 @keyframes moveFromRightFade {
 	from { opacity: 0.3; transform: translateX(100%); }
 }
-</style>
 `;
 
-export const MoveFromTopFade = html`
-<style>
+export const MoveFromTopFade = css`
 .page-moveFromTopFade {
 	animation: moveFromTopFade .6s ease both;
 }
 @keyframes moveFromTopFade {
 	from { opacity: 0.3; transform: translateY(-100%); }
 }
-</style>
 `;
 
-export const MoveFromBottomFade = html`
-<style>
+export const MoveFromBottomFade = css`
 .page-moveFromBottomFade {
 	animation: moveFromBottomFade .6s ease both;
 }
 @keyframes moveFromBottomFade {
 	from { opacity: 0.3; transform: translateY(100%); }
 }
-</style>
 `;
 
 /* Out animations */
 
 /* Just move */
-export const MoveToLeft = html`
-<style>
+export const MoveToLeft = css`
 .page-moveToLeft {
   animation: moveToLeft .7s ease both;
 }
@@ -104,11 +87,9 @@ export const MoveToLeft = html`
 	from { }
 	to { transform: translateX(-100%); }
 }
-</style>
 `;
 
-export const MoveToRight = html`
-<style>
+export const MoveToRight = css`
 .page-moveToRight {
 	animation: moveToRight .7s ease both;
 }
@@ -116,11 +97,9 @@ export const MoveToRight = html`
 	from { }
 	to { transform: translateX(100%); }
 }
-</style>
 `;
 
-export const MoveToTop = html`
-<style>
+export const MoveToTop = css`
 .page-moveToTop {
 	animation: moveToTop .6s ease both;
 }
@@ -128,11 +107,9 @@ export const MoveToTop = html`
 	from { }
 	to { transform: translateY(-100%); }
 }
-</style>
 `;
 
-export const MoveToBottom = html`
-<style>
+export const MoveToBottom = css`
 .page-moveToBottom {
 	animation: moveToBottom .6s ease both;
 }
@@ -140,12 +117,10 @@ export const MoveToBottom = html`
 	from { }
 	to { transform: translateY(100%); }
 }
-</style>
 `;
 
 /* Move and fade */
-export const MoveToLeftFade = html`
-<style>
+export const MoveToLeftFade = css`
 .page-moveToLeftFade {
   animation: moveToLeftFade .7s ease both;
 }
@@ -153,11 +128,9 @@ export const MoveToLeftFade = html`
   from { }
   to { opacity: 0.3; transform: translateX(-100%); }
 }
-</style>
 `;
 
-export const MoveToRightFade = html`
-<style>
+export const MoveToRightFade = css`
 .page-moveToRightFade {
 	animation: moveToRightFade .7s ease both;
 }
@@ -165,11 +138,9 @@ export const MoveToRightFade = html`
 	from { }
 	to { opacity: 0.3; transform: translateX(100%); }
 }
-</style>
 `;
 
-export const MoveToTopFade = html`
-<style>
+export const MoveToTopFade = css`
 .page-moveToTopFade {
 	animation: moveToTopFade .6s ease both;
 }
@@ -177,11 +148,9 @@ export const MoveToTopFade = html`
 	from { }
 	to { opacity: 0.3; transform: translateY(-100%); }
 }
-</style>
 `;
 
-export const MoveToBottomFade = html`
-<style>
+export const MoveToBottomFade = css`
 .page-moveToBottomFade {
 	animation: moveToBottomFade .6s ease both;
 }
@@ -189,5 +158,4 @@ export const MoveToBottomFade = html`
 	from { }
 	to { opacity: 0.3; transform: translateY(100%); }
 }
-</style>
 `;
