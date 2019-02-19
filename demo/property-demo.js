@@ -6,22 +6,32 @@ import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 class PropertyDemo extends PageViewElement {
   render() {
     return html`
-    <section>
-      <h3>This demo doesn't use select(next) but updates the selected property to achieve the same effect</h3>
-      <div>Warning: If you decide changing selection like this do not use the select(), selectPrevious() or selectNext() methods to prevent weird state behavior</div>
-      <select @change="${(e) => this._selectPage(e)}">
-        <option value="">Select slide...</option>
-        <option value="0">Slide 1</option>
-        <option value="1">Slide 2</option>
-      </select>
-    </section>
-    <section class="container">
-      <helium-animated-pages id="prop" selected="${this._selected}"
-        .animationClasses="${this._propAnimationClasses}">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-      </helium-animated-pages>
-    </section>
+      <section>
+        <h3>
+          This demo doesn't use select(next) but updates the selected property
+          to achieve the same effect
+        </h3>
+        <div>
+          Warning: If you decide changing selection like this do not use the
+          select(), selectPrevious() or selectNext() methods to prevent weird
+          state behavior
+        </div>
+        <select @change="${e => this._selectPage(e)}">
+          <option value="">Select slide...</option>
+          <option value="0">Slide 1</option>
+          <option value="1">Slide 2</option>
+        </select>
+      </section>
+      <section class="container">
+        <helium-animated-pages
+          id="prop"
+          selected="${this._selected}"
+          .animationClasses="${this._propAnimationClasses}"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+        </helium-animated-pages>
+      </section>
     `;
   }
 
@@ -57,13 +67,13 @@ class PropertyDemo extends PageViewElement {
     ];
   }
 
-  constructor(){
+  constructor() {
     super();
-    this._propAnimationClasses =  {
+    this._propAnimationClasses = {
       default: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
-      }
+        out: 'page-fadeOut',
+      },
     };
   }
 
@@ -74,4 +84,4 @@ class PropertyDemo extends PageViewElement {
   }
 }
 
-window.customElements.define('property-demo', PropertyDemo)
+window.customElements.define('property-demo', PropertyDemo);

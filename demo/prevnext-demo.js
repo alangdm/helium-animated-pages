@@ -2,43 +2,78 @@ import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
 import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
-import { RotateCarouselLeftIn, RotateCarouselRightIn, RotateCarouselLeftOut,
-  RotateCarouselRightOut } from '../sample-animations/carousel-animations.js';
-import { RotateCubeLeftIn, RotateCubeRightIn, RotateCubeLeftOut,
-  RotateCubeRightOut } from '../sample-animations/cube-animations.js';
+import {
+  RotateCarouselLeftIn,
+  RotateCarouselRightIn,
+  RotateCarouselLeftOut,
+  RotateCarouselRightOut,
+} from '../sample-animations/carousel-animations.js';
+import {
+  RotateCubeLeftIn,
+  RotateCubeRightIn,
+  RotateCubeLeftOut,
+  RotateCubeRightOut,
+} from '../sample-animations/cube-animations.js';
 
 class PrevnextDemo extends PageViewElement {
   render() {
     return html`
-    <section>
-      <h3>This page has 2 slideshows which only use selectNext() and selectPrevious() to iterate</h3>
-    </section>
-    <section>
-      <h4>First slideshow, no attrForSelected</h4>
-      <input type="button" value="previous" @click="${(e) => this._selectNoattr(e)}">
-      <input type="button" value="next" @click="${(e) => this._selectNoattr(e)}">
-    </section>
-    <section class="container">
-      <helium-animated-pages id="noattr"
-        .animationClasses="${this._noattrAnimationClasses}">
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-      </helium-animated-pages>
-    </section>
-    <section>
-      <h4>Second slideshow, with attrForSelected (the way of defining the animationClasses changes)</h4>
-      <input type="button" value="previous" @click="${(e) => this._selectAttr(e)}">
-      <input type="button" value="next" @click="${(e) => this._selectAttr(e)}">
-    </section>
-    <section class="container">
-      <helium-animated-pages id="attr" attrForSelected="name"
-        .animationClasses="${this._attrAnimationClasses}">
-        <div name="slide1">Slide 1</div>
-        <div name="slide2">Slide 2</div>
-        <div name="slide3">Slide 3</div>
-      </helium-animated-pages>
-    </section>
+      <section>
+        <h3>
+          This page has 2 slideshows which only use selectNext() and
+          selectPrevious() to iterate
+        </h3>
+      </section>
+      <section>
+        <h4>First slideshow, no attrForSelected</h4>
+        <input
+          type="button"
+          value="previous"
+          @click="${e => this._selectNoattr(e)}"
+        />
+        <input
+          type="button"
+          value="next"
+          @click="${e => this._selectNoattr(e)}"
+        />
+      </section>
+      <section class="container">
+        <helium-animated-pages
+          id="noattr"
+          .animationClasses="${this._noattrAnimationClasses}"
+        >
+          <div>Slide 1</div>
+          <div>Slide 2</div>
+          <div>Slide 3</div>
+        </helium-animated-pages>
+      </section>
+      <section>
+        <h4>
+          Second slideshow, with attrForSelected (the way of defining the
+          animationClasses changes)
+        </h4>
+        <input
+          type="button"
+          value="previous"
+          @click="${e => this._selectAttr(e)}"
+        />
+        <input
+          type="button"
+          value="next"
+          @click="${e => this._selectAttr(e)}"
+        />
+      </section>
+      <section class="container">
+        <helium-animated-pages
+          id="attr"
+          attrForSelected="name"
+          .animationClasses="${this._attrAnimationClasses}"
+        >
+          <div name="slide1">Slide 1</div>
+          <div name="slide2">Slide 2</div>
+          <div name="slide3">Slide 3</div>
+        </helium-animated-pages>
+      </section>
     `;
   }
 
@@ -103,62 +138,62 @@ class PrevnextDemo extends PageViewElement {
     this._noattrAnimationClasses = {
       '0_1': {
         in: 'page-rotateCubeLeftIn',
-        out: 'page-rotateCubeLeftOut'
+        out: 'page-rotateCubeLeftOut',
       },
       '2_1': {
         in: 'page-rotateCubeRightIn',
-        out: 'page-rotateCubeRightOut'
+        out: 'page-rotateCubeRightOut',
       },
       '*_0': {
         in: 'page-rotateCubeRightIn',
-        out: 'page-rotateCubeRightOut'
+        out: 'page-rotateCubeRightOut',
       },
       '*_2': {
         in: 'page-rotateCubeLeftIn',
-        out: 'page-rotateCubeLeftOut'
+        out: 'page-rotateCubeLeftOut',
       },
-      '_0': {
+      _0: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
+        out: 'page-fadeOut',
       },
-      '_2': {
+      _2: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
+        out: 'page-fadeOut',
       },
       default: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
-      }
+        out: 'page-fadeOut',
+      },
     };
     this._attrAnimationClasses = {
-      'slide1_slide2': {
+      slide1_slide2: {
         in: 'page-rotateCarouselLeftIn',
-        out: 'page-rotateCarouselLeftOut'
+        out: 'page-rotateCarouselLeftOut',
       },
-      'slide3_slide2': {
+      slide3_slide2: {
         in: 'page-rotateCarouselRightIn',
-        out: 'page-rotateCarouselRightOut'
+        out: 'page-rotateCarouselRightOut',
       },
       '*_slide1': {
         in: 'page-rotateCarouselRightIn',
-        out: 'page-rotateCarouselRightOut'
+        out: 'page-rotateCarouselRightOut',
       },
       '*_slide3': {
         in: 'page-rotateCarouselLeftIn',
-        out: 'page-rotateCarouselLeftOut'
+        out: 'page-rotateCarouselLeftOut',
       },
-      '_slide1': {
+      _slide1: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
+        out: 'page-fadeOut',
       },
-      '_slide3': {
+      _slide3: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
+        out: 'page-fadeOut',
       },
       default: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
-      }
+        out: 'page-fadeOut',
+      },
     };
   }
 }

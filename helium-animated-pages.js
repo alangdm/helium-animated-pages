@@ -20,7 +20,7 @@ class HeliumAnimatedPages extends LitElement {
       /**
        * This property is required for the animations to run, it maps which
        * animations to run depending on what the transition will be.
-       * 
+       *
        * If it's not set the transitions will run without animations.
        *
        * The properties of this object each represent a different transition
@@ -39,7 +39,7 @@ class HeliumAnimatedPages extends LitElement {
        *   previously selected page matches this rule. For example: `page1_*`
        * - `default`: It defines an animation which will run when none of the
        *   other rules apply.
-       * 
+       *
        * Please bear in mind 'undefined' and 'null' are not valid identifiers.
        *
        * Any transition rule should be an object with this format:
@@ -69,38 +69,38 @@ class HeliumAnimatedPages extends LitElement {
        * also try to use any of the selection methods you might get state
        * inconsistencies.
        */
-      selected: { converter: stringOrIntSerializer },      
+      selected: { converter: stringOrIntSerializer },
       _selected: {
         type: String,
-        attribute: false
+        attribute: false,
       },
       _animationEvent: {
         type: String,
-        attribute: false
+        attribute: false,
       },
       _animating: {
         type: Boolean,
-        attribute: false
+        attribute: false,
       },
       _inAnimationEnded: {
         type: Boolean,
-        attribute: false
+        attribute: false,
       },
       _outAnimationEnded: {
         type: Boolean,
-        attribute: false
+        attribute: false,
       },
       _inPage: {
         type: Object,
-        attribute: false
+        attribute: false,
       },
       _outPage: {
         type: Object,
-        attribute: false
+        attribute: false,
       },
       _currentClasses: {
         type: Object,
-        attribute: false
+        attribute: false,
       },
     };
   }
@@ -139,10 +139,10 @@ class HeliumAnimatedPages extends LitElement {
   constructor() {
     super();
     const animations = {
-      "animation": "animationend",
-      "OAnimation": "oAnimationEnd",
-      "MozAnimation": "animationend",
-      "WebkitAnimation": "webkitAnimationEnd",
+      animation: 'animationend',
+      OAnimation: 'oAnimationEnd',
+      MozAnimation: 'animationend',
+      WebkitAnimation: 'webkitAnimationEnd',
     };
     for (const a in animations) {
       if (this.style[a] !== undefined) {
@@ -175,9 +175,9 @@ class HeliumAnimatedPages extends LitElement {
 
     const stringMode = this._isStringMode(next);
 
-    this._inPage = stringMode ?
-      this.querySelector(`[${this.attrForSelected}="${next}"]`) :
-      this.children[next];
+    this._inPage = stringMode
+      ? this.querySelector(`[${this.attrForSelected}="${next}"]`)
+      : this.children[next];
     this._outPage = this.selectedItem;
 
     // Do nothing if no page was found or the same page is being selected
@@ -194,18 +194,17 @@ class HeliumAnimatedPages extends LitElement {
 
     if (!this.animationClasses) {
       // this is a fallback just in case animationClasses wasn't set
-      this._selected = stringMode ?
-        this._inPage.getAttribute(this.attrForSelected) :
-        next;
+      this._selected = stringMode
+        ? this._inPage.getAttribute(this.attrForSelected)
+        : next;
       this._inPage.setAttribute('active', true);
       if (this._outPage) {
         this._outPage.removeAttribute('active');
       }
-    }
-    else {
-      this._selected = stringMode ?
-        this._inPage.getAttribute(this.attrForSelected) :
-        next;
+    } else {
+      this._selected = stringMode
+        ? this._inPage.getAttribute(this.attrForSelected)
+        : next;
       this._currentClasses = this._animationClasses(next, prev);
       this._beginAnimation();
     }
@@ -217,9 +216,9 @@ class HeliumAnimatedPages extends LitElement {
   get selectedItem() {
     if (this._selected || this._selected === 0) {
       const stringMode = this._isStringMode(this._selected);
-      return stringMode ?
-        this.querySelector(`[${this.attrForSelected}="${this._selected}"]`) :
-        this.children[this._selected];
+      return stringMode
+        ? this.querySelector(`[${this.attrForSelected}="${this._selected}"]`)
+        : this.children[this._selected];
     }
     return null;
   }
@@ -229,11 +228,11 @@ class HeliumAnimatedPages extends LitElement {
    *
    * - If `next` is a string the new page will be searched depending on
    *   `attrForSelected`.
-   * - If next is a number or a string which can be parsed to an integer 
+   * - If next is a number or a string which can be parsed to an integer
    *   the new page will be searched by index.
    *
-   * If no page is found corresponding to the identifier, an animation is 
-   * running, or the new page is the same as the previous page it will do 
+   * If no page is found corresponding to the identifier, an animation is
+   * running, or the new page is the same as the previous page it will do
    * nothing.
    *
    * @param  {string|number} next next page index or attribute value
@@ -245,11 +244,11 @@ class HeliumAnimatedPages extends LitElement {
   /**
    * selectNext - Makes a transition to the page which is the next sibling of
    * the currently selected page.
-   * 
+   *
    * If the current page is undefined or is the last children the first
    * children will be selected.
-   * 
-   * If there are no children, an animation is running, or the new page is the 
+   *
+   * If there are no children, an animation is running, or the new page is the
    * same as the previous page it will do nothing.
    */
   selectNext() {
@@ -269,8 +268,8 @@ class HeliumAnimatedPages extends LitElement {
    *
    * If the current page is undefined or is the first children the last
    * children will be selected.
-   * 
-   * If there are no children, an animation is running, or the new page is the 
+   *
+   * If there are no children, an animation is running, or the new page is the
    * same as the previous page it will do nothing.
    */
   selectPrevious() {

@@ -6,12 +6,11 @@ import '../helium-animated-pages.js';
 import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
 
 class DemoElement extends LitElement {
-
   render() {
     return html`
       <section>
         <h2>Select a page</h2>
-        <select @change="${(e) => this._selectMainPage(e)}">
+        <select @change="${e => this._selectMainPage(e)}">
           <option value="">Select page...</option>
           <option value="noattr">No attrForSelected Demo</option>
           <option value="prevnext">selectPrevious()/selectNext() Demo</option>
@@ -21,8 +20,11 @@ class DemoElement extends LitElement {
           <option value="page3">Page 3</option>
         </select>
       </section>
-      <helium-animated-pages id="main" attrForSelected="name"
-        .animationClasses="${this._mainAnimationClasses}">
+      <helium-animated-pages
+        id="main"
+        attrForSelected="name"
+        .animationClasses="${this._mainAnimationClasses}"
+      >
         <noattr-demo name="noattr"></noattr-demo>
         <prevnext-demo name="prevnext"></prevnext-demo>
         <property-demo name="property"></property-demo>
@@ -47,13 +49,13 @@ class DemoElement extends LitElement {
         :host {
           font-family: sans-serif;
         }
-        section[name="page1"] {
+        section[name='page1'] {
           background-color: #bbbbbb;
         }
-        section[name="page2"] {
+        section[name='page2'] {
           background-color: lightblue;
         }
-        section[name="page3"] {
+        section[name='page3'] {
           background-color: lightgreen;
         }
       `,
@@ -65,8 +67,8 @@ class DemoElement extends LitElement {
     this._mainAnimationClasses = {
       default: {
         in: 'page-fadeIn',
-        out: 'page-fadeOut'
-      }
+        out: 'page-fadeOut',
+      },
     };
   }
 
@@ -75,6 +77,5 @@ class DemoElement extends LitElement {
       this.shadowRoot.querySelector('#main').select(e.target.value);
     }
   }
-
 }
 window.customElements.define('demo-element', DemoElement);
