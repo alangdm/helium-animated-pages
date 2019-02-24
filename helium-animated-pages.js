@@ -15,6 +15,37 @@ class HeliumAnimatedPages extends LitElement {
     `;
   }
 
+  static get styles() {
+    return [
+      css`
+        :host {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          perspective: var(--helium-animation-perspective, 1200px);
+          transform-style: preserve-3d;
+        }
+        ::slotted(*) {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          visibility: var(--helium-children-visible, visible);
+          will-change: visibility;
+          overflow: hidden;
+          backface-visibility: hidden;
+          transform: translate3d(0, 0, 0);
+        }
+        ::slotted(:not([active])) {
+          visibility: hidden;
+          --helium-children-visible: hidden;
+          z-index: -1;
+        }
+      `,
+    ];
+  }
+
   static get properties() {
     return {
       /**
@@ -70,70 +101,7 @@ class HeliumAnimatedPages extends LitElement {
        * inconsistencies.
        */
       selected: { converter: stringOrIntSerializer },
-      _selected: {
-        type: String,
-        attribute: false,
-      },
-      _animationEvent: {
-        type: String,
-        attribute: false,
-      },
-      _animating: {
-        type: Boolean,
-        attribute: false,
-      },
-      _inAnimationEnded: {
-        type: Boolean,
-        attribute: false,
-      },
-      _outAnimationEnded: {
-        type: Boolean,
-        attribute: false,
-      },
-      _inPage: {
-        type: Object,
-        attribute: false,
-      },
-      _outPage: {
-        type: Object,
-        attribute: false,
-      },
-      _currentClasses: {
-        type: Object,
-        attribute: false,
-      },
     };
-  }
-
-  static get styles() {
-    return [
-      css`
-        :host {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          perspective: var(--helium-animation-perspective, 1200px);
-          transform-style: preserve-3d;
-        }
-        ::slotted(*) {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          visibility: var(--helium-children-visible, visible);
-          will-change: visibility;
-          overflow: hidden;
-          backface-visibility: hidden;
-          transform: translate3d(0, 0, 0);
-        }
-        ::slotted(:not([active])) {
-          visibility: hidden;
-          --helium-children-visible: hidden;
-          z-index: -1;
-        }
-      `,
-    ];
   }
 
   constructor() {
@@ -183,6 +151,7 @@ class HeliumAnimatedPages extends LitElement {
     // Do nothing if no page was found or the same page is being selected
     if (!this._inPage || this._inPage === this._outPage) return;
 
+    const oldValue = this._selected;
     let prev = '';
     if (this._outPage) {
       if (stringMode) {
@@ -192,22 +161,11 @@ class HeliumAnimatedPages extends LitElement {
       }
     }
 
-    if (!this.animationClasses) {
-      // this is a fallback just in case animationClasses wasn't set
-      this._selected = stringMode
-        ? this._inPage.getAttribute(this.attrForSelected)
-        : next;
-      this._inPage.setAttribute('active', true);
-      if (this._outPage) {
-        this._outPage.removeAttribute('active');
-      }
-    } else {
-      this._selected = stringMode
-        ? this._inPage.getAttribute(this.attrForSelected)
-        : next;
-      this._currentClasses = this._animationClasses(next, prev);
-      this._beginAnimation();
-    }
+    this._selected = stringMode
+      ? this._inPage.getAttribute(this.attrForSelected)
+      : next;
+    this._changeActive(next, prev);
+    this.requestUpdate('selected', oldValue);
   }
   /**
    * The currently selected item's DOM node.
@@ -281,6 +239,19 @@ class HeliumAnimatedPages extends LitElement {
     let prevIndex = children.indexOf(selectedItem);
     let nextIndex = prevIndex - 1 < 0 ? children.length - 1 : prevIndex - 1;
     this.selected = nextIndex;
+  }
+
+  _changeActive(next, prev) {
+    if (!this.animationClasses) {
+      // this is a fallback just in case animationClasses wasn't set
+      this._inPage.setAttribute('active', true);
+      if (this._outPage) {
+        this._outPage.removeAttribute('active');
+      }
+    } else {
+      this._currentClasses = this._animationClasses(next, prev);
+      this._beginAnimation();
+    }
   }
 
   _beginAnimation() {
