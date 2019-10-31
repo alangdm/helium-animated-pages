@@ -1,25 +1,43 @@
 {
   "name": "helium-animated-pages",
   "version": "1.0.1",
-  "flat": true,
   "description": "A light spiritual succesor to neon-animated-pages using only css animations",
   "main": "helium-animated-pages.js",
+  "module": "helium-animated-pages.js",
   "repository": "https://github.com/alangdm/helium-animated-pages",
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit-element": "^2.0.1"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.7",
-    "eslint": "^5.13.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "polyserve": "^0.27.15",
-    "prettier": "^1.16.4"
+    "@webcomponents/webcomponentsjs": "^2.3.0",
+    "es-dev-server": "^1.20.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-wc": "^1.2.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "web-component-analyzer": "^0.1.18"
   },
   "scripts": {
-    "start": "polyserve --npm"
+    "start": "es-dev-server --node-resolve"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "keywords": [
     "web components",
