@@ -113,7 +113,7 @@ class HeliumAnimatedPages extends LitElement {
       WebkitAnimation: 'webkitAnimationEnd',
     };
     for (const a in animations) {
-      if (this.style[a] !== undefined) {
+      if (document.style[a] !== undefined) {
         this._animationEvent = animations[a];
         break;
       }
