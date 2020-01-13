@@ -106,18 +106,6 @@ class HeliumAnimatedPages extends LitElement {
 
   constructor() {
     super();
-    const animations = {
-      animation: 'animationend',
-      OAnimation: 'oAnimationEnd',
-      MozAnimation: 'animationend',
-      WebkitAnimation: 'webkitAnimationEnd',
-    };
-    for (const a in animations) {
-      if (document.style[a] !== undefined) {
-        this._animationEvent = animations[a];
-        break;
-      }
-    }
     this._inAnimation = this._inAnimation.bind(this);
     this._outAnimation = this._outAnimation.bind(this);
     this.attrForSelected = 'name';
@@ -256,9 +244,13 @@ class HeliumAnimatedPages extends LitElement {
 
   _beginAnimation() {
     this._animating = true;
-    this._inPage.addEventListener(this._animationEvent, this._inAnimation);
+    this._inPage.addEventListener('animationend', this._inAnimation, {
+      once: true,
+    });
     if (this._outPage) {
-      this._outPage.addEventListener(this._animationEvent, this._outAnimation);
+      this._outPage.addEventListener('animationend', this._outAnimation, {
+        once: true,
+      });
       this._outPage.classList.add(this._currentClasses.out);
     } else {
       this._outAnimationEnded = true;
@@ -283,13 +275,11 @@ class HeliumAnimatedPages extends LitElement {
   }
 
   _inAnimation() {
-    this._inPage.removeEventListener(this._animationEvent, this._inAnimation);
     this._inAnimationEnded = true;
     this._onAnimationEnd();
   }
 
   _outAnimation() {
-    this._outPage.removeEventListener(this._animationEvent, this._outAnimation);
     this._outAnimationEnded = true;
     this._onAnimationEnd();
   }
