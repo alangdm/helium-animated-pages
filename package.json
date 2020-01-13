@@ -2,6 +2,7 @@
   "name": "helium-animated-pages",
   "version": "1.0.1",
   "description": "A light spiritual succesor to neon-animated-pages using only css animations",
+  "type": "module",
   "main": "helium-animated-pages.js",
   "module": "helium-animated-pages.js",
   "repository": "https://github.com/alangdm/helium-animated-pages",
@@ -26,7 +27,8 @@
     "web-component-analyzer": "^1.0.1"
   },
   "scripts": {
-    "start": "es-dev-server --node-resolve"
+    "start": "npm run analyze && es-dev-server --node-resolve",
+    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./custom-elements.json"
   },
   "husky": {
     "hooks": {
