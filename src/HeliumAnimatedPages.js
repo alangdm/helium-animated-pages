@@ -186,11 +186,6 @@ export default class HeliumAnimatedPages extends LitElement {
     return null;
   }
 
-  // ! this setter was only added as a quickfix to prevent errors when using api-viewer
-  set selectedItem(value) {
-    return;
-  }
-
   /**
    * select - Makes a transition into the page identified with next.
    *
