@@ -12,19 +12,19 @@
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.1",
-    "api-viewer-element": "^0.3.7",
-    "es-dev-server": "^1.36.1",
+    "@webcomponents/webcomponentsjs": "^2.4.2",
+    "api-viewer-element": "^0.3.13",
+    "es-dev-server": "^1.40.1",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-lit": "^1.2.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-wc": "^1.2.0",
-    "husky": "^4.0.7",
-    "lint-staged": "^9.5.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "web-component-analyzer": "^1.0.1"
+    "web-component-analyzer": "^1.0.3"
   },
   "scripts": {
     "start": "npm run analyze && es-dev-server --node-resolve",
@@ -38,8 +38,7 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "keywords": [

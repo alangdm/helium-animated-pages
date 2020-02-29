@@ -3,6 +3,7 @@
   "tags": [
     {
       "name": "helium-animated-pages",
+      "path": "./src\\HeliumAnimatedPages.js",
       "description": "A light spiritual succesor to neon-animated-pages using only css animations",
       "attributes": [
         {
