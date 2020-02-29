@@ -48,7 +48,7 @@ class PropertyDemo extends PageViewElement {
       </section>
       <section>
         Code for the previous example:
-        <code><pre>${this._indexDemoCode}</pre></code>
+        <pre><code>${this._indexDemoCode}</code></pre>
       </section>
       <section>
         <h3>Using attrForSelected</h3>
@@ -86,7 +86,7 @@ class PropertyDemo extends PageViewElement {
       </section>
       <section>
         Code for the previous example:
-        <code><pre>${this._nameDemoCode}</pre></code>
+        <pre><code>${this._nameDemoCode}</code></pre>
       </section>
       <section>
         <h3>animationClasses</h3>
@@ -95,7 +95,7 @@ class PropertyDemo extends PageViewElement {
           the very simples version of just setting the default animation for
           every single transition.
         </p>
-        <code><pre>${this._animationCode}</pre></code>
+        <pre><code>${this._animationCode}</code></pre>
       </section>
     `;
   }
