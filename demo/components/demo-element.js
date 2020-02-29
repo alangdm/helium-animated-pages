@@ -14,12 +14,12 @@ class DemoElement extends LitElement {
         <a href="./index.html">Docs</a>
       </header>
       <section class="sub-header">
-        <label for="page-select">Select a page</label>
+        <label for="page-select">Select a Demo</label>
         <select id="page-select" @change="${this._selectMainPage}">
-          <option value="">Select page...</option>
+          <option value="">Select Demo...</option>
+          <option value="property">Using the 'selected' property</option>
           <option value="noattr">No attrForSelected Demo</option>
           <option value="prevnext">selectPrevious()/selectNext() Demo</option>
-          <option value="property">Using the 'selected' property</option>
         </select>
       </section>
       <helium-animated-pages
@@ -55,6 +55,8 @@ class DemoElement extends LitElement {
           --monospace-font: Menlo, 'DejaVu Sans Mono', 'Liberation Mono',
             Consolas, 'Courier New', monospace;
           --border-radius: 4px;
+          --code-background: #1e1e1e;
+          --code-color: #dcdcaa;
         }
         /* Header */
         header {
@@ -82,14 +84,11 @@ class DemoElement extends LitElement {
         .sub-header {
           padding: 1rem;
         }
-        section[name='page1'] {
-          background-color: #bbbbbb;
+        helium-animated-pages {
+          height: calc(100% - 8rem);
         }
-        section[name='page2'] {
-          background-color: lightblue;
-        }
-        section[name='page3'] {
-          background-color: lightgreen;
+        helium-animated-pages > * {
+          overflow-y: scroll;
         }
       `,
     ];
