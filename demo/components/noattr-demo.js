@@ -1,12 +1,12 @@
 import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
-import '../helium-animated-pages.js';
+import '../../helium-animated-pages.js';
 import {
   RotatePullLeft,
   RotatePullRight,
   RotatePushLeft,
   RotatePushRight,
-} from '../sample-animations/push-pull-animations.js';
+} from '../../sample-animations/push-pull-animations.js';
 
 class NoattrDemo extends PageViewElement {
   render() {

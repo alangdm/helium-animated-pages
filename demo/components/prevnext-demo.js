@@ -1,19 +1,19 @@
 import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
-import '../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
+import '../../helium-animated-pages.js';
+import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
 import {
   RotateCarouselLeftIn,
   RotateCarouselRightIn,
   RotateCarouselLeftOut,
   RotateCarouselRightOut,
-} from '../sample-animations/carousel-animations.js';
+} from '../../sample-animations/carousel-animations.js';
 import {
   RotateCubeLeftIn,
   RotateCubeRightIn,
   RotateCubeLeftOut,
   RotateCubeRightOut,
-} from '../sample-animations/cube-animations.js';
+} from '../../sample-animations/cube-animations.js';
 
 class PrevnextDemo extends PageViewElement {
   render() {

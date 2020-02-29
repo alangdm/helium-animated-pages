@@ -1,7 +1,7 @@
 import { html, css } from 'lit-element';
 import { PageViewElement } from './page-view-element.js';
-import '../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../sample-animations/fade-animations.js';
+import '../../helium-animated-pages.js';
+import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
 
 class PropertyDemo extends PageViewElement {
   render() {
