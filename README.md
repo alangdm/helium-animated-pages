@@ -2,7 +2,7 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 
-###### [API](https://github.com/alangdm/helium-animated-pages/wiki/API) | [Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
+###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
 
@@ -23,9 +23,7 @@ To begin using it just follow this simple steps:
   In html:
 
   ```html
-  <!-- Don't forget to include webcomponents loader -->
-  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <!-- type="moodule" is essential -->
+  <!-- type="module" is essential -->
   <script
     type="module"
     src="node_modules/helium-animated-pages/helium-animated-pages.js"
