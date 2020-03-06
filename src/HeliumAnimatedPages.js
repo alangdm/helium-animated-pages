@@ -7,7 +7,7 @@ const _isStringMode = next => {
 };
 
 /**
- * A light spiritual succesor to neon-animated-pages using only css animations
+ * A light spiritual successor to neon-animated-pages using only css animations
  *
  * @element helium-animated-pages
  *
@@ -65,7 +65,7 @@ export default class HeliumAnimatedPages extends LitElement {
        *
        * The properties of this object each represent a different transition
        * rule, the transition rules can be of one of the following types (in
-       * order of priority, all the examples asume you have at least two pages
+       * order of priority, all the examples assume you have at least two pages
        * which identify respectively as `page1` and `page2`):
        * - `from_to`: The most specific kind of transition.
        *   It defines an animation which will run when both the newly selected
