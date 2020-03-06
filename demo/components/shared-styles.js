@@ -20,7 +20,8 @@ export const sharedStyles = css`
     font-family: inherit;
   }
 
-  select:focus {
+  select:focus,
+  input:focus {
     outline: none;
     box-shadow: 1px 1px 1px 1px var(--primary-color);
   }
