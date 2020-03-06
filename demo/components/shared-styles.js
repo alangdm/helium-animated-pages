@@ -23,7 +23,7 @@ export const sharedStyles = css`
   select:focus,
   input:focus {
     outline: none;
-    box-shadow: 1px 1px 1px 1px var(--primary-color);
+    box-shadow: 0px 1px 1px 1px var(--primary-color);
   }
 
   label {

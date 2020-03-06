@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import './noattr-demo.js';
-import './prevnext-demo.js';
+import './settings-demo.js';
 import './property-demo.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';
@@ -18,8 +17,7 @@ class DemoElement extends LitElement {
         <select id="page-select" @change="${this._selectMainPage}">
           <option value="">Select Demo...</option>
           <option value="property">Using the 'selected' property</option>
-          <option value="noattr">No attrForSelected Demo</option>
-          <option value="prevnext">selectPrevious()/selectNext() Demo</option>
+          <option value="settings">Customizing the animations</option>
         </select>
       </section>
       <helium-animated-pages
@@ -27,8 +25,7 @@ class DemoElement extends LitElement {
         attrForSelected="name"
         .animationClasses="${this._mainAnimationClasses}"
       >
-        <noattr-demo name="noattr"></noattr-demo>
-        <prevnext-demo name="prevnext"></prevnext-demo>
+        <settings-demo name="settings"></settings-demo>
         <property-demo name="property"></property-demo>
       </helium-animated-pages>
     `;

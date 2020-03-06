@@ -95,7 +95,27 @@ class PropertyDemo extends PageViewElement {
           the very simples version of just setting the default animation for
           every single transition.
         </p>
-        <pre><code>${this._animationCode}</code></pre>
+        <pre><code>${JSON.stringify(
+          this._propAnimationClasses,
+          null,
+          2
+        )}</code></pre>
+      </section>
+      <section>
+        <h3>Changing slides with methods</h3>
+        <p>
+          This component exposes 3 methods for selecting slides other than using
+          the <code>selected</code> property.
+        </p>
+        <p>
+          They are <code>select(next)</code>, <code>selectPrevious()</code>, and
+          <code>selectNext()</code>.
+        </p>
+        <p>
+          However, using these methods is not really recommended as they can
+          cause problems if you're also modifying the
+          <code>selected</code> property too.
+        </p>
       </section>
     `;
   }
@@ -136,7 +156,6 @@ class PropertyDemo extends PageViewElement {
     };
     this._indexDemoCode = `
 <helium-animated-pages
-  class="sample-pages"
   selected="\${this._selectedIndex}"
   .animationClasses="\${this._propAnimationClasses}"
 >
@@ -146,7 +165,6 @@ class PropertyDemo extends PageViewElement {
 </helium-animated-pages>`.trim();
     this._nameDemoCode = `
 <helium-animated-pages
-  class="sample-pages"
   attrForSelected="name"
   selected="\${this._selectedName}"
   .animationClasses="\${this._propAnimationClasses}"
@@ -155,13 +173,6 @@ class PropertyDemo extends PageViewElement {
   <div name="second">Second Slide</div>
   <div name="third">Third Slide</div>
 </helium-animated-pages>`.trim();
-    this._animationCode = `
-{
-  default: {
-    in: 'page-fadeIn',
-    out: 'page-fadeOut',
-  },
-}`.trim();
   }
 
   _indexChanged(e) {
