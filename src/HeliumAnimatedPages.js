@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { stringOrIntSerializer } from './serializers.js';
 
-const _isStringMode = next => {
+const _isString = next => {
   const index = parseInt(next);
   return isNaN(index);
 };
@@ -102,7 +102,6 @@ export default class HeliumAnimatedPages extends LitElement {
        * the same value for the attribute only the first one will be selectable.
        * @type {string}
        * @attr
-       * @default name
        */
       attrForSelected: { type: String },
 
@@ -125,7 +124,7 @@ export default class HeliumAnimatedPages extends LitElement {
     super();
     this._inAnimation = this._inAnimation.bind(this);
     this._outAnimation = this._outAnimation.bind(this);
-    this.attrForSelected = 'name';
+    this.attrForSelected = '';
   }
 
   get isAnimating() {
@@ -141,9 +140,7 @@ export default class HeliumAnimatedPages extends LitElement {
       return;
     }
 
-    const stringMode = _isStringMode(next);
-
-    this._inPage = stringMode
+    this._inPage = _isString(next)
       ? this.querySelector(`[${this.attrForSelected}="${next}"]`)
       : this.children[next];
     this._outPage = this.selectedItem;
@@ -154,17 +151,17 @@ export default class HeliumAnimatedPages extends LitElement {
     const oldValue = this._selected;
     let prev = '';
     if (this._outPage) {
-      if (stringMode) {
+      if (this.attrForSelected) {
         prev = this._outPage.getAttribute(this.attrForSelected);
       } else {
         prev = Array.from(this.children).indexOf(this._outPage);
       }
     }
 
-    this._selected = stringMode
+    this._selected = this.attrForSelected
       ? this._inPage.getAttribute(this.attrForSelected)
       : next;
-    this._changeActive(next, prev);
+    this._changeActive(this._selected, prev);
     this.requestUpdate('selected', oldValue);
   }
 
@@ -175,7 +172,7 @@ export default class HeliumAnimatedPages extends LitElement {
    */
   get selectedItem() {
     if (this._selected || this._selected === 0) {
-      const stringMode = _isStringMode(this._selected);
+      const stringMode = _isString(this._selected);
       if (stringMode) {
         return this.querySelector(
           `[${this.attrForSelected}="${this._selected}"]`
@@ -220,8 +217,8 @@ export default class HeliumAnimatedPages extends LitElement {
       return;
     }
     const selectedItem = this.selectedItem;
-    let prevIndex = children.indexOf(selectedItem);
-    let nextIndex = prevIndex + 1 >= children.length ? 0 : prevIndex + 1;
+    const prevIndex = children.indexOf(selectedItem);
+    const nextIndex = prevIndex + 1 >= children.length ? 0 : prevIndex + 1;
     this.selected = nextIndex;
   }
 
@@ -241,8 +238,8 @@ export default class HeliumAnimatedPages extends LitElement {
       return;
     }
     const selectedItem = this.selectedItem;
-    let prevIndex = children.indexOf(selectedItem);
-    let nextIndex = prevIndex - 1 < 0 ? children.length - 1 : prevIndex - 1;
+    const prevIndex = children.indexOf(selectedItem);
+    const nextIndex = prevIndex - 1 < 0 ? children.length - 1 : prevIndex - 1;
     this.selected = nextIndex;
   }
 

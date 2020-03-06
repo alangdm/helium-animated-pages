@@ -20,7 +20,7 @@
           "name": "attrForSelected",
           "description": "If set, it will be the name of the attribute used to identify\ndifferent pages added inside the instance of `helium-animated-pages`\n(otherwise a the index of the children page will be used). Any page\nwithout this attribute will be ignored and if two pages are found with\nthe same value for the attribute only the first one will be selectable.",
           "type": "string",
-          "default": "\"name\""
+          "default": "\"\""
         }
       ],
       "properties": [
@@ -51,7 +51,7 @@
           "attribute": "attrForSelected",
           "description": "If set, it will be the name of the attribute used to identify\ndifferent pages added inside the instance of `helium-animated-pages`\n(otherwise a the index of the children page will be used). Any page\nwithout this attribute will be ignored and if two pages are found with\nthe same value for the attribute only the first one will be selectable.",
           "type": "string",
-          "default": "\"name\""
+          "default": "\"\""
         }
       ],
       "slots": [
