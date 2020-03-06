@@ -1,0 +1,71 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "helium-animated-pages",
+      "path": "./src/HeliumAnimatedPages.js",
+      "description": "A light spiritual successor to neon-animated-pages using only css animations",
+      "attributes": [
+        {
+          "name": "animationClasses",
+          "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf it's not set the transitions will run without animations.\n\nThe properties of this object each represent a different transition\nrule, the transition rules can be of one of the following types (in\norder of priority, all the examples assume you have at least two pages\nwhich identify respectively as `page1` and `page2`):\n- `from_to`: The most specific kind of transition.\n   It defines an animation which will run when both the newly selected\n   page and the previously selected page match with the rule. For\n   example: `page1_page2`.\n- `_to ` is a special subtype of this rule when there was no\n   previously selected page. For example: `_page1`\n- `*_to`: It defines an animation which will run when only the newly\n   selected page matches this rule. For example: `*_page2`\n- `from_*`: It defines an animation which will run when only the\n   previously selected page matches this rule. For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n   other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAny transition rule should be an object with this format:\n```javascript\n{\n   in: 'inbound_css_animation_class_name',\n   out: 'outbound_css_animation_class_name'\n}\n```",
+          "type": "Object.<string, {in: string, out: string}>"
+        },
+        {
+          "name": "selected",
+          "description": "The index or value of the attribute of the currently\nselected node, it's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nJust be warned, if you use this property with a downwards only binding and\nalso try to use any of the selection methods you might get state\ninconsistencies.",
+          "type": "string|number"
+        },
+        {
+          "name": "attrForSelected",
+          "description": "If set, it will be the name of the attribute used to identify\ndifferent pages added inside the instance of `helium-animated-pages`\n(otherwise a the index of the children page will be used). Any page\nwithout this attribute will be ignored and if two pages are found with\nthe same value for the attribute only the first one will be selectable.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "animationClasses",
+          "attribute": "animationClasses",
+          "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf it's not set the transitions will run without animations.\n\nThe properties of this object each represent a different transition\nrule, the transition rules can be of one of the following types (in\norder of priority, all the examples assume you have at least two pages\nwhich identify respectively as `page1` and `page2`):\n- `from_to`: The most specific kind of transition.\n   It defines an animation which will run when both the newly selected\n   page and the previously selected page match with the rule. For\n   example: `page1_page2`.\n- `_to ` is a special subtype of this rule when there was no\n   previously selected page. For example: `_page1`\n- `*_to`: It defines an animation which will run when only the newly\n   selected page matches this rule. For example: `*_page2`\n- `from_*`: It defines an animation which will run when only the\n   previously selected page matches this rule. For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n   other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAny transition rule should be an object with this format:\n```javascript\n{\n   in: 'inbound_css_animation_class_name',\n   out: 'outbound_css_animation_class_name'\n}\n```",
+          "type": "Object.<string, {in: string, out: string}>"
+        },
+        {
+          "name": "isAnimating",
+          "description": "This property will get the state of the animation, whether it's currently in the middle of an animation or not.",
+          "type": "Boolean"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "The index or value of the attribute of the currently\nselected node, it's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nJust be warned, if you use this property with a downwards only binding and\nalso try to use any of the selection methods you might get state\ninconsistencies.",
+          "type": "string|number"
+        },
+        {
+          "name": "selectedItem",
+          "description": "The currently selected item's DOM node.",
+          "type": "Element"
+        },
+        {
+          "name": "attrForSelected",
+          "attribute": "attrForSelected",
+          "description": "If set, it will be the name of the attribute used to identify\ndifferent pages added inside the instance of `helium-animated-pages`\n(otherwise a the index of the children page will be used). Any page\nwithout this attribute will be ignored and if two pages are found with\nthe same value for the attribute only the first one will be selectable.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "description": "The slot for the pages to animate"
+        }
+      ],
+      "cssProperties": [
+        {
+          "name": "--helium-children-visible",
+          "description": "Whether this component should be visible if it's a children of another `helium-animated-pages`."
+        }
+      ]
+    }
+  ]
+}

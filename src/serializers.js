@@ -9,11 +9,11 @@ export const stringOrIntSerializer = {
     }
     const index = parseInt(trimmed);
     if (isNaN(index)) {
-        return attr;
+      return attr;
     }
     return index;
   },
   toAttribute(value) {
     return typeof value !== 'undefined' ? `${value}` : null;
-  }
+  },
 };
