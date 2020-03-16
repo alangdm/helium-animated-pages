@@ -137,4 +137,4 @@ To begin using it just follow this simple steps:
 ## Credits
 
 - Almost all sample animations and the overall flow of the page selection are based on an article by [Pedro Botelho@Codrops](https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/).
-- The docs are powered by [@web-padawan's](https://github.com/web-padawan) [api-viewer-element](https://www.npmjs.com/package/api-viewer-element)
+- The docs are powered by [@web-padawan's](https://github.com/web-padawan) [api-viewer-element](https://www.npmjs.com/package/api-viewer-element) and [@runem's](https://github.com/runem) [web-component-analyzer]https://www.npmjs.com/package/web-component-analyzer)
