@@ -7,20 +7,13 @@
     <title>&lt;helium-animated-pages&gt; - Docs</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module">
-      import 'api-viewer-element';
+      import 'api-viewer-element/lib/api-docs.js';
     </script>
     <style>
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
           Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
         margin: 0;
-      }
-      api-viewer::part(header) {
-        flex-direction: row;
-      }
-      api-viewer::part(radio-button),
-      api-viewer::part(radio-label) {
-        display: none;
       }
       header {
         position: absolute;
@@ -42,6 +35,6 @@
     <header>
       <a class="demo" href="./demo.html">Demo</a>
     </header>
-    <api-viewer src="../custom-elements.json"></api-viewer>
+    <api-docs src="../custom-elements.json"></api-docs>
   </body>
 </html>
