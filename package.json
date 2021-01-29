@@ -24,7 +24,7 @@
     "husky": "4.2.3",
     "lint-staged": "10.0.8",
     "prettier": "1.19.1",
-    "web-component-analyzer": "1.0.3"
+    "web-component-analyzer": "1.1.6"
   },
   "scripts": {
     "start": "npm run analyze && es-dev-server --node-resolve --preserve-symlinks",
