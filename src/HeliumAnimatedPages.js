@@ -13,6 +13,9 @@ const _isString = (next) => {
  *
  * @slot - The slot for the pages to animate
  *
+ * @fires helium-start - Fires when the page transition starts
+ * @fires helium-end - Fires when the page transition ends
+ *
  * @cssprop --helium-children-visible - Whether this component should be visible if it's a children of another `helium-animated-pages`.
  *
  * @prop {Boolean} isAnimating - This property will get the state of the animation, whether it's currently in the middle of an animation or not.
@@ -242,12 +245,22 @@ export default class HeliumAnimatedPages extends LitElement {
   }
 
   _changeActive(next, prev) {
+    const startEvent = new CustomEvent('helium-start', {
+      composed: true,
+      bubbles: true,
+    });
+    this.dispatchEvent(startEvent);
     if (!this.animationClasses) {
       // this is a fallback just in case animationClasses wasn't set
       this._inPage.setAttribute('active', true);
       if (this._outPage) {
         this._outPage.removeAttribute('active');
       }
+      const endEvent = new CustomEvent('helium-end', {
+        composed: true,
+        bubbles: true,
+      });
+      this.dispatchEvent(endEvent);
     } else {
       this._currentClasses = this._animationClasses(next, prev);
       this._beginAnimation();
@@ -309,6 +322,11 @@ export default class HeliumAnimatedPages extends LitElement {
       this._inPage = null;
       this._outPage = null;
       this._currentClasses = null;
+      const endEvent = new CustomEvent('helium-end', {
+        composed: true,
+        bubbles: true,
+      });
+      this.dispatchEvent(endEvent);
     }
   }
 }

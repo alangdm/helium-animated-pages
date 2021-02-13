@@ -54,6 +54,16 @@
           "default": "\"\""
         }
       ],
+      "events": [
+        {
+          "name": "helium-start",
+          "description": "Fires when the page transition starts"
+        },
+        {
+          "name": "helium-end",
+          "description": "Fires when the page transition ends"
+        }
+      ],
       "slots": [
         {
           "name": "",
