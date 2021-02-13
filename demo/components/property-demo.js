@@ -1,4 +1,4 @@
-import { html, css } from 'lit-element';
+import { html, css } from 'lit';
 import { PageViewElement } from './page-view-element.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';

@@ -2,15 +2,13 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 
-###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
+###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
 
-It works with css animations and only depends on [lit-element](https://github.com/Polymer/lit-element) so you don't have to worry about including any heavy js libraries.
+It works with css animations and only depends on [lit](https://www.npmjs.com/package/lit) so you don't have to worry about including any heavy js libraries.
 
-This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations (or just use the animations included in the `sample-animations` folder if you don't want to bother with those either 😉.)
-
-It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starter-kit/) and [here's how](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit).
+This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations. Alternatively, you can use the animations included in the `sample-animations` folder. 😉
 
 To begin using it just follow this simple steps:
 
@@ -26,14 +24,14 @@ To begin using it just follow this simple steps:
   <!-- type="module" is essential -->
   <script
     type="module"
-    src="node_modules/helium-animated-pages/helium-animated-pages.js"
+    src="node_modules/helium-animated-pages"
   ></script>
   ```
 
   In a js module:
 
   ```javascript
-  import 'helium-animated-pages/helium-animated-pages.js';
+  import 'helium-animated-pages';
   ```
 
 - Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
@@ -82,11 +80,6 @@ To begin using it just follow this simple steps:
     <!-- The pages can be almost anything -->
     <section name="page1">Page 1</section>
     <div name="page2">Page 2</div>
-    <!-- It is recommended that custom elements
-        used as a page all extend an element like pwa-starter-kit's
-        page-view-element
-        https://github.com/Polymer/pwa-starter-kit/blob/master/src/components/page-view-element.js
-      -->
     <custom-element name="page3"></custom-element>
   </helium-animated-pages>
   <script>
@@ -99,8 +92,8 @@ To begin using it just follow this simple steps:
     });
 
     // defining the "rules" for which css classes to apply on
-    // diferent page transitions, for more info go to:
-    // https://github.com/alangdm/helium-animated-pages/wiki/API#attrforselected
+    // different page transitions, for more info go to:
+    // https://helium-animated-pages.glitch.me/demo/
     // I'm using css classes which aren't defined on this context but you
     // must define them when actually using this
     document.querySelector('#pages').animationClasses = {

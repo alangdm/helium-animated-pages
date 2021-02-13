@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from 'lit';
 import { stringOrIntSerializer } from './serializers.js';
 
 const _isString = (next) => {
