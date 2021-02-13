@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { stringOrIntSerializer } from './serializers.js';
 
-const _isString = next => {
+const _isString = (next) => {
   const index = parseInt(next);
   return isNaN(index);
 };
@@ -19,9 +19,7 @@ const _isString = next => {
  */
 export default class HeliumAnimatedPages extends LitElement {
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   static get styles() {

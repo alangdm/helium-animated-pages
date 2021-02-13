@@ -49,9 +49,7 @@ class SettingsDemo extends PageViewElement {
         <button data-action="previous" @click="${this._selectNoAttr}">
           Previous
         </button>
-        <button data-action="next" @click="${this._selectNoAttr}">
-          Next
-        </button>
+        <button data-action="next" @click="${this._selectNoAttr}">Next</button>
       </section>
       <section class="container">
         <helium-animated-pages
@@ -91,9 +89,7 @@ class SettingsDemo extends PageViewElement {
         <button data-action="previous" @click="${this._selectAttr}">
           Previous
         </button>
-        <button data-action="next" @click="${this._selectAttr}">
-          Next
-        </button>
+        <button data-action="next" @click="${this._selectAttr}">Next</button>
       </section>
       <section class="container">
         <helium-animated-pages
