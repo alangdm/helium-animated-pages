@@ -103,7 +103,7 @@ class DemoElement extends LitElement {
 
   _selectMainPage(e) {
     if (e.target.value) {
-      this.shadowRoot.querySelector('#main').select(e.target.value);
+      this.shadowRoot.querySelector('#main').selected = e.target.value;
     }
   }
 }

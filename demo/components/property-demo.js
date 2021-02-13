@@ -10,18 +10,18 @@ class PropertyDemo extends PageViewElement {
       <section>
         <h2>Selected Property Demo</h2>
         <p>
-          This demos use the <code>selected</code> property to change which
+          These demos use the <code>selected</code> property to change which
           slide is shown.
         </p>
         <p>
-          This is the recommended way of using this component, just update
+          This is the recommended way of using this component. Just update
           <code>selected</code> either as an attribute or as a property and
           you're done!
         </p>
         <h3>Without Using attrForSelected</h3>
         <p>
-          If you don't use the <code>attrForSelected</code> property you can
-          just set the numerical index of which element you wish to show.
+          If you don't use the <code>attrForSelected</code> property you can set
+          the numerical index of which element you wish to show.
         </p>
         <p>
           Note that we're using the <code>helium-start</code> and
@@ -62,12 +62,12 @@ class PropertyDemo extends PageViewElement {
         <p>
           If you use <code>attrForSelected</code> you'll be able to set which of
           the animated pages attributes this component should check to identify
-          them.
+          each page.
         </p>
         <p>
-          One of the benefits of doing this is that the value of
-          <code>selected</code> may now be a string and the children whose
-          attribute value corresponds to it will become active.
+          By doing this the value of <code>selected</code> may now be a string.
+          And the children whose attribute value corresponds to the value of
+          <code>selected</code> will become active.
         </p>
         <p>
           <label for="select-name">Select Slide with <code>name</code>:</label>
@@ -99,8 +99,8 @@ class PropertyDemo extends PageViewElement {
         <h3>animationClasses</h3>
         <p>
           The code for the <code>animationClasses</code> in this two demos is
-          the very simples version of just setting the default animation for
-          every single transition.
+          the simplest version. It only sets the default animation for every
+          single transition.
         </p>
         <pre><code>${JSON.stringify(
           this._propAnimationClasses,
@@ -121,7 +121,7 @@ class PropertyDemo extends PageViewElement {
         <p>
           However, using these methods is not really recommended as they can
           cause problems if you're also modifying the
-          <code>selected</code> property too.
+          <code>selected</code> property.
         </p>
       </section>
     `;

@@ -18,7 +18,7 @@ const _isString = (next) => {
  *
  * @cssprop --helium-children-visible - Whether this component should be visible if it's a children of another `helium-animated-pages`.
  *
- * @prop {Boolean} isAnimating - This property will get the state of the animation, whether it's currently in the middle of an animation or not.
+ * @prop {Boolean} isAnimating - This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
  */
 export default class HeliumAnimatedPages extends LitElement {
   render() {
@@ -62,28 +62,30 @@ export default class HeliumAnimatedPages extends LitElement {
        * This property is required for the animations to run, it maps which
        * animations to run depending on what the transition will be.
        *
-       * If it's not set the transitions will run without animations.
+       * If the property isn't set the transitions will run without animations.
        *
-       * The properties of this object each represent a different transition
-       * rule, the transition rules can be of one of the following types (in
-       * order of priority, all the examples assume you have at least two pages
-       * which identify respectively as `page1` and `page2`):
+       * The properties of this object each represent a different transition rule.
+       * The transition rules can be of one of the following types.
+       * The rule types are listed in order of priority.
+       * All the examples assume you have at least two pages identified respectively as `page1` and `page2`.
        * - `from_to`: The most specific kind of transition.
        *   It defines an animation which will run when both the newly selected
        *   page and the previously selected page match with the rule. For
        *   example: `page1_page2`.
-       * - `_to ` is a special subtype of this rule when there was no
+       * - `_to `: This is a special subtype of the previous rule applied when there was no
        *   previously selected page. For example: `_page1`
-       * - `*_to`: It defines an animation which will run when only the newly
-       *   selected page matches this rule. For example: `*_page2`
-       * - `from_*`: It defines an animation which will run when only the
-       *   previously selected page matches this rule. For example: `page1_*`
+       * - `*_to`: It defines an animation that will run whenever the newly selected page
+       *   matches this rule. This rule will ignore the previously selected page.
+       *   For example: `*_page2`
+       * - `from_*`: It defines an animation that will run whenever the previously selected page
+       *   matches this rule. This rule will ignore the newly selected page.
+       *   For example: `page1_*`
        * - `default`: It defines an animation which will run when none of the
        *   other rules apply.
        *
        * Please bear in mind 'undefined' and 'null' are not valid identifiers.
        *
-       * Any transition rule should be an object with this format:
+       * All transition rules must be an object with the following format:
        * ```javascript
        * {
        *   in: 'inbound_css_animation_class_name',
@@ -97,23 +99,22 @@ export default class HeliumAnimatedPages extends LitElement {
 
       /**
        * If set, it will be the name of the attribute used to identify
-       * different pages added inside the instance of `helium-animated-pages`
-       * (otherwise a the index of the children page will be used). Any page
-       * without this attribute will be ignored and if two pages are found with
-       * the same value for the attribute only the first one will be selectable.
+       * the pages added inside the instance of `helium-animated-pages`.
+       * Otherwise, the index of the children page will be used. Any page
+       * without this attribute will be ignored. If two pages with
+       * the same value for the attribute exist, only the first one will be selectable.
        * @type {string}
        * @attr
        */
       attrForSelected: { type: String },
 
       /**
-       * The index or value of the attribute of the currently
-       * selected node, it's only the index if `attrForSelected` isn't defined.
+       * The numerical index or the value of the attribute of the currently
+       * selected node. It's only the index if `attrForSelected` isn't defined.
        * Modifying this property achieves the same results as invoking
        * the `select(next)` method.
-       * Just be warned, if you use this property with a downwards only binding and
-       * also try to use any of the selection methods you might get state
-       * inconsistencies.
+       * Warning: using this property together with any of the selection
+       * methods might cause state inconsistencies.
        * @type {string|number}
        * @attr
        */
@@ -187,14 +188,16 @@ export default class HeliumAnimatedPages extends LitElement {
   /**
    * select - Makes a transition into the page identified with next.
    *
-   * - If `next` is a string the new page will be searched depending on
+   * - If `next` is a string, the new page will be searched depending on
    *   `attrForSelected`.
-   * - If next is a number or a string which can be parsed to an integer
+   * - If next is a number or a string which can be parsed to an integer,
    *   the new page will be searched by index.
    *
-   * If no page is found corresponding to the identifier, an animation is
-   * running, or the new page is the same as the previous page it will do
-   * nothing.
+   * It will do nothing if one of the following conditions applies:
+   *
+   * - No page is found corresponding to the identifier.
+   * - An animation is running.
+   * - The new page is the same as the previous page.
    *
    * @param  {string|number} next next page index or attribute value
    */
@@ -206,11 +209,9 @@ export default class HeliumAnimatedPages extends LitElement {
    * selectNext - Makes a transition to the page which is the next sibling of
    * the currently selected page.
    *
-   * If the current page is undefined or is the last children the first
-   * children will be selected.
+   * The first page will be selected if no page was selected or
+   * the currently selected page is the last page.
    *
-   * If there are no children, an animation is running, or the new page is the
-   * same as the previous page it will do nothing.
    */
   selectNext() {
     const children = Array.from(this.children);
@@ -227,11 +228,9 @@ export default class HeliumAnimatedPages extends LitElement {
    * selectPrevious - Makes a transition to the page which is the previous sibling
    * of the currently selected page.
    *
-   * If the current page is undefined or is the first children the last
-   * children will be selected.
+   * The last page will be selected if no page was selected or
+   * the currently selected page is the first page.
    *
-   * If there are no children, an animation is running, or the new page is the
-   * same as the previous page it will do nothing.
    */
   selectPrevious() {
     const children = Array.from(this.children);
