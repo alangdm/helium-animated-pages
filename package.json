@@ -12,9 +12,9 @@
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
+    "@web/dev-server": "0.1.7",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "api-viewer-element": "0.4.4",
-    "es-dev-server": "2.1.0",
     "eslint": "7.20.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-import": "2.22.1",
@@ -27,7 +27,7 @@
     "web-component-analyzer": "1.1.6"
   },
   "scripts": {
-    "start": "npm run analyze && es-dev-server --node-resolve --preserve-symlinks",
+    "start": "npm run analyze && web-dev-server --node-resolve --open",
     "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./custom-elements.json",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js . --fix --ignore-path .gitignore",
