@@ -71,7 +71,7 @@ class PropertyDemo extends PageViewElement {
         </p>
         <p>
           <label for="select-name">Select Slide with <code>name</code>:</label>
-          <select id="select-name" @change=${this._nameChanged}>
+          <select id="select-name" @blur=${this._nameChanged}>
             <option value="">Select name...</option>
             <option value="first">first</option>
             <option value="second">second</option>
@@ -186,13 +186,15 @@ class PropertyDemo extends PageViewElement {
 
   _indexChanged(e) {
     if (e.target.value) {
-      this._selectedIndex = parseInt(e.target.value);
+      this._selectedIndex = parseInt(e.target.value, 10);
     }
   }
+
   _toggleDisabledIndex() {
     const input = this.shadowRoot.querySelector('#select-index');
     input.disabled = !input.disabled;
   }
+
   _nameChanged(e) {
     if (e.target.value) {
       this._selectedName = e.target.value;

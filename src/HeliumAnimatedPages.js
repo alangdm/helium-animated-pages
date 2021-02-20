@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { stringOrIntSerializer } from './serializers.js';
 
-const _isString = (next) => {
-  const index = parseInt(next);
-  return isNaN(index);
+const _isString = next => {
+  const index = parseInt(next, 10);
+  return Number.isNaN(index);
 };
 
 /**
@@ -218,7 +218,7 @@ export default class HeliumAnimatedPages extends LitElement {
     if (!children || children.length === 0) {
       return;
     }
-    const selectedItem = this.selectedItem;
+    const { selectedItem } = this;
     const prevIndex = children.indexOf(selectedItem);
     const nextIndex = prevIndex + 1 >= children.length ? 0 : prevIndex + 1;
     this.selected = nextIndex;
@@ -237,7 +237,7 @@ export default class HeliumAnimatedPages extends LitElement {
     if (!children || children.length === 0) {
       return;
     }
-    const selectedItem = this.selectedItem;
+    const { selectedItem } = this;
     const prevIndex = children.indexOf(selectedItem);
     const nextIndex = prevIndex - 1 < 0 ? children.length - 1 : prevIndex - 1;
     this.selected = nextIndex;
@@ -289,13 +289,14 @@ export default class HeliumAnimatedPages extends LitElement {
     const fromId = `${prev}_*`;
     if (fullId in this.animationClasses) {
       return this.animationClasses[fullId];
-    } else if (toId in this.animationClasses) {
-      return this.animationClasses[toId];
-    } else if (fromId in this.animationClasses) {
-      return this.animationClasses[fromId];
-    } else {
-      return this.animationClasses.default;
     }
+    if (toId in this.animationClasses) {
+      return this.animationClasses[toId];
+    }
+    if (fromId in this.animationClasses) {
+      return this.animationClasses[fromId];
+    }
+    return this.animationClasses.default;
   }
 
   _inAnimation() {

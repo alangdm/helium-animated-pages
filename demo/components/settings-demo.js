@@ -186,11 +186,13 @@ class SettingsDemo extends PageViewElement {
     const { action } = e.target.dataset;
     this._select(pages, action);
   }
+
   _selectAttr(e) {
     const pages = this.shadowRoot.querySelector('#attr');
     const { action } = e.target.dataset;
     this._select(pages, action);
   }
+
   _select(pages, action) {
     if (action === 'next') {
       pages.selectNext();
@@ -198,6 +200,7 @@ class SettingsDemo extends PageViewElement {
       pages.selectPrevious();
     }
   }
+
   constructor() {
     super();
     this._noAttrAnimationClasses = {
@@ -272,7 +275,7 @@ class SettingsDemo extends PageViewElement {
     this._attrCode = `
 <helium-animated-pages
   attrForSelected="name"
-  .animationClasses="${this._attrAnimationClasses}"
+  .animationClasses="\${this._attrAnimationClasses}"
 >
   <div name="first">First Slide</div>
   <div name="second">Second Slide</div>

@@ -14,7 +14,7 @@ class DemoElement extends LitElement {
       </header>
       <section class="sub-header">
         <label for="page-select">Select a Demo</label>
-        <select id="page-select" @change="${this._selectMainPage}">
+        <select id="page-select" @blur="${this._selectMainPage}">
           <option value="">Select Demo...</option>
           <option value="property">Using the 'selected' property</option>
           <option value="settings">Customizing the animations</option>
