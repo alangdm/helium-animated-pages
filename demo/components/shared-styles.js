@@ -38,7 +38,6 @@ export const sharedStyles = css`
   p,
   pre {
     width: min(100%, 120ch);
-    box-sizing: border-box;
   }
 
   code,
@@ -51,6 +50,12 @@ export const sharedStyles = css`
     background: var(--code-background);
     color: var(--code-color);
     padding: 0.5rem;
+  }
+
+  p a,
+  p a:visited,
+  p a:hover {
+    color: var(--accent-color);
   }
 
   .sample-pages > * {
