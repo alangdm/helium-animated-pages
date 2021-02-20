@@ -35,6 +35,12 @@ export const sharedStyles = css`
     line-height: 1.5;
   }
 
+  p,
+  pre {
+    width: min(100%, 120ch);
+    box-sizing: border-box;
+  }
+
   code,
   pre {
     font-family: var(--monospace-font);
