@@ -3,7 +3,7 @@ import './settings-demo.js';
 import './property-demo.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
+import { FadeIn, FadeOut } from '../../sample-animations/index.js';
 
 class DemoElement extends LitElement {
   render() {

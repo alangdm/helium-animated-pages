@@ -4,7 +4,10 @@
   "description": "A light spiritual successor to neon-animated-pages using only css animations",
   "type": "module",
   "module": "helium-animated-pages.js",
-  "exports": "./helium-animated-pages.js",
+  "exports": {
+    "./": "./helium-animated-pages.js",
+    "./sample-animations": "./sample-animations/index.js"
+  },
   "repository": "https://github.com/alangdm/helium-animated-pages",
   "author": "alangdm",
   "license": "BSD-3-Clause",
