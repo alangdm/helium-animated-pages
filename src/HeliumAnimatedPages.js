@@ -19,6 +19,9 @@ const _isString = next => {
  * @cssprop --helium-children-visible - Whether this component should be visible if it's a children of another `helium-animated-pages`.
  *
  * @prop {Boolean} isAnimating - This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
+ *
+ * @typedef {{in: string, out: string}} AnimationRule - An animation rule with in and out classes to apply
+ * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
  */
 export default class HeliumAnimatedPages extends LitElement {
   render() {
@@ -92,7 +95,7 @@ export default class HeliumAnimatedPages extends LitElement {
        *   out: 'outbound_css_animation_class_name'
        * }
        * ```
-       * @type {Object.<string, {in: string, out: string}>}
+       * @type {AnimationClasses}
        * @attr
        */
       animationClasses: { type: Object },
@@ -127,6 +130,8 @@ export default class HeliumAnimatedPages extends LitElement {
     this._inAnimation = this._inAnimation.bind(this);
     this._outAnimation = this._outAnimation.bind(this);
     this.attrForSelected = '';
+    /** @type {AnimationClasses} */
+    this.animationClasses = {};
   }
 
   get isAnimating() {
@@ -137,7 +142,7 @@ export default class HeliumAnimatedPages extends LitElement {
     return this._selected;
   }
 
-  set selected(next) {
+  set selected(/** @type {string|number} */ next) {
     if (typeof next === 'undefined' || next === null || this._animating) {
       return;
     }
@@ -243,6 +248,11 @@ export default class HeliumAnimatedPages extends LitElement {
     this.selected = nextIndex;
   }
 
+  /**
+   *
+   * @param {string|number} next
+   * @param {string|number} prev
+   */
   _changeActive(next, prev) {
     const startEvent = new CustomEvent('helium-start', {
       composed: true,
@@ -283,6 +293,11 @@ export default class HeliumAnimatedPages extends LitElement {
     this._inPage.setAttribute('active', true);
   }
 
+  /**
+   *
+   * @param {string|number} next
+   * @param {string|number} prev
+   */
   _animationClasses(next, prev) {
     const fullId = `${prev}_${next}`;
     const toId = `*_${next}`;

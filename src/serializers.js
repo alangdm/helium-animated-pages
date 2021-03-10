@@ -1,4 +1,8 @@
 export const stringOrIntSerializer = {
+  /**
+   *
+   * @param {string} attr
+   */
   fromAttribute(attr) {
     if (!attr) {
       return undefined;
@@ -13,6 +17,10 @@ export const stringOrIntSerializer = {
     }
     return index;
   },
+  /**
+   *
+   * @param {string|number} value
+   */
   toAttribute(value) {
     return typeof value !== 'undefined' ? `${value}` : null;
   },

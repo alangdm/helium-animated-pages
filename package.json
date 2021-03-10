@@ -8,6 +8,7 @@
     "./": "./helium-animated-pages.js",
     "./sample-animations": "./sample-animations/index.js"
   },
+  "types": "./types/HeliumAnimatedPages.d.ts",
   "repository": "https://github.com/alangdm/helium-animated-pages",
   "author": "alangdm",
   "license": "BSD-3-Clause",
@@ -23,11 +24,13 @@
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
+    "typescript": "4.2.3",
     "web-component-analyzer": "1.1.6"
   },
   "scripts": {
-    "start": "npm run analyze && web-dev-server --node-resolve --open --watch",
+    "start": "npm run analyze && npm run types && web-dev-server --node-resolve --open --watch",
     "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./custom-elements.json",
+    "types": "tsc",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
