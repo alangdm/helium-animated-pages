@@ -9,7 +9,7 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit-element": "^2.2.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@web/dev-server": "0.1.8",
