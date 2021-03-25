@@ -12,7 +12,10 @@ const baseConfig = createMpaConfig({
 
 const plugins = [
   copy({
-    targets: [{ src: 'custom-elements.json', dest: './dist' }],
+    targets: [
+      { src: 'custom-elements.json', dest: './dist' },
+      { src: 'demo/.nojekyll', dest: './dist' },
+    ],
     flatten: false,
   }),
 ];
