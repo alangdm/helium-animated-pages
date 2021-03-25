@@ -11,6 +11,9 @@ class DemoElement extends LitElement {
       <header>
         <div class="tag-name">&lt;helium-animated-pages&gt;</div>
         <a href="./index.html">Docs</a>
+        <a class="demo" href="https://github.com/alangdm/helium-animated-pages"
+          >Github</a
+        >
       </header>
       <section class="sub-header">
         <label for="page-select">Select a Demo</label>
@@ -57,9 +60,8 @@ class DemoElement extends LitElement {
         }
         /* Header */
         header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr auto auto;
           border-top-left-radius: var(--border-radius);
           border-top-right-radius: var(--border-radius);
           padding: 0.75rem;
