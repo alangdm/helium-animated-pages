@@ -3,23 +3,23 @@
   "tags": [
     {
       "name": "helium-animated-pages",
-      "path": "./src\\HeliumAnimatedPages.js",
+      "path": "./..\\src\\HeliumAnimatedPages.js",
       "description": "A light spiritual successor to neon-animated-pages using only css animations",
       "attributes": [
         {
           "name": "selected",
-          "description": "The numerical index or the value of the attribute of the currently\nselected node. It's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nWarning: using this property together with any of the selection\nmethods might cause state inconsistencies.",
+          "description": "The numerical index or the value of the attribute of the currently\r\nselected node. It's only the index if `attrForSelected` isn't defined.\r\nModifying this property achieves the same results as invoking\r\nthe `select(next)` method.\r\nWarning: using this property together with any of the selection\r\nmethods might cause state inconsistencies.",
           "type": "string|number"
         },
         {
           "name": "attrForSelected",
-          "description": "If set, it will be the name of the attribute used to identify\nthe pages added inside the instance of `helium-animated-pages`.\nOtherwise, the index of the children page will be used. Any page\nwithout this attribute will be ignored. If two pages with\nthe same value for the attribute exist, only the first one will be selectable.",
+          "description": "If set, it will be the name of the attribute used to identify\r\nthe pages added inside the instance of `helium-animated-pages`.\r\nOtherwise, the index of the children page will be used. Any page\r\nwithout this attribute will be ignored. If two pages with\r\nthe same value for the attribute exist, only the first one will be selectable.",
           "type": "string",
           "default": "\"\""
         },
         {
           "name": "animationClasses",
-          "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf the property isn't set the transitions will run without animations.\n\nThe properties of this object each represent a different transition rule.\nThe transition rules can be of one of the following types.\nThe rule types are listed in order of priority.\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\n- `from_to`: The most specific kind of transition.\n   It defines an animation which will run when both the newly selected\n   page and the previously selected page match with the rule. For\n   example: `page1_page2`.\n- `_to `: This is a special subtype of the previous rule applied when there was no\n   previously selected page. For example: `_page1`\n- `*_to`: It defines an animation that will run whenever the newly selected page\n   matches this rule. This rule will ignore the previously selected page.\n   For example: `*_page2`\n- `from_*`: It defines an animation that will run whenever the previously selected page\n   matches this rule. This rule will ignore the newly selected page.\n   For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n   other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAll transition rules must be an object with the following format:\n```javascript\n{\n   in: 'inbound_css_animation_class_name',\n   out: 'outbound_css_animation_class_name'\n}\n```",
+          "description": "This property is required for the animations to run, it maps which\r\nanimations to run depending on what the transition will be.\r\n\r\nIf the property isn't set the transitions will run without animations.\r\n\r\nThe properties of this object each represent a different transition rule.\r\nThe transition rules can be of one of the following types.\r\nThe rule types are listed in order of priority.\r\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\r\n- `from_to`: The most specific kind of transition.\r\n   It defines an animation which will run when both the newly selected\r\n   page and the previously selected page match with the rule. For\r\n   example: `page1_page2`.\r\n- `_to `: This is a special subtype of the previous rule applied when there was no\r\n   previously selected page. For example: `_page1`\r\n- `*_to`: It defines an animation that will run whenever the newly selected page\r\n   matches this rule. This rule will ignore the previously selected page.\r\n   For example: `*_page2`\r\n- `from_*`: It defines an animation that will run whenever the previously selected page\r\n   matches this rule. This rule will ignore the newly selected page.\r\n   For example: `page1_*`\r\n- `default`: It defines an animation which will run when none of the\r\n   other rules apply.\r\n\r\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\r\n\r\nAll transition rules must be an object with the following format:\r\n```javascript\r\n{\r\n   in: 'inbound_css_animation_class_name',\r\n   out: 'outbound_css_animation_class_name'\r\n}\r\n```",
           "type": "AnimationClasses",
           "default": "{}"
         }
@@ -33,7 +33,7 @@
         {
           "name": "selected",
           "attribute": "selected",
-          "description": "The numerical index or the value of the attribute of the currently\nselected node. It's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nWarning: using this property together with any of the selection\nmethods might cause state inconsistencies.",
+          "description": "The numerical index or the value of the attribute of the currently\r\nselected node. It's only the index if `attrForSelected` isn't defined.\r\nModifying this property achieves the same results as invoking\r\nthe `select(next)` method.\r\nWarning: using this property together with any of the selection\r\nmethods might cause state inconsistencies.",
           "type": "string|number"
         },
         {
@@ -44,14 +44,14 @@
         {
           "name": "attrForSelected",
           "attribute": "attrForSelected",
-          "description": "If set, it will be the name of the attribute used to identify\nthe pages added inside the instance of `helium-animated-pages`.\nOtherwise, the index of the children page will be used. Any page\nwithout this attribute will be ignored. If two pages with\nthe same value for the attribute exist, only the first one will be selectable.",
+          "description": "If set, it will be the name of the attribute used to identify\r\nthe pages added inside the instance of `helium-animated-pages`.\r\nOtherwise, the index of the children page will be used. Any page\r\nwithout this attribute will be ignored. If two pages with\r\nthe same value for the attribute exist, only the first one will be selectable.",
           "type": "string",
           "default": "\"\""
         },
         {
           "name": "animationClasses",
           "attribute": "animationClasses",
-          "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf the property isn't set the transitions will run without animations.\n\nThe properties of this object each represent a different transition rule.\nThe transition rules can be of one of the following types.\nThe rule types are listed in order of priority.\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\n- `from_to`: The most specific kind of transition.\n   It defines an animation which will run when both the newly selected\n   page and the previously selected page match with the rule. For\n   example: `page1_page2`.\n- `_to `: This is a special subtype of the previous rule applied when there was no\n   previously selected page. For example: `_page1`\n- `*_to`: It defines an animation that will run whenever the newly selected page\n   matches this rule. This rule will ignore the previously selected page.\n   For example: `*_page2`\n- `from_*`: It defines an animation that will run whenever the previously selected page\n   matches this rule. This rule will ignore the newly selected page.\n   For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n   other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAll transition rules must be an object with the following format:\n```javascript\n{\n   in: 'inbound_css_animation_class_name',\n   out: 'outbound_css_animation_class_name'\n}\n```",
+          "description": "This property is required for the animations to run, it maps which\r\nanimations to run depending on what the transition will be.\r\n\r\nIf the property isn't set the transitions will run without animations.\r\n\r\nThe properties of this object each represent a different transition rule.\r\nThe transition rules can be of one of the following types.\r\nThe rule types are listed in order of priority.\r\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\r\n- `from_to`: The most specific kind of transition.\r\n   It defines an animation which will run when both the newly selected\r\n   page and the previously selected page match with the rule. For\r\n   example: `page1_page2`.\r\n- `_to `: This is a special subtype of the previous rule applied when there was no\r\n   previously selected page. For example: `_page1`\r\n- `*_to`: It defines an animation that will run whenever the newly selected page\r\n   matches this rule. This rule will ignore the previously selected page.\r\n   For example: `*_page2`\r\n- `from_*`: It defines an animation that will run whenever the previously selected page\r\n   matches this rule. This rule will ignore the newly selected page.\r\n   For example: `page1_*`\r\n- `default`: It defines an animation which will run when none of the\r\n   other rules apply.\r\n\r\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\r\n\r\nAll transition rules must be an object with the following format:\r\n```javascript\r\n{\r\n   in: 'inbound_css_animation_class_name',\r\n   out: 'outbound_css_animation_class_name'\r\n}\r\n```",
           "type": "AnimationClasses",
           "default": "{}"
         }
