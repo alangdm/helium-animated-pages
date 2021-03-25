@@ -5,11 +5,22 @@
   "type": "module",
   "module": "helium-animated-pages.js",
   "exports": {
-    "./": "./helium-animated-pages.js",
-    "./sample-animations": "./sample-animations/index.js"
+    ".": {
+      "default": "./helium-animated-pages.js"
+    },
+    "./HeliumAnimatedPages.js": {
+      "default": "./src/HeliumAnimatedPages.js"
+    },
+    "./sample-animations.js": {
+      "default": "./sample-animations/index.js"
+    }
   },
   "types": "./types/HeliumAnimatedPages.d.ts",
-  "repository": "https://github.com/alangdm/helium-animated-pages",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alangdm/helium-animated-pages"
+  },
+  "homepage": "https://helium-animated-pages.glitch.me/demo/",
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
