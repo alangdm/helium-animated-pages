@@ -45,7 +45,7 @@
   "scripts": {
     "start": "npm run analyze && npm run types && web-dev-server --node-resolve --open --watch",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./custom-elements.json",
+    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./demo/custom-elements.json",
     "types": "tsc",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js . --fix --ignore-path .gitignore",
