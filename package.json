@@ -32,7 +32,7 @@
     "@web/dev-server": "0.1.14",
     "api-viewer-element": "0.4.4",
     "deepmerge": "4.2.2",
-    "eslint": "7.24.0",
+    "eslint": "7.25.0",
     "eslint-config-prettier": "8.2.0",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
