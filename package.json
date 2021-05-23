@@ -37,7 +37,7 @@
     "lint-staged": "11.0.0",
     "prettier": "2.3.0",
     "rimraf": "3.0.2",
-    "rollup": "2.47.0",
+    "rollup": "2.49.0",
     "rollup-plugin-copy": "3.4.0",
     "simple-git-hooks": "2.4.1",
     "typescript": "4.2.4",
