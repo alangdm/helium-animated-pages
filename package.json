@@ -40,6 +40,7 @@
     "rollup": "2.50.0",
     "rollup-plugin-copy": "3.4.0",
     "simple-git-hooks": "2.4.1",
+    "standard-version": "9.3.0",
     "typescript": "4.2.4",
     "web-component-analyzer": "1.1.6"
   },
@@ -48,6 +49,7 @@
     "build": "rimraf dist && rollup -c rollup.config.js",
     "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./demo/custom-elements.json",
     "types": "tsc",
+    "release": "standard-version",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
