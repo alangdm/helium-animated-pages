@@ -150,8 +150,8 @@ class SettingsDemo extends PageViewElement {
 
   static get properties() {
     return {
-      _attrAnimationClasses: { type: Object },
-      _noAttrAnimationClasses: { type: Object },
+      _attrAnimationClasses: { state: true },
+      _noAttrAnimationClasses: { state: true },
     };
   }
 

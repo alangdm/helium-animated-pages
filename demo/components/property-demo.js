@@ -129,9 +129,9 @@ class PropertyDemo extends PageViewElement {
 
   static get properties() {
     return {
-      _selectedIndex: { type: Number },
-      _selectedName: { type: String },
-      _propAnimationClasses: { type: Object },
+      _selectedIndex: { state: true },
+      _selectedName: { state: true },
+      _propAnimationClasses: { state: true },
     };
   }
 

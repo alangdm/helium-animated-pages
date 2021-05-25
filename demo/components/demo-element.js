@@ -36,7 +36,7 @@ class DemoElement extends LitElement {
 
   static get properties() {
     return {
-      _mainAnimationClasses: { type: Object },
+      _mainAnimationClasses: { state: true },
     };
   }
 
