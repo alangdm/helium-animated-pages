@@ -1,6 +1,6 @@
 {
   "name": "helium-animated-pages",
-  "version": "2.0.0-4",
+  "version": "2.0.0-5",
   "description": "A light spiritual successor to neon-animated-pages using only css animations",
   "type": "module",
   "module": "helium-animated-pages.js",
