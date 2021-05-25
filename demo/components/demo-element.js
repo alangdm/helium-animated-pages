@@ -47,7 +47,7 @@ class DemoElement extends LitElement {
       FadeOut,
       css`
         :host {
-          --primary-color: #01579b;
+          --primary-color: #138472;
           --primary-contrast-color: #ffffff;
           --accent-color: #d63200;
           --main-text-color: #212121;
