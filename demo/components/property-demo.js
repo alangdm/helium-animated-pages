@@ -8,7 +8,7 @@ class PropertyDemo extends PageViewElement {
   render() {
     return html`
       <section>
-        <h2>Selected Property Demo</h2>
+        <h1>Selected Property Demo</h1>
         <p>
           These demos use the <code>selected</code> property to change which
           slide is shown.
@@ -18,7 +18,7 @@ class PropertyDemo extends PageViewElement {
           <code>selected</code> either as an attribute or as a property and
           you're done!
         </p>
-        <h3>Without Using attrForSelected</h3>
+        <h2>Without Using attrForSelected</h2>
         <p>
           If you don't use the <code>attrForSelected</code> property you can set
           the numerical index of which element you wish to show.
@@ -58,7 +58,7 @@ class PropertyDemo extends PageViewElement {
         <pre><code>${this._indexDemoCode}</code></pre>
       </section>
       <section>
-        <h3>Using attrForSelected</h3>
+        <h2>Using attrForSelected</h2>
         <p>
           If you use <code>attrForSelected</code> you'll be able to set which of
           the animated pages attributes this component should check to identify
@@ -96,7 +96,7 @@ class PropertyDemo extends PageViewElement {
         <pre><code>${this._nameDemoCode}</code></pre>
       </section>
       <section>
-        <h3>animationClasses</h3>
+        <h2>animationClasses</h2>
         <p>
           The code for the <code>animationClasses</code> in this two demos is
           the simplest version. It only sets the default animation for every
@@ -109,7 +109,7 @@ class PropertyDemo extends PageViewElement {
         )}</code></pre>
       </section>
       <section>
-        <h3>Changing slides with methods</h3>
+        <h2>Changing slides with methods</h2>
         <p>
           This component exposes 3 methods for selecting slides other than using
           the <code>selected</code> property.

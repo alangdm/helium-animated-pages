@@ -19,7 +19,7 @@ class SettingsDemo extends PageViewElement {
   render() {
     return html`
       <section>
-        <h2>Animation Settings Demo</h2>
+        <h1>Animation Settings Demo</h1>
         <p>
           One of the most powerful features of this component is the flexibility
           you get when defining how the pages should be animated.
@@ -44,11 +44,15 @@ class SettingsDemo extends PageViewElement {
         </p>
       </section>
       <section>
-        <h3>Without using <code>attrForSelected</code></h3>
-        <button data-action="previous" @click="${this._selectNoAttr}">
-          Previous
-        </button>
-        <button data-action="next" @click="${this._selectNoAttr}">Next</button>
+        <h2>Without using <code>attrForSelected</code></h2>
+        <p>
+          <button data-action="previous" @click="${this._selectNoAttr}">
+            Previous
+          </button>
+          <button data-action="next" @click="${this._selectNoAttr}">
+            Next
+          </button>
+        </p>
       </section>
       <section class="container">
         <helium-animated-pages
@@ -84,11 +88,13 @@ class SettingsDemo extends PageViewElement {
         </p>
       </section>
       <section>
-        <h3>Using <code>attrForSelected</code></h3>
-        <button data-action="previous" @click="${this._selectAttr}">
-          Previous
-        </button>
-        <button data-action="next" @click="${this._selectAttr}">Next</button>
+        <h2>Using <code>attrForSelected</code></h2>
+        <p>
+          <button data-action="previous" @click="${this._selectAttr}">
+            Previous
+          </button>
+          <button data-action="next" @click="${this._selectAttr}">Next</button>
+        </p>
       </section>
       <section class="container">
         <helium-animated-pages
@@ -126,7 +132,7 @@ class SettingsDemo extends PageViewElement {
         </p>
       </section>
       <section>
-        <h3>Where to define the actual classes</h3>
+        <h2>Where to define the actual classes</h2>
         <p>
           This whole component depends on the CSS classes with the animations
           actually existing.

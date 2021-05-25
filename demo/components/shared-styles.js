@@ -8,11 +8,13 @@ export const sharedStyles = css`
   }
 
   select,
-  input {
+  input,
+  button {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     background: #ffffff;
+    height: 40px;
     color: var(--main-text-color);
     border: 1px solid var(--primary-color);
     border-radius: var(--border-radius);
@@ -20,10 +22,27 @@ export const sharedStyles = css`
     font-family: inherit;
   }
 
+  button {
+    color: var(--primary-color);
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+
   select:focus,
-  input:focus {
+  input:focus,
+  button:focus {
     outline: none;
     box-shadow: 0px 1px 1px 1px var(--primary-color);
+  }
+
+  button:hover,
+  button:active {
+    background-color: var(--primary-color);
+    color: var(--primary-contrast-color);
+  }
+
+  button:active {
+    filter: opacity(0.8);
   }
 
   label {
@@ -49,13 +68,17 @@ export const sharedStyles = css`
   pre {
     background: var(--code-background);
     color: var(--code-color);
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   p a,
   p a:visited,
   p a:hover {
     color: var(--accent-color);
+  }
+
+  .container {
+    margin-bottom: 0.5rem;
   }
 
   .sample-pages > * {
