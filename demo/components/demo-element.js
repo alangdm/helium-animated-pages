@@ -1,9 +1,9 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from 'lit';
 import './settings-demo.js';
 import './property-demo.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
+import { FadeIn, FadeOut } from '../../sample-animations/index.js';
 
 class DemoElement extends LitElement {
   render() {
@@ -11,10 +11,13 @@ class DemoElement extends LitElement {
       <header>
         <div class="tag-name">&lt;helium-animated-pages&gt;</div>
         <a href="./index.html">Docs</a>
+        <a class="demo" href="https://github.com/alangdm/helium-animated-pages"
+          >Github</a
+        >
       </header>
       <section class="sub-header">
         <label for="page-select">Select a Demo</label>
-        <select id="page-select" @change="${this._selectMainPage}">
+        <select id="page-select" @blur="${this._selectMainPage}">
           <option value="">Select Demo...</option>
           <option value="property">Using the 'selected' property</option>
           <option value="settings">Customizing the animations</option>
@@ -33,7 +36,7 @@ class DemoElement extends LitElement {
 
   static get properties() {
     return {
-      _mainAnimationClasses: { type: Object },
+      _mainAnimationClasses: { state: true },
     };
   }
 
@@ -44,7 +47,7 @@ class DemoElement extends LitElement {
       FadeOut,
       css`
         :host {
-          --primary-color: #01579b;
+          --primary-color: #138472;
           --primary-contrast-color: #ffffff;
           --accent-color: #d63200;
           --main-text-color: #212121;
@@ -57,9 +60,8 @@ class DemoElement extends LitElement {
         }
         /* Header */
         header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr auto auto;
           border-top-left-radius: var(--border-radius);
           border-top-right-radius: var(--border-radius);
           padding: 0.75rem;
@@ -103,7 +105,7 @@ class DemoElement extends LitElement {
 
   _selectMainPage(e) {
     if (e.target.value) {
-      this.shadowRoot.querySelector('#main').select(e.target.value);
+      this.shadowRoot.querySelector('#main').selected = e.target.value;
     }
   }
 }

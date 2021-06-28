@@ -1,43 +1,42 @@
-import { html, css } from 'lit-element';
+import { html, css } from 'lit';
 import { PageViewElement } from './page-view-element.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
 import {
+  FadeIn,
+  FadeOut,
   RotateCarouselLeftIn,
   RotateCarouselRightIn,
   RotateCarouselLeftOut,
   RotateCarouselRightOut,
-} from '../../sample-animations/carousel-animations.js';
-import {
   RotateCubeLeftIn,
   RotateCubeRightIn,
   RotateCubeLeftOut,
   RotateCubeRightOut,
-} from '../../sample-animations/cube-animations.js';
+} from '../../sample-animations/index.js';
 
 class SettingsDemo extends PageViewElement {
   render() {
     return html`
       <section>
-        <h2>Animation Settings Demo</h2>
+        <h1>Animation Settings Demo</h1>
         <p>
           One of the most powerful features of this component is the flexibility
           you get when defining how the pages should be animated.
         </p>
         <p>
-          This is all achieved using the <code>animationClasses</code> property,
-          which is an object in which the keys represent a transition between
-          pages.
+          This is all achieved using the <code>animationClasses</code> property.
+          This property is an object in which the keys represent a transition
+          between pages.
         </p>
         <p>
-          For a detailed explanation on the structure of the
-          <code>animationClasses</code> object, check the
-          <a href="./index.html">Docs</a>.
+          Check the <a href="./index.html">Docs</a> for a more detailed
+          explanation about the structure of the
+          <code>animationClasses</code> object.
         </p>
         <p>
-          Now, you might feel that the structure is complicated, but by doing it
-          this way you have full control on how page transitions animate.
+          Now, you might feel that the structure is complicated. But it gives
+          you full control on how page transitions animate.
         </p>
         <p>
           Here are a couple of examples that should help show how to take
@@ -45,11 +44,15 @@ class SettingsDemo extends PageViewElement {
         </p>
       </section>
       <section>
-        <h3>Without using <code>attrForSelected</code></h3>
-        <button data-action="previous" @click="${this._selectNoAttr}">
-          Previous
-        </button>
-        <button data-action="next" @click="${this._selectNoAttr}">Next</button>
+        <h2>Without using <code>attrForSelected</code></h2>
+        <p>
+          <button data-action="previous" @click="${this._selectNoAttr}">
+            Previous
+          </button>
+          <button data-action="next" @click="${this._selectNoAttr}">
+            Next
+          </button>
+        </p>
       </section>
       <section class="container">
         <helium-animated-pages
@@ -76,20 +79,22 @@ class SettingsDemo extends PageViewElement {
         <p>
           As you can see, when you don't define an
           <code>attrForSelected</code> the identifiers for each slide become
-          their indexes, so you have to be mindful of the order in this case.
+          their indexes. So, you have to be mindful of the order in this case.
         </p>
         <p>
-          But as you can see, through this configuration we can create the
-          illusion of the children being part of a cube that rotates depending
-          on which transition is being done.
+          But through this configuration we can create the illusion of the
+          children being part of a cube that rotates depending on which
+          transition is being done.
         </p>
       </section>
       <section>
-        <h3>Using <code>attrForSelected</code></h3>
-        <button data-action="previous" @click="${this._selectAttr}">
-          Previous
-        </button>
-        <button data-action="next" @click="${this._selectAttr}">Next</button>
+        <h2>Using <code>attrForSelected</code></h2>
+        <p>
+          <button data-action="previous" @click="${this._selectAttr}">
+            Previous
+          </button>
+          <button data-action="next" @click="${this._selectAttr}">Next</button>
+        </p>
       </section>
       <section class="container">
         <helium-animated-pages
@@ -117,33 +122,33 @@ class SettingsDemo extends PageViewElement {
         <p>
           As you can see, when you define
           <code>attrForSelected</code> the identifiers for each slide become the
-          value of the attribute, so the order is not that important in this
+          value of the attribute. So, the order is not that important in this
           case.
         </p>
         <p>
-          It's just as powerful as the index version in terms of customization,
-          the <code>animationClasses</code> achieve the same effect as the first
-          ones just with different animations.
+          It's just as powerful as the index version in terms of customization.
+          The <code>animationClasses</code> achieve the same effect as the
+          previous ones just with different animations.
         </p>
       </section>
       <section>
-        <h3>Where to define the actual classes</h3>
+        <h2>Where to define the actual classes</h2>
         <p>
-          This whole component depends a lot on the CSS classes with the
-          animations actually existing.
+          This whole component depends on the CSS classes with the animations
+          actually existing.
         </p>
         <p>
-          So in case you are wondering where they should be defined, the answer
-          is easy, define them on the context that has
+          In case you were wondering where the classes should be defined, the
+          answer is easy: define them in the context that has
           <code>&lt;helium-animated-pages&gt;</code> as its child.
         </p>
         <p>
-          So, for example, if your pages are on the html document directly, just
-          define your animation classes on a global stylesheet.
+          For example, if your pages are on the HTML document directly, define
+          your animation classes on a global stylesheet.
         </p>
         <p>
-          And if they are inside a Web Component using Shadow DOM then define
-          your classes in the CSS for that component.
+          And if your pages are inside a Web Component using Shadow DOM then
+          define your classes in the CSS for that component.
         </p>
       </section>
     `;
@@ -151,8 +156,8 @@ class SettingsDemo extends PageViewElement {
 
   static get properties() {
     return {
-      _attrAnimationClasses: { type: Object },
-      _noAttrAnimationClasses: { type: Object },
+      _attrAnimationClasses: { state: true },
+      _noAttrAnimationClasses: { state: true },
     };
   }
 
@@ -187,11 +192,13 @@ class SettingsDemo extends PageViewElement {
     const { action } = e.target.dataset;
     this._select(pages, action);
   }
+
   _selectAttr(e) {
     const pages = this.shadowRoot.querySelector('#attr');
     const { action } = e.target.dataset;
     this._select(pages, action);
   }
+
   _select(pages, action) {
     if (action === 'next') {
       pages.selectNext();
@@ -199,6 +206,7 @@ class SettingsDemo extends PageViewElement {
       pages.selectPrevious();
     }
   }
+
   constructor() {
     super();
     this._noAttrAnimationClasses = {
@@ -273,7 +281,7 @@ class SettingsDemo extends PageViewElement {
     this._attrCode = `
 <helium-animated-pages
   attrForSelected="name"
-  .animationClasses="${this._attrAnimationClasses}"
+  .animationClasses="\${this._attrAnimationClasses}"
 >
   <div name="first">First Slide</div>
   <div name="second">Second Slide</div>

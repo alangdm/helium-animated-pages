@@ -1,0 +1,10 @@
+{
+  "include": ["src/HeliumAnimatedPages.js"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./types",
+  }
+}

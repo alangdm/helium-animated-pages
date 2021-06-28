@@ -1,27 +1,32 @@
-import { html, css } from 'lit-element';
+import { html, css } from 'lit';
 import { PageViewElement } from './page-view-element.js';
 import { sharedStyles } from './shared-styles.js';
 import '../../helium-animated-pages.js';
-import { FadeIn, FadeOut } from '../../sample-animations/fade-animations.js';
+import { FadeIn, FadeOut } from '../../sample-animations/index.js';
 
 class PropertyDemo extends PageViewElement {
   render() {
     return html`
       <section>
-        <h2>Selected Property Demo</h2>
+        <h1>Selected Property Demo</h1>
         <p>
-          This demos use the <code>selected</code> property to change which
+          These demos use the <code>selected</code> property to change which
           slide is shown.
         </p>
         <p>
-          This is the recommended way of using this component, just update
+          This is the recommended way of using this component. Just update
           <code>selected</code> either as an attribute or as a property and
           you're done!
         </p>
-        <h3>Without Using attrForSelected</h3>
+        <h2>Without Using attrForSelected</h2>
         <p>
-          If you don't use the <code>attrForSelected</code> property you can
-          just set the numerical index of which element you wish to show.
+          If you don't use the <code>attrForSelected</code> property you can set
+          the numerical index of which element you wish to show.
+        </p>
+        <p>
+          Note that we're using the <code>helium-start</code> and
+          <code>helium-end</code> events to disable the input changing the
+          slides while the animation is running
         </p>
         <p>
           <label for="select-index">Slide Index:</label>
@@ -40,6 +45,8 @@ class PropertyDemo extends PageViewElement {
           class="sample-pages"
           selected="${this._selectedIndex}"
           .animationClasses="${this._propAnimationClasses}"
+          @helium-start="${this._toggleDisabledIndex}"
+          @helium-end="${this._toggleDisabledIndex}"
         >
           <div>Slide index: 0</div>
           <div>Slide index: 1</div>
@@ -51,20 +58,20 @@ class PropertyDemo extends PageViewElement {
         <pre><code>${this._indexDemoCode}</code></pre>
       </section>
       <section>
-        <h3>Using attrForSelected</h3>
+        <h2>Using attrForSelected</h2>
         <p>
           If you use <code>attrForSelected</code> you'll be able to set which of
           the animated pages attributes this component should check to identify
-          them.
+          each page.
         </p>
         <p>
-          One of the benefits of doing this is that the value of
-          <code>selected</code> may now be a string and the children whose
-          attribute value corresponds to it will become active.
+          By doing this the value of <code>selected</code> may now be a string.
+          And the children whose attribute value corresponds to the value of
+          <code>selected</code> will become active.
         </p>
         <p>
           <label for="select-name">Select Slide with <code>name</code>:</label>
-          <select id="select-name" @change=${this._nameChanged}>
+          <select id="select-name" @blur=${this._nameChanged}>
             <option value="">Select name...</option>
             <option value="first">first</option>
             <option value="second">second</option>
@@ -89,11 +96,11 @@ class PropertyDemo extends PageViewElement {
         <pre><code>${this._nameDemoCode}</code></pre>
       </section>
       <section>
-        <h3>animationClasses</h3>
+        <h2>animationClasses</h2>
         <p>
           The code for the <code>animationClasses</code> in this two demos is
-          the very simples version of just setting the default animation for
-          every single transition.
+          the simplest version. It only sets the default animation for every
+          single transition.
         </p>
         <pre><code>${JSON.stringify(
           this._propAnimationClasses,
@@ -102,7 +109,7 @@ class PropertyDemo extends PageViewElement {
         )}</code></pre>
       </section>
       <section>
-        <h3>Changing slides with methods</h3>
+        <h2>Changing slides with methods</h2>
         <p>
           This component exposes 3 methods for selecting slides other than using
           the <code>selected</code> property.
@@ -114,7 +121,7 @@ class PropertyDemo extends PageViewElement {
         <p>
           However, using these methods is not really recommended as they can
           cause problems if you're also modifying the
-          <code>selected</code> property too.
+          <code>selected</code> property.
         </p>
       </section>
     `;
@@ -122,9 +129,9 @@ class PropertyDemo extends PageViewElement {
 
   static get properties() {
     return {
-      _selectedIndex: { type: Number },
-      _selectedName: { type: String },
-      _propAnimationClasses: { type: Object },
+      _selectedIndex: { state: true },
+      _selectedName: { state: true },
+      _propAnimationClasses: { state: true },
     };
   }
 
@@ -158,6 +165,8 @@ class PropertyDemo extends PageViewElement {
 <helium-animated-pages
   selected="\${this._selectedIndex}"
   .animationClasses="\${this._propAnimationClasses}"
+  @helium-start="\${this._toggleDisabledIndex}"
+  @helium-end="\${this._toggleDisabledIndex}"
 >
   <div>Slide index: 0</div>
   <div>Slide index: 1</div>
@@ -177,9 +186,15 @@ class PropertyDemo extends PageViewElement {
 
   _indexChanged(e) {
     if (e.target.value) {
-      this._selectedIndex = parseInt(e.target.value);
+      this._selectedIndex = parseInt(e.target.value, 10);
     }
   }
+
+  _toggleDisabledIndex() {
+    const input = this.shadowRoot.querySelector('#select-index');
+    input.disabled = !input.disabled;
+  }
+
   _nameChanged(e) {
     if (e.target.value) {
       this._selectedName = e.target.value;
