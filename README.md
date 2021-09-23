@@ -2,17 +2,15 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 
-###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/) | [Using it in `pwa-starter-kit`](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit)
+###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
 
-It works with css animations and only depends on [lit-element](https://github.com/Polymer/lit-element) so you don't have to worry about including any heavy js libraries.
+It works with CSS animations and only depends on [lit](https://www.npmjs.com/package/lit). So, you don't have to worry about including any heavy JS libraries.
 
-This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations (or just use the animations included in the `sample-animations` folder if you don't want to bother with those either 😉.)
+This component takes care of the logic behind triggering the animations so that you can focus on making your views and your animations. Alternatively, you can use the animations included in the `sample-animations` folder. 😉
 
-It can be easily used in [pwa-starter-kit](https://github.com/Polymer/pwa-starter-kit/) and [here's how](https://github.com/alangdm/helium-animated-pages/wiki/Usage-in-pwa-starter-kit).
-
-To begin using it just follow this simple steps:
+To begin using it follow these simple steps:
 
 - Install it:
 
@@ -24,28 +22,29 @@ To begin using it just follow this simple steps:
 
   ```html
   <!-- type="module" is essential -->
-  <script
-    type="module"
-    src="node_modules/helium-animated-pages/helium-animated-pages.js"
-  ></script>
+  <script type="module" src="node_modules/helium-animated-pages"></script>
   ```
 
   In a js module:
 
   ```javascript
-  import 'helium-animated-pages/helium-animated-pages.js';
+  import 'helium-animated-pages';
   ```
 
-- Create an instance of `<helium-animated-pages>` in your HTML page, or via any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/) and start using it:
+- Create an instance of `<helium-animated-pages>` in your HTML page. You can also use any framework that [supports rendering Custom Elements](https://custom-elements-everywhere.com/).
 
   ```html
   <style>
-    /* define your animation keyframes and classes
-        (you can use the ones provided too)
-        these must be defined context that contains
-        <helium-animated-pages> */
-    /* these only use the standard css animation to keep
-       example code short */
+    /*
+      Define your animation keyframes and classes
+        in the same context that contains
+        <helium-animated-pages>.
+      You can also use the provided sample animations.
+    */
+    /*
+      The sample code here only uses a simple
+        fade animation to keep the code short.
+    */
     .page-fadeIn {
       animation: fadeIn 0.7s ease both;
     }
@@ -75,47 +74,51 @@ To begin using it just follow this simple steps:
       <option value="page3">Page 3</option>
     </select>
   </section>
-  <!-- attrForSelected is used to say which attribute
-      identifies the pages
-      or you can just not use it and use numerical indexes -->
+  <!--
+    Use attrForSelected to define which attribute will
+      act as the identifier for the pages.
+    You can also opt to not use it and use numerical indexes instead.
+  -->
   <helium-animated-pages id="pages" attrForSelected="name">
     <!-- The pages can be almost anything -->
     <section name="page1">Page 1</section>
     <div name="page2">Page 2</div>
-    <!-- It is recommended that custom elements
-        used as a page all extend an element like pwa-starter-kit's
-        page-view-element
-        https://github.com/Polymer/pwa-starter-kit/blob/master/src/components/page-view-element.js
-      -->
     <custom-element name="page3"></custom-element>
   </helium-animated-pages>
   <script>
-    // example way of changing pages, you could use a router
-    // or any other way you want
+    /*
+      Here's a sample way of switching pages.
+      You can use a router to do this switching.
+    */
     document.querySelector('#selector').addEventListener('change', e => {
-      // Change selected page, can also receive and index
-      document.querySelector('#pages').select(e.target.value);
-      // you can also use selectPrevious() or selectNext()
+      // Switch pages; you can use the numerical index too.
+      document.querySelector('#pages').selected = e.target.value;
     });
-
-    // defining the "rules" for which css classes to apply on
-    // diferent page transitions, for more info go to:
-    // https://github.com/alangdm/helium-animated-pages/wiki/API#attrforselected
-    // I'm using css classes which aren't defined on this context but you
-    // must define them when actually using this
+    /*
+      Here we define the "rules" about which CSS classes
+        should be applied on the different page transitions.
+      For more info go to:
+        https://helium-animated-pages.glitch.me/demo/
+      I'm using CSS classes that aren't actually defined in
+        this context for illustrative purposes.
+      You must define every class that you want to use.
+    */
     document.querySelector('#pages').animationClasses = {
-      // animation classes rules are like css rules, the most specific ones apply first
+      /*
+        The animation classes rules are like CSS rules:
+          the most specific ones apply first.
+      */
       // from page1 to page2
       page1_page2: {
         in: 'page_moveFromRight',
         out: 'page_moveToLeft',
       },
-      // from anything (other than page1 to page2)
+      // from anything other than page1 to page2
       '*_page2': {
         in: 'page_moveFromLeft',
         out: 'page_moveToRight',
       },
-      // from page1 to anything (other than page2)
+      // from page1 to anything other than page2
       'page1_*': {
         in: 'page_moveFromTop',
         out: 'page_moveToBottom',
@@ -125,7 +128,7 @@ To begin using it just follow this simple steps:
         in: 'page_moveFromBottom',
         out: 'page_moveToTop',
       },
-      // if none of the rules above apply
+      // fallback in case none of the rules above apply
       default: {
         in: 'page-fadeIn',
         out: 'page-fadeOut',
@@ -136,5 +139,5 @@ To begin using it just follow this simple steps:
 
 ## Credits
 
-- Almost all sample animations and the overall flow of the page selection are based on an article by [Pedro Botelho@Codrops](https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/).
-- The docs are powered by [@web-padawan's](https://github.com/web-padawan) [api-viewer-element](https://www.npmjs.com/package/api-viewer-element) and [@runem's](https://github.com/runem) [web-component-analyzer]https://www.npmjs.com/package/web-component-analyzer)
+- Almost all sample animations and the general flow of the page selection are based on an article by [Pedro Botelho@Codrops](https://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/).
+- The docs are powered by [@web-padawan's](https://github.com/web-padawan) [api-viewer-element](https://www.npmjs.com/package/api-viewer-element) and [@runem's](https://github.com/runem) [web-component-analyzer](https://www.npmjs.com/package/web-component-analyzer)

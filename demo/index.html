@@ -3,9 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="helium-animated-pages">
+    <meta property="og:url" content="https://alangdm.github.io/helium-animated-pages/">
+    <meta property="og:title" content="helium-animated-pages - Docs">
     <title>&lt;helium-animated-pages&gt; - Docs</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <meta property="og:description" content="A light spiritual successor to neon-animated-pages using only css animations.">
+    <meta name="description" content="A light spiritual successor to neon-animated-pages using only css animations.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@AlanGDavalos">
+    <meta name="twitter:creator" content="@AlanGDavalos">
+    <meta name="twitter:title" content="helium-animated-pages - Docs">
+    <meta name="twitter:description" content="A light spiritual successor to neon-animated-pages using only css animations.">
+
+    <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+
     <script type="module">
       import 'api-viewer-element/lib/api-docs.js';
     </script>
@@ -18,7 +32,6 @@
       header {
         position: absolute;
         width: 100%;
-        max-width: 800px;
         display: flex;
         justify-content: flex-end;
         padding: 0.9rem;
@@ -29,12 +42,28 @@
         font-size: 0.875rem;
         margin: 0px 0.75rem 0px 0.25rem;
       }
+      api-docs {
+        max-width: 100%;
+        --ave-primary-color: #138472;
+      }
+      api-docs::part(docs-markdown) {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+      api-docs::part(md-p),
+      api-docs::part(md-ul),
+      api-docs::part(md-pre) {
+        width: min(100%, 120ch);
+        box-sizing: border-box;
+      }
     </style>
   </head>
   <body>
     <header>
       <a class="demo" href="./demo.html">Demo</a>
+      <a class="demo" href="https://github.com/alangdm/helium-animated-pages">Github</a>
     </header>
-    <api-docs src="../custom-elements.json"></api-docs>
+    <api-docs src="./custom-elements.json"></api-docs>
   </body>
 </html>

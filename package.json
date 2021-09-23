@@ -1,34 +1,55 @@
 {
   "name": "helium-animated-pages",
-  "version": "1.1.1",
+  "version": "2.0.0-5",
   "description": "A light spiritual successor to neon-animated-pages using only css animations",
   "type": "module",
   "module": "helium-animated-pages.js",
-  "exports": "./helium-animated-pages.js",
-  "repository": "https://github.com/alangdm/helium-animated-pages",
+  "exports": {
+    ".": {
+      "default": "./helium-animated-pages.js"
+    },
+    "./HeliumAnimatedPages.js": {
+      "default": "./src/HeliumAnimatedPages.js"
+    },
+    "./sample-animations.js": {
+      "default": "./sample-animations/index.js"
+    }
+  },
+  "types": "./types/HeliumAnimatedPages.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alangdm/helium-animated-pages"
+  },
+  "homepage": "https://alangdm.github.io/helium-animated-pages/",
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit-element": "^2.2.1"
+    "lit": "2.0.0"
   },
   "devDependencies": {
-    "@web/dev-server": "0.1.8",
-    "@webcomponents/webcomponentsjs": "2.5.0",
+    "@open-wc/building-rollup": "1.10.0",
+    "@open-wc/eslint-config": "4.3.0",
+    "@web/dev-server": "0.1.23",
     "api-viewer-element": "0.4.4",
-    "eslint": "7.22.0",
-    "eslint-config-prettier": "7.2.0",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-lit": "1.3.0",
-    "eslint-plugin-prettier": "3.3.1",
-    "eslint-plugin-wc": "1.2.0",
-    "husky": "4.3.8",
-    "lint-staged": "10.5.4",
-    "prettier": "2.2.1",
+    "deepmerge": "4.2.2",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "lint-staged": "11.1.2",
+    "prettier": "2.4.1",
+    "rimraf": "3.0.2",
+    "rollup": "2.57.0",
+    "rollup-plugin-copy": "3.4.0",
+    "simple-git-hooks": "2.6.1",
+    "standard-version": "9.3.1",
+    "typescript": "4.4.3",
     "web-component-analyzer": "1.1.6"
   },
   "scripts": {
-    "start": "npm run analyze && web-dev-server --node-resolve --open",
-    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./custom-elements.json",
+    "start": "npm run analyze && npm run types && web-dev-server --node-resolve --open --watch",
+    "build": "rimraf dist && rollup -c rollup.config.js",
+    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./demo/custom-elements.json",
+    "types": "tsc",
+    "release": "standard-version",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
@@ -36,10 +57,18 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "format": "npm run format:eslint && npm run format:prettier"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*.js": [
