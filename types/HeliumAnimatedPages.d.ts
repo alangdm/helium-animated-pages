@@ -16,7 +16,7 @@
  * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
  */
 export default class HeliumAnimatedPages extends LitElement {
-    static get styles(): import("lit").CSSResultGroup[];
+    static get styles(): import("lit").CSSResult[];
     static get properties(): {
         /**
          * This property is required for the animations to run, it maps which
