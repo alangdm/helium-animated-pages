@@ -162,4 +162,4 @@ export type AnimationRule = {
 export type AnimationClasses = {
     [x: string]: AnimationRule;
 };
-import { LitElement } from "lit-element";
+import { LitElement } from "lit-element/lit-element";
