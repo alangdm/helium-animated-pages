@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/alangdm/helium-animated-pages/compare/v2.0.0-5...v2.0.0) (2021-09-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lit to v2.0.0 ([aea265d](https://github.com/alangdm/helium-animated-pages/commit/aea265d8b90582ec3a63c211ef2a69cf3043a7b6))
+* **deps:** update dependency lit to v2.0.0-rc.3 ([0c20cb6](https://github.com/alangdm/helium-animated-pages/commit/0c20cb6dc236d920c7af0d8bdaf411c8f83bbc01))
+* **deps:** update dependency lit to v2.0.0-rc.4 ([18d25e1](https://github.com/alangdm/helium-animated-pages/commit/18d25e1032ed30520ec17f18ff268f20fdd12583))
+
 ## [2.0.0-5](https://github.com/alangdm/helium-animated-pages/compare/v2.0.0-4...v2.0.0-5) (2021-05-25)
 
 ### Bug Fixes
