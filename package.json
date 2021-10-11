@@ -24,7 +24,7 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit": "2.0.0"
+    "lit": "2.0.2"
   },
   "devDependencies": {
     "@open-wc/building-rollup": "1.10.0",
