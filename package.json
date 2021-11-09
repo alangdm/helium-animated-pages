@@ -29,7 +29,7 @@
   "devDependencies": {
     "@open-wc/building-rollup": "1.10.0",
     "@open-wc/eslint-config": "4.3.0",
-    "@web/dev-server": "0.1.26",
+    "@web/dev-server": "0.1.28",
     "api-viewer-element": "0.5.0",
     "deepmerge": "4.2.2",
     "eslint": "7.32.0",
