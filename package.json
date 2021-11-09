@@ -27,7 +27,7 @@
     "lit": "2.0.2"
   },
   "devDependencies": {
-    "@open-wc/building-rollup": "1.10.0",
+    "@open-wc/building-rollup": "2.0.1",
     "@open-wc/eslint-config": "4.3.0",
     "@web/dev-server": "0.1.28",
     "api-viewer-element": "0.5.0",
