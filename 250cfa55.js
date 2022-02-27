@@ -1,4 +1,4 @@
-const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,e=Symbol(),o=new Map;class i{constructor(t,o){if(this._$cssResult$=!0,o!==e)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t}get styleSheet(){let e=o.get(this.cssText);return t&&void 0===e&&(o.set(this.cssText,e=new CSSStyleSheet),e.replaceSync(this.cssText)),e}toString(){return this.cssText}}const a=(t,...o)=>{const a=1===t.length?t[0]:o.reduce(((e,o,i)=>e+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(o)+t[i+1]),t[0]);return new i(a,e)},s=t?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let o="";for(const e of t.cssRules)o+=e.cssText;return(t=>new i("string"==typeof t?t:t+"",e))(o)})(t):t;var n,r;const l={toAttribute(t,e){switch(e){case Boolean:t=t?"":null;break;case Object:case Array:t=null==t?t:JSON.stringify(t)}return t},fromAttribute(t,e){let o=t;switch(e){case Boolean:o=null!==t;break;case Number:o=null===t?null:Number(t);break;case Object:case Array:try{o=JSON.parse(t)}catch(t){o=null}}return o}},d=(t,e)=>e!==t&&(e==e||t==t),h={attribute:!0,type:String,converter:l,reflect:!1,hasChanged:d};class m extends HTMLElement{constructor(){super(),this._$Et=new Map,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Ei=null,this.o()}static addInitializer(t){var e;null!==(e=this.l)&&void 0!==e||(this.l=[]),this.l.push(t)}static get observedAttributes(){this.finalize();const t=[];return this.elementProperties.forEach(((e,o)=>{const i=this._$Eh(o,e);void 0!==i&&(this._$Eu.set(i,o),t.push(i))})),t}static createProperty(t,e=h){if(e.state&&(e.attribute=!1),this.finalize(),this.elementProperties.set(t,e),!e.noAccessor&&!this.prototype.hasOwnProperty(t)){const o="symbol"==typeof t?Symbol():"__"+t,i=this.getPropertyDescriptor(t,o,e);void 0!==i&&Object.defineProperty(this.prototype,t,i)}}static getPropertyDescriptor(t,e,o){return{get(){return this[e]},set(i){const a=this[t];this[e]=i,this.requestUpdate(t,a,o)},configurable:!0,enumerable:!0}}static getPropertyOptions(t){return this.elementProperties.get(t)||h}static finalize(){if(this.hasOwnProperty("finalized"))return!1;this.finalized=!0;const t=Object.getPrototypeOf(this);if(t.finalize(),this.elementProperties=new Map(t.elementProperties),this._$Eu=new Map,this.hasOwnProperty("properties")){const t=this.properties,e=[...Object.getOwnPropertyNames(t),...Object.getOwnPropertySymbols(t)];for(const o of e)this.createProperty(o,t[o])}return this.elementStyles=this.finalizeStyles(this.styles),!0}static finalizeStyles(t){const e=[];if(Array.isArray(t)){const o=new Set(t.flat(1/0).reverse());for(const t of o)e.unshift(s(t))}else void 0!==t&&e.push(s(t));return e}static _$Eh(t,e){const o=e.attribute;return!1===o?void 0:"string"==typeof o?o:"string"==typeof t?t.toLowerCase():void 0}o(){var t;this._$Ev=new Promise((t=>this.enableUpdating=t)),this._$AL=new Map,this._$Ep(),this.requestUpdate(),null===(t=this.constructor.l)||void 0===t||t.forEach((t=>t(this)))}addController(t){var e,o;(null!==(e=this._$Em)&&void 0!==e?e:this._$Em=[]).push(t),void 0!==this.renderRoot&&this.isConnected&&(null===(o=t.hostConnected)||void 0===o||o.call(t))}removeController(t){var e;null===(e=this._$Em)||void 0===e||e.splice(this._$Em.indexOf(t)>>>0,1)}_$Ep(){this.constructor.elementProperties.forEach(((t,e)=>{this.hasOwnProperty(e)&&(this._$Et.set(e,this[e]),delete this[e])}))}createRenderRoot(){var e;const o=null!==(e=this.shadowRoot)&&void 0!==e?e:this.attachShadow(this.constructor.shadowRootOptions);return((e,o)=>{t?e.adoptedStyleSheets=o.map((t=>t instanceof CSSStyleSheet?t:t.styleSheet)):o.forEach((t=>{const o=document.createElement("style"),i=window.litNonce;void 0!==i&&o.setAttribute("nonce",i),o.textContent=t.cssText,e.appendChild(o)}))})(o,this.constructor.elementStyles),o}connectedCallback(){var t;void 0===this.renderRoot&&(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),null===(t=this._$Em)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostConnected)||void 0===e?void 0:e.call(t)}))}enableUpdating(t){}disconnectedCallback(){var t;null===(t=this._$Em)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostDisconnected)||void 0===e?void 0:e.call(t)}))}attributeChangedCallback(t,e,o){this._$AK(t,o)}_$Eg(t,e,o=h){var i,a;const s=this.constructor._$Eh(t,o);if(void 0!==s&&!0===o.reflect){const n=(null!==(a=null===(i=o.converter)||void 0===i?void 0:i.toAttribute)&&void 0!==a?a:l.toAttribute)(e,o.type);this._$Ei=t,null==n?this.removeAttribute(s):this.setAttribute(s,n),this._$Ei=null}}_$AK(t,e){var o,i,a;const s=this.constructor,n=s._$Eu.get(t);if(void 0!==n&&this._$Ei!==n){const t=s.getPropertyOptions(n),r=t.converter,d=null!==(a=null!==(i=null===(o=r)||void 0===o?void 0:o.fromAttribute)&&void 0!==i?i:"function"==typeof r?r:null)&&void 0!==a?a:l.fromAttribute;this._$Ei=n,this[n]=d(e,t.type),this._$Ei=null}}requestUpdate(t,e,o){let i=!0;void 0!==t&&(((o=o||this.constructor.getPropertyOptions(t)).hasChanged||d)(this[t],e)?(this._$AL.has(t)||this._$AL.set(t,e),!0===o.reflect&&this._$Ei!==t&&(void 0===this._$ES&&(this._$ES=new Map),this._$ES.set(t,o))):i=!1),!this.isUpdatePending&&i&&(this._$Ev=this._$EC())}async _$EC(){this.isUpdatePending=!0;try{await this._$Ev}catch(t){Promise.reject(t)}const t=this.scheduleUpdate();return null!=t&&await t,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var t;if(!this.isUpdatePending)return;this.hasUpdated,this._$Et&&(this._$Et.forEach(((t,e)=>this[e]=t)),this._$Et=void 0);let e=!1;const o=this._$AL;try{e=this.shouldUpdate(o),e?(this.willUpdate(o),null===(t=this._$Em)||void 0===t||t.forEach((t=>{var e;return null===(e=t.hostUpdate)||void 0===e?void 0:e.call(t)})),this.update(o)):this._$ET()}catch(t){throw e=!1,this._$ET(),t}e&&this._$AE(o)}willUpdate(t){}_$AE(t){var e;null===(e=this._$Em)||void 0===e||e.forEach((t=>{var e;return null===(e=t.hostUpdated)||void 0===e?void 0:e.call(t)})),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(t)),this.updated(t)}_$ET(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$Ev}shouldUpdate(t){return!0}update(t){void 0!==this._$ES&&(this._$ES.forEach(((t,e)=>this._$Eg(e,this[e],t))),this._$ES=void 0),this._$ET()}updated(t){}firstUpdated(t){}}var c,p;m.finalized=!0,m.elementProperties=new Map,m.elementStyles=[],m.shadowRootOptions={mode:"open"},null===(n=globalThis.reactiveElementPolyfillSupport)||void 0===n||n.call(globalThis,{ReactiveElement:m}),(null!==(r=globalThis.reactiveElementVersions)&&void 0!==r?r:globalThis.reactiveElementVersions=[]).push("1.0.0");const u=globalThis.trustedTypes,f=u?u.createPolicy("lit-html",{createHTML:t=>t}):void 0,g=`lit$${(Math.random()+"").slice(9)}$`,v="?"+g,y=`<${v}>`,_=document,$=(t="")=>_.createComment(t),b=t=>null===t||"object"!=typeof t&&"function"!=typeof t,A=Array.isArray,C=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,x=/-->/g,S=/>/g,T=/>|[ 	\n\r](?:([^\s"'>=/]+)([ 	\n\r]*=[ 	\n\r]*(?:[^ 	\n\r"'`<>=]|("|')|))|$)/g,w=/'/g,k=/"/g,I=/^(?:script|style|textarea)$/i,R=Symbol.for("lit-noChange"),O=Symbol.for("lit-nothing"),E=new WeakMap,F=_.createTreeWalker(_,129,null,!1);class P{constructor({strings:t,_$litType$:e},o){let i;this.parts=[];let a=0,s=0;const n=t.length-1,r=this.parts,[l,d]=((t,e)=>{const o=t.length-1,i=[];let a,s=2===e?"<svg>":"",n=C;for(let e=0;e<o;e++){const o=t[e];let r,l,d=-1,h=0;for(;h<o.length&&(n.lastIndex=h,l=n.exec(o),null!==l);)h=n.lastIndex,n===C?"!--"===l[1]?n=x:void 0!==l[1]?n=S:void 0!==l[2]?(I.test(l[2])&&(a=RegExp("</"+l[2],"g")),n=T):void 0!==l[3]&&(n=T):n===T?">"===l[0]?(n=null!=a?a:C,d=-1):void 0===l[1]?d=-2:(d=n.lastIndex-l[2].length,r=l[1],n=void 0===l[3]?T:'"'===l[3]?k:w):n===k||n===w?n=T:n===x||n===S?n=C:(n=T,a=void 0);const m=n===T&&t[e+1].startsWith("/>")?" ":"";s+=n===C?o+y:d>=0?(i.push(r),o.slice(0,d)+"$lit$"+o.slice(d)+g+m):o+g+(-2===d?(i.push(void 0),e):m)}const r=s+(t[o]||"<?>")+(2===e?"</svg>":"");return[void 0!==f?f.createHTML(r):r,i]})(t,e);if(this.el=P.createElement(l,o),F.currentNode=this.el.content,2===e){const t=this.el.content,e=t.firstChild;e.remove(),t.append(...e.childNodes)}for(;null!==(i=F.nextNode())&&r.length<n;){if(1===i.nodeType){if(i.hasAttributes()){const t=[];for(const e of i.getAttributeNames())if(e.endsWith("$lit$")||e.startsWith(g)){const o=d[s++];if(t.push(e),void 0!==o){const t=i.getAttribute(o.toLowerCase()+"$lit$").split(g),e=/([.?@])?(.*)/.exec(o);r.push({type:1,index:a,name:e[2],strings:t,ctor:"."===e[1]?H:"?"===e[1]?X:"@"===e[1]?Y:B})}else r.push({type:6,index:a})}for(const e of t)i.removeAttribute(e)}if(I.test(i.tagName)){const t=i.textContent.split(g),e=t.length-1;if(e>0){i.textContent=u?u.emptyScript:"";for(let o=0;o<e;o++)i.append(t[o],$()),F.nextNode(),r.push({type:2,index:++a});i.append(t[e],$())}}}else if(8===i.nodeType)if(i.data===v)r.push({type:2,index:a});else{let t=-1;for(;-1!==(t=i.data.indexOf(g,t+1));)r.push({type:7,index:a}),t+=g.length-1}a++}}static createElement(t,e){const o=_.createElement("template");return o.innerHTML=t,o}}function L(t,e,o=t,i){var a,s,n,r;if(e===R)return e;let l=void 0!==i?null===(a=o._$Cl)||void 0===a?void 0:a[i]:o._$Cu;const d=b(e)?void 0:e._$litDirective$;return(null==l?void 0:l.constructor)!==d&&(null===(s=null==l?void 0:l._$AO)||void 0===s||s.call(l,!1),void 0===d?l=void 0:(l=new d(t),l._$AT(t,o,i)),void 0!==i?(null!==(n=(r=o)._$Cl)&&void 0!==n?n:r._$Cl=[])[i]=l:o._$Cu=l),void 0!==l&&(e=L(t,l._$AS(t,e.values),l,i)),e}class N{constructor(t,e){this.v=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}p(t){var e;const{el:{content:o},parts:i}=this._$AD,a=(null!==(e=null==t?void 0:t.creationScope)&&void 0!==e?e:_).importNode(o,!0);F.currentNode=a;let s=F.nextNode(),n=0,r=0,l=i[0];for(;void 0!==l;){if(n===l.index){let e;2===l.type?e=new U(s,s.nextSibling,this,t):1===l.type?e=new l.ctor(s,l.name,l.strings,this,t):6===l.type&&(e=new M(s,this,t)),this.v.push(e),l=i[++r]}n!==(null==l?void 0:l.index)&&(s=F.nextNode(),n++)}return a}m(t){let e=0;for(const o of this.v)void 0!==o&&(void 0!==o.strings?(o._$AI(t,o,e),e+=o.strings.length-2):o._$AI(t[e])),e++}}class U{constructor(t,e,o,i){var a;this.type=2,this._$AH=O,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=o,this.options=i,this._$Cg=null===(a=null==i?void 0:i.isConnected)||void 0===a||a}get _$AU(){var t,e;return null!==(e=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==e?e:this._$Cg}get parentNode(){let t=this._$AA.parentNode;const e=this._$AM;return void 0!==e&&11===t.nodeType&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=L(this,t,e),b(t)?t===O||null==t||""===t?(this._$AH!==O&&this._$AR(),this._$AH=O):t!==this._$AH&&t!==R&&this.$(t):void 0!==t._$litType$?this.T(t):void 0!==t.nodeType?this.S(t):(t=>{var e;return A(t)||"function"==typeof(null===(e=t)||void 0===e?void 0:e[Symbol.iterator])})(t)?this.M(t):this.$(t)}A(t,e=this._$AB){return this._$AA.parentNode.insertBefore(t,e)}S(t){this._$AH!==t&&(this._$AR(),this._$AH=this.A(t))}$(t){this._$AH!==O&&b(this._$AH)?this._$AA.nextSibling.data=t:this.S(_.createTextNode(t)),this._$AH=t}T(t){var e;const{values:o,_$litType$:i}=t,a="number"==typeof i?this._$AC(t):(void 0===i.el&&(i.el=P.createElement(i.h,this.options)),i);if((null===(e=this._$AH)||void 0===e?void 0:e._$AD)===a)this._$AH.m(o);else{const t=new N(a,this),e=t.p(this.options);t.m(o),this.S(e),this._$AH=t}}_$AC(t){let e=E.get(t.strings);return void 0===e&&E.set(t.strings,e=new P(t)),e}M(t){A(this._$AH)||(this._$AH=[],this._$AR());const e=this._$AH;let o,i=0;for(const a of t)i===e.length?e.push(o=new U(this.A($()),this.A($()),this,this.options)):o=e[i],o._$AI(a),i++;i<e.length&&(this._$AR(o&&o._$AB.nextSibling,i),e.length=i)}_$AR(t=this._$AA.nextSibling,e){var o;for(null===(o=this._$AP)||void 0===o||o.call(this,!1,!0,e);t&&t!==this._$AB;){const e=t.nextSibling;t.remove(),t=e}}setConnected(t){var e;void 0===this._$AM&&(this._$Cg=t,null===(e=this._$AP)||void 0===e||e.call(this,t))}}class B{constructor(t,e,o,i,a){this.type=1,this._$AH=O,this._$AN=void 0,this.element=t,this.name=e,this._$AM=i,this.options=a,o.length>2||""!==o[0]||""!==o[1]?(this._$AH=Array(o.length-1).fill(new String),this.strings=o):this._$AH=O}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,e=this,o,i){const a=this.strings;let s=!1;if(void 0===a)t=L(this,t,e,0),s=!b(t)||t!==this._$AH&&t!==R,s&&(this._$AH=t);else{const i=t;let n,r;for(t=a[0],n=0;n<a.length-1;n++)r=L(this,i[o+n],e,n),r===R&&(r=this._$AH[n]),s||(s=!b(r)||r!==this._$AH[n]),r===O?t=O:t!==O&&(t+=(null!=r?r:"")+a[n+1]),this._$AH[n]=r}s&&!i&&this.k(t)}k(t){t===O?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"")}}class H extends B{constructor(){super(...arguments),this.type=3}k(t){this.element[this.name]=t===O?void 0:t}}class X extends B{constructor(){super(...arguments),this.type=4}k(t){t&&t!==O?this.element.setAttribute(this.name,""):this.element.removeAttribute(this.name)}}class Y extends B{constructor(t,e,o,i,a){super(t,e,o,i,a),this.type=5}_$AI(t,e=this){var o;if((t=null!==(o=L(this,t,e,0))&&void 0!==o?o:O)===R)return;const i=this._$AH,a=t===O&&i!==O||t.capture!==i.capture||t.once!==i.once||t.passive!==i.passive,s=t!==O&&(i===O||a);a&&this.element.removeEventListener(this.name,this,i),s&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){var e,o;"function"==typeof this._$AH?this._$AH.call(null!==(o=null===(e=this.options)||void 0===e?void 0:e.host)&&void 0!==o?o:this.element,t):this._$AH.handleEvent(t)}}class M{constructor(t,e,o){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=o}get _$AU(){return this._$AM._$AU}_$AI(t){L(this,t)}}var D,z;null===(c=globalThis.litHtmlPolyfillSupport)||void 0===c||c.call(globalThis,P,U),(null!==(p=globalThis.litHtmlVersions)&&void 0!==p?p:globalThis.litHtmlVersions=[]).push("2.0.0");const Z=globalThis.trustedTypes,j=Z?Z.createPolicy("lit-html",{createHTML:t=>t}):void 0,W=`lit$${(Math.random()+"").slice(9)}$`,q="?"+W,V=`<${q}>`,J=document,K=(t="")=>J.createComment(t),G=t=>null===t||"object"!=typeof t&&"function"!=typeof t,Q=Array.isArray,tt=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,et=/-->/g,ot=/>/g,it=/>|[ 	\n\r](?:([^\s"'>=/]+)([ 	\n\r]*=[ 	\n\r]*(?:[^ 	\n\r"'`<>=]|("|')|))|$)/g,at=/'/g,st=/"/g,nt=/^(?:script|style|textarea)$/i,rt=(t=>(e,...o)=>({_$litType$:t,strings:e,values:o}))(1),lt=Symbol.for("lit-noChange"),dt=Symbol.for("lit-nothing"),ht=new WeakMap,mt=J.createTreeWalker(J,129,null,!1),ct=(t,e)=>{const o=t.length-1,i=[];let a,s=2===e?"<svg>":"",n=tt;for(let e=0;e<o;e++){const o=t[e];let r,l,d=-1,h=0;for(;h<o.length&&(n.lastIndex=h,l=n.exec(o),null!==l);)h=n.lastIndex,n===tt?"!--"===l[1]?n=et:void 0!==l[1]?n=ot:void 0!==l[2]?(nt.test(l[2])&&(a=RegExp("</"+l[2],"g")),n=it):void 0!==l[3]&&(n=it):n===it?">"===l[0]?(n=null!=a?a:tt,d=-1):void 0===l[1]?d=-2:(d=n.lastIndex-l[2].length,r=l[1],n=void 0===l[3]?it:'"'===l[3]?st:at):n===st||n===at?n=it:n===et||n===ot?n=tt:(n=it,a=void 0);const m=n===it&&t[e+1].startsWith("/>")?" ":"";s+=n===tt?o+V:d>=0?(i.push(r),o.slice(0,d)+"$lit$"+o.slice(d)+W+m):o+W+(-2===d?(i.push(void 0),e):m)}const r=s+(t[o]||"<?>")+(2===e?"</svg>":"");return[void 0!==j?j.createHTML(r):r,i]};class pt{constructor({strings:t,_$litType$:e},o){let i;this.parts=[];let a=0,s=0;const n=t.length-1,r=this.parts,[l,d]=ct(t,e);if(this.el=pt.createElement(l,o),mt.currentNode=this.el.content,2===e){const t=this.el.content,e=t.firstChild;e.remove(),t.append(...e.childNodes)}for(;null!==(i=mt.nextNode())&&r.length<n;){if(1===i.nodeType){if(i.hasAttributes()){const t=[];for(const e of i.getAttributeNames())if(e.endsWith("$lit$")||e.startsWith(W)){const o=d[s++];if(t.push(e),void 0!==o){const t=i.getAttribute(o.toLowerCase()+"$lit$").split(W),e=/([.?@])?(.*)/.exec(o);r.push({type:1,index:a,name:e[2],strings:t,ctor:"."===e[1]?yt:"?"===e[1]?_t:"@"===e[1]?$t:vt})}else r.push({type:6,index:a})}for(const e of t)i.removeAttribute(e)}if(nt.test(i.tagName)){const t=i.textContent.split(W),e=t.length-1;if(e>0){i.textContent=Z?Z.emptyScript:"";for(let o=0;o<e;o++)i.append(t[o],K()),mt.nextNode(),r.push({type:2,index:++a});i.append(t[e],K())}}}else if(8===i.nodeType)if(i.data===q)r.push({type:2,index:a});else{let t=-1;for(;-1!==(t=i.data.indexOf(W,t+1));)r.push({type:7,index:a}),t+=W.length-1}a++}}static createElement(t,e){const o=J.createElement("template");return o.innerHTML=t,o}}function ut(t,e,o=t,i){var a,s,n,r;if(e===lt)return e;let l=void 0!==i?null===(a=o._$Cl)||void 0===a?void 0:a[i]:o._$Cu;const d=G(e)?void 0:e._$litDirective$;return(null==l?void 0:l.constructor)!==d&&(null===(s=null==l?void 0:l._$AO)||void 0===s||s.call(l,!1),void 0===d?l=void 0:(l=new d(t),l._$AT(t,o,i)),void 0!==i?(null!==(n=(r=o)._$Cl)&&void 0!==n?n:r._$Cl=[])[i]=l:o._$Cu=l),void 0!==l&&(e=ut(t,l._$AS(t,e.values),l,i)),e}class ft{constructor(t,e){this.v=[],this._$AN=void 0,this._$AD=t,this._$AM=e}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}p(t){var e;const{el:{content:o},parts:i}=this._$AD,a=(null!==(e=null==t?void 0:t.creationScope)&&void 0!==e?e:J).importNode(o,!0);mt.currentNode=a;let s=mt.nextNode(),n=0,r=0,l=i[0];for(;void 0!==l;){if(n===l.index){let e;2===l.type?e=new gt(s,s.nextSibling,this,t):1===l.type?e=new l.ctor(s,l.name,l.strings,this,t):6===l.type&&(e=new bt(s,this,t)),this.v.push(e),l=i[++r]}n!==(null==l?void 0:l.index)&&(s=mt.nextNode(),n++)}return a}m(t){let e=0;for(const o of this.v)void 0!==o&&(void 0!==o.strings?(o._$AI(t,o,e),e+=o.strings.length-2):o._$AI(t[e])),e++}}class gt{constructor(t,e,o,i){var a;this.type=2,this._$AH=dt,this._$AN=void 0,this._$AA=t,this._$AB=e,this._$AM=o,this.options=i,this._$Cg=null===(a=null==i?void 0:i.isConnected)||void 0===a||a}get _$AU(){var t,e;return null!==(e=null===(t=this._$AM)||void 0===t?void 0:t._$AU)&&void 0!==e?e:this._$Cg}get parentNode(){let t=this._$AA.parentNode;const e=this._$AM;return void 0!==e&&11===t.nodeType&&(t=e.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,e=this){t=ut(this,t,e),G(t)?t===dt||null==t||""===t?(this._$AH!==dt&&this._$AR(),this._$AH=dt):t!==this._$AH&&t!==lt&&this.$(t):void 0!==t._$litType$?this.T(t):void 0!==t.nodeType?this.S(t):(t=>{var e;return Q(t)||"function"==typeof(null===(e=t)||void 0===e?void 0:e[Symbol.iterator])})(t)?this.M(t):this.$(t)}A(t,e=this._$AB){return this._$AA.parentNode.insertBefore(t,e)}S(t){this._$AH!==t&&(this._$AR(),this._$AH=this.A(t))}$(t){this._$AH!==dt&&G(this._$AH)?this._$AA.nextSibling.data=t:this.S(J.createTextNode(t)),this._$AH=t}T(t){var e;const{values:o,_$litType$:i}=t,a="number"==typeof i?this._$AC(t):(void 0===i.el&&(i.el=pt.createElement(i.h,this.options)),i);if((null===(e=this._$AH)||void 0===e?void 0:e._$AD)===a)this._$AH.m(o);else{const t=new ft(a,this),e=t.p(this.options);t.m(o),this.S(e),this._$AH=t}}_$AC(t){let e=ht.get(t.strings);return void 0===e&&ht.set(t.strings,e=new pt(t)),e}M(t){Q(this._$AH)||(this._$AH=[],this._$AR());const e=this._$AH;let o,i=0;for(const a of t)i===e.length?e.push(o=new gt(this.A(K()),this.A(K()),this,this.options)):o=e[i],o._$AI(a),i++;i<e.length&&(this._$AR(o&&o._$AB.nextSibling,i),e.length=i)}_$AR(t=this._$AA.nextSibling,e){var o;for(null===(o=this._$AP)||void 0===o||o.call(this,!1,!0,e);t&&t!==this._$AB;){const e=t.nextSibling;t.remove(),t=e}}setConnected(t){var e;void 0===this._$AM&&(this._$Cg=t,null===(e=this._$AP)||void 0===e||e.call(this,t))}}class vt{constructor(t,e,o,i,a){this.type=1,this._$AH=dt,this._$AN=void 0,this.element=t,this.name=e,this._$AM=i,this.options=a,o.length>2||""!==o[0]||""!==o[1]?(this._$AH=Array(o.length-1).fill(new String),this.strings=o):this._$AH=dt}get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}_$AI(t,e=this,o,i){const a=this.strings;let s=!1;if(void 0===a)t=ut(this,t,e,0),s=!G(t)||t!==this._$AH&&t!==lt,s&&(this._$AH=t);else{const i=t;let n,r;for(t=a[0],n=0;n<a.length-1;n++)r=ut(this,i[o+n],e,n),r===lt&&(r=this._$AH[n]),s||(s=!G(r)||r!==this._$AH[n]),r===dt?t=dt:t!==dt&&(t+=(null!=r?r:"")+a[n+1]),this._$AH[n]=r}s&&!i&&this.k(t)}k(t){t===dt?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,null!=t?t:"")}}class yt extends vt{constructor(){super(...arguments),this.type=3}k(t){this.element[this.name]=t===dt?void 0:t}}class _t extends vt{constructor(){super(...arguments),this.type=4}k(t){t&&t!==dt?this.element.setAttribute(this.name,""):this.element.removeAttribute(this.name)}}class $t extends vt{constructor(t,e,o,i,a){super(t,e,o,i,a),this.type=5}_$AI(t,e=this){var o;if((t=null!==(o=ut(this,t,e,0))&&void 0!==o?o:dt)===lt)return;const i=this._$AH,a=t===dt&&i!==dt||t.capture!==i.capture||t.once!==i.once||t.passive!==i.passive,s=t!==dt&&(i===dt||a);a&&this.element.removeEventListener(this.name,this,i),s&&this.element.addEventListener(this.name,this,t),this._$AH=t}handleEvent(t){var e,o;"function"==typeof this._$AH?this._$AH.call(null!==(o=null===(e=this.options)||void 0===e?void 0:e.host)&&void 0!==o?o:this.element,t):this._$AH.handleEvent(t)}}class bt{constructor(t,e,o){this.element=t,this.type=6,this._$AN=void 0,this._$AM=e,this.options=o}get _$AU(){return this._$AM._$AU}_$AI(t){ut(this,t)}}var At,Ct,xt;null===(D=globalThis.litHtmlPolyfillSupport)||void 0===D||D.call(globalThis,pt,gt),(null!==(z=globalThis.litHtmlVersions)&&void 0!==z?z:globalThis.litHtmlVersions=[]).push("2.0.0");class St extends m{constructor(){super(...arguments),this.renderOptions={host:this},this._$Dt=void 0}createRenderRoot(){var t,e;const o=super.createRenderRoot();return null!==(t=(e=this.renderOptions).renderBefore)&&void 0!==t||(e.renderBefore=o.firstChild),o}update(t){const e=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Dt=((t,e,o)=>{var i,a;const s=null!==(i=null==o?void 0:o.renderBefore)&&void 0!==i?i:e;let n=s._$litPart$;if(void 0===n){const t=null!==(a=null==o?void 0:o.renderBefore)&&void 0!==a?a:null;s._$litPart$=n=new gt(e.insertBefore(K(),t),t,void 0,null!=o?o:{})}return n._$AI(t),n})(e,this.renderRoot,this.renderOptions)}connectedCallback(){var t;super.connectedCallback(),null===(t=this._$Dt)||void 0===t||t.setConnected(!0)}disconnectedCallback(){var t;super.disconnectedCallback(),null===(t=this._$Dt)||void 0===t||t.setConnected(!1)}render(){return lt}}St.finalized=!0,St._$litElement$=!0,null===(At=globalThis.litElementHydrateSupport)||void 0===At||At.call(globalThis,{LitElement:St}),null===(Ct=globalThis.litElementPolyfillSupport)||void 0===Ct||Ct.call(globalThis,{LitElement:St}),(null!==(xt=globalThis.litElementVersions)&&void 0!==xt?xt:globalThis.litElementVersions=[]).push("3.0.0");class Tt extends St{shouldUpdate(){return this.active}static get properties(){return{active:{type:Boolean}}}}let wt;const kt=a(wt||(wt=(t=>t)`
+import{s as t,r as e,$ as o}from"./1e4b748c.js";class a extends t{shouldUpdate(){return this.active}static get properties(){return{active:{type:Boolean}}}}let i;const r=e(i||(i=(t=>t)`
   *,
   *::before,
   *::after {
@@ -93,7 +93,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
     background: var(--primary-contrast-color);
     color: var(--primary-color);
   }
-`)),It={fromAttribute(t){if(!t)return;const e=t.trim();if(""===e||"undefined"===e||"null"===e)return;const o=parseInt(e,10);return Number.isNaN(o)?t:o},toAttribute:t=>void 0!==t?`${t}`:null};let Rt,Ot,Et=t=>t;const Ft=t=>{const e=parseInt(t,10);return Number.isNaN(e)};customElements.define("helium-animated-pages",class extends St{render(){return rt(Rt||(Rt=Et` <slot></slot> `))}static get styles(){return[a(Ot||(Ot=Et`
+`)),n={fromAttribute(t){if(!t)return;const e=t.trim();if(""===e||"undefined"===e||"null"===e)return;const o=parseInt(e,10);return Number.isNaN(o)?t:o},toAttribute:t=>void 0!==t?`${t}`:null};let s,m,l=t=>t;const d=t=>{const e=parseInt(t,10);return Number.isNaN(e)};customElements.define("helium-animated-pages",class extends t{render(){return o(s||(s=l` <slot></slot> `))}static get styles(){return[e(m||(m=l`
         :host {
           position: absolute;
           width: 100%;
@@ -118,7 +118,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           --helium-children-visible: hidden;
           z-index: -1;
         }
-      `))]}static get properties(){return{animationClasses:{type:Object},attrForSelected:{type:String},selected:{converter:It}}}constructor(){super(),this._inAnimation=this._inAnimation.bind(this),this._outAnimation=this._outAnimation.bind(this),this.attrForSelected="",this.animationClasses={}}get isAnimating(){return this._animating}get selected(){return this._selected}set selected(t){if(null==t||this._animating)return;if(this._inPage=Ft(t)?this.querySelector(`[${this.attrForSelected}="${t}"]`):this.children[t],this._outPage=this.selectedItem,!this._inPage||this._inPage===this._outPage)return;const e=this._selected;let o="";this._outPage&&(o=this.attrForSelected?this._outPage.getAttribute(this.attrForSelected):Array.from(this.children).indexOf(this._outPage)),this._selected=this.attrForSelected?this._inPage.getAttribute(this.attrForSelected):t,this._changeActive(this._selected,o),this.requestUpdate("selected",e)}get selectedItem(){if(this._selected||0===this._selected){return Ft(this._selected)?this.querySelector(`[${this.attrForSelected}="${this._selected}"]`):this.children[this._selected]}return null}select(t){this.selected=t}selectNext(){const t=Array.from(this.children);if(!t||0===t.length)return;const{selectedItem:e}=this,o=t.indexOf(e),i=o+1>=t.length?0:o+1;this.selected=i}selectPrevious(){const t=Array.from(this.children);if(!t||0===t.length)return;const{selectedItem:e}=this,o=t.indexOf(e),i=o-1<0?t.length-1:o-1;this.selected=i}_changeActive(t,e){const o=new CustomEvent("helium-start",{composed:!0,bubbles:!0});if(this.dispatchEvent(o),this.animationClasses)this._currentClasses=this._animationClasses(t,e),this._beginAnimation();else{this._inPage.setAttribute("active",!0),this._outPage&&this._outPage.removeAttribute("active");const t=new CustomEvent("helium-end",{composed:!0,bubbles:!0});this.dispatchEvent(t)}}_beginAnimation(){this._animating=!0,this._inPage.addEventListener("animationend",this._inAnimation,{once:!0}),this._outPage?(this._outPage.addEventListener("animationend",this._outAnimation,{once:!0}),this._outPage.classList.add(this._currentClasses.out)):this._outAnimationEnded=!0,this._inPage.classList.add(this._currentClasses.in),this._inPage.setAttribute("active",!0)}_animationClasses(t,e){const o=`${e}_${t}`,i=`*_${t}`,a=`${e}_*`;return o in this.animationClasses?this.animationClasses[o]:i in this.animationClasses?this.animationClasses[i]:a in this.animationClasses?this.animationClasses[a]:this.animationClasses.default}_inAnimation(){this._inAnimationEnded=!0,this._onAnimationEnd()}_outAnimation(){this._outAnimationEnded=!0,this._onAnimationEnd()}_onAnimationEnd(){if(this._inAnimationEnded&&this._outAnimationEnded){this._inAnimationEnded=!1,this._outAnimationEnded=!1,this._animating=!1,this._inPage.classList.remove(this._currentClasses.in),this._outPage&&(this._outPage.removeAttribute("active"),this._outPage.classList.remove(this._currentClasses.out)),this._inPage=null,this._outPage=null,this._currentClasses=null;const t=new CustomEvent("helium-end",{composed:!0,bubbles:!0});this.dispatchEvent(t)}}});let Pt,Lt,Nt,Ut,Bt,Ht,Xt,Yt,Mt=t=>t;const Dt=a(Pt||(Pt=Mt`
+      `))]}static get properties(){return{animationClasses:{type:Object},attrForSelected:{type:String},selected:{converter:n}}}constructor(){super(),this._inAnimation=this._inAnimation.bind(this),this._outAnimation=this._outAnimation.bind(this),this.attrForSelected="",this.animationClasses={}}get isAnimating(){return this._animating}get selected(){return this._selected}set selected(t){if(null==t||this._animating)return;if(this._inPage=d(t)?this.querySelector(`[${this.attrForSelected}="${t}"]`):this.children[t],this._outPage=this.selectedItem,!this._inPage||this._inPage===this._outPage)return;const e=this._selected;let o="";this._outPage&&(o=this.attrForSelected?this._outPage.getAttribute(this.attrForSelected):Array.from(this.children).indexOf(this._outPage)),this._selected=this.attrForSelected?this._inPage.getAttribute(this.attrForSelected):t,this._changeActive(this._selected,o),this.requestUpdate("selected",e)}get selectedItem(){if(this._selected||0===this._selected){return d(this._selected)?this.querySelector(`[${this.attrForSelected}="${this._selected}"]`):this.children[this._selected]}return null}select(t){this.selected=t}selectNext(){const t=Array.from(this.children);if(!t||0===t.length)return;const{selectedItem:e}=this,o=t.indexOf(e),a=o+1>=t.length?0:o+1;this.selected=a}selectPrevious(){const t=Array.from(this.children);if(!t||0===t.length)return;const{selectedItem:e}=this,o=t.indexOf(e),a=o-1<0?t.length-1:o-1;this.selected=a}_changeActive(t,e){const o=new CustomEvent("helium-start",{composed:!0,bubbles:!0});if(this.dispatchEvent(o),this.animationClasses)this._currentClasses=this._animationClasses(t,e),this._beginAnimation();else{this._inPage.setAttribute("active",!0),this._outPage&&this._outPage.removeAttribute("active");const t=new CustomEvent("helium-end",{composed:!0,bubbles:!0});this.dispatchEvent(t)}}_beginAnimation(){this._animating=!0,this._inPage.addEventListener("animationend",this._inAnimation,{once:!0}),this._outPage?(this._outPage.addEventListener("animationend",this._outAnimation,{once:!0}),this._outPage.classList.add(this._currentClasses.out)):this._outAnimationEnded=!0,this._inPage.classList.add(this._currentClasses.in),this._inPage.setAttribute("active",!0)}_animationClasses(t,e){const o=`${e}_${t}`,a=`*_${t}`,i=`${e}_*`;return o in this.animationClasses?this.animationClasses[o]:a in this.animationClasses?this.animationClasses[a]:i in this.animationClasses?this.animationClasses[i]:this.animationClasses.default}_inAnimation(){this._inAnimationEnded=!0,this._onAnimationEnd()}_outAnimation(){this._outAnimationEnded=!0,this._onAnimationEnd()}_onAnimationEnd(){if(this._inAnimationEnded&&this._outAnimationEnded){this._inAnimationEnded=!1,this._outAnimationEnded=!1,this._animating=!1,this._inPage.classList.remove(this._currentClasses.in),this._outPage&&(this._outPage.removeAttribute("active"),this._outPage.classList.remove(this._currentClasses.out)),this._inPage=null,this._outPage=null,this._currentClasses=null;const t=new CustomEvent("helium-end",{composed:!0,bubbles:!0});this.dispatchEvent(t)}}});let p,c,h,f,g,u,y,b,v=t=>t;const C=e(p||(p=v`
   .page-rotateCarouselLeftIn {
     transform-origin: 0% 50%;
     animation: rotateCarouselLeftIn 0.8s both ease;
@@ -129,7 +129,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(200%) scale(0.4) rotateY(65deg);
     }
   }
-`)),zt=a(Lt||(Lt=Mt`
+`)),_=e(c||(c=v`
   .page-rotateCarouselRightIn {
     transform-origin: 100% 50%;
     animation: rotateCarouselRightIn 0.8s both ease;
@@ -140,7 +140,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-200%) scale(0.4) rotateY(-65deg);
     }
   }
-`));a(Nt||(Nt=Mt`
+`));e(h||(h=v`
   .page-rotateCarouselTopIn {
     transform-origin: 50% 0%;
     animation: rotateCarouselTopIn 0.8s both ease;
@@ -151,7 +151,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(200%) scale(0.4) rotateX(-65deg);
     }
   }
-`)),a(Ut||(Ut=Mt`
+`)),e(f||(f=v`
   .page-rotateCarouselBottomIn {
     transform-origin: 50% 100%;
     animation: rotateCarouselBottomIn 0.8s both ease;
@@ -162,7 +162,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-200%) scale(0.4) rotateX(65deg);
     }
   }
-`));const Zt=a(Bt||(Bt=Mt`
+`));const x=e(g||(g=v`
   .page-rotateCarouselLeftOut {
     transform-origin: 100% 50%;
     animation: rotateCarouselLeftOut 0.8s both ease;
@@ -176,7 +176,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-150%) scale(0.4) rotateY(-65deg);
     }
   }
-`)),jt=a(Ht||(Ht=Mt`
+`)),k=e(u||(u=v`
   .page-rotateCarouselRightOut {
     transform-origin: 0% 50%;
     animation: rotateCarouselRightOut 0.8s both ease;
@@ -190,7 +190,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(200%) scale(0.4) rotateY(65deg);
     }
   }
-`));a(Xt||(Xt=Mt`
+`));e(y||(y=v`
   .page-rotateCarouselTopOut {
     transform-origin: 50% 100%;
     animation: rotateCarouselTopOut 0.8s both ease;
@@ -204,7 +204,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-200%) scale(0.4) rotateX(65deg);
     }
   }
-`)),a(Yt||(Yt=Mt`
+`)),e(b||(b=v`
   .page-rotateCarouselBottomOut {
     transform-origin: 50% 0%;
     animation: rotateCarouselBottomOut 0.8s both ease;
@@ -218,7 +218,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(200%) scale(0.4) rotateX(-65deg);
     }
   }
-`));let Wt,qt,Vt,Jt,Kt,Gt,Qt,te,ee=t=>t;const oe=a(Wt||(Wt=ee`
+`));let F,S,I,T,R,O,w,A,L=t=>t;const X=e(F||(F=L`
   .page-rotateCubeLeftIn {
     transform-origin: 0% 50%;
     animation: rotateCubeLeftIn 0.6s both ease-in;
@@ -233,7 +233,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(50%) translateZ(-200px) rotateY(45deg);
     }
   }
-`)),ie=a(qt||(qt=ee`
+`)),Y=e(S||(S=L`
   .page-rotateCubeRightIn {
     transform-origin: 100% 50%;
     animation: rotateCubeRightIn 0.6s both ease-in;
@@ -248,7 +248,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-50%) translateZ(-200px) rotateY(-45deg);
     }
   }
-`));a(Vt||(Vt=ee`
+`));e(I||(I=L`
   .page-rotateCubeTopIn {
     transform-origin: 50% 0%;
     animation: rotateCubeTopIn 0.6s both ease-in;
@@ -263,7 +263,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(50%) translateZ(-200px) rotateX(-45deg);
     }
   }
-`)),a(Jt||(Jt=ee`
+`)),e(T||(T=L`
   .page-rotateCubeBottomIn {
     transform-origin: 50% 100%;
     animation: rotateCubeBottomIn 0.6s both ease-in;
@@ -278,7 +278,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-50%) translateZ(-200px) rotateX(45deg);
     }
   }
-`));const ae=a(Kt||(Kt=ee`
+`));const P=e(R||(R=L`
   .page-rotateCubeLeftOut {
     transform-origin: 100% 50%;
     animation: rotateCubeLeftOut 0.6s both ease-in;
@@ -296,7 +296,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%) rotateY(-90deg);
     }
   }
-`)),se=a(Gt||(Gt=ee`
+`)),B=e(O||(O=L`
   .page-rotateCubeRightOut {
     transform-origin: 0% 50%;
     animation: rotateCubeRightOut 0.6s both ease-in;
@@ -314,7 +314,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%) rotateY(90deg);
     }
   }
-`));a(Qt||(Qt=ee`
+`));e(w||(w=L`
   .page-rotateCubeTopOut {
     transform-origin: 50% 100%;
     animation: rotateCubeTopOut 0.6s both ease-in;
@@ -332,7 +332,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%) rotateX(90deg);
     }
   }
-`)),a(te||(te=ee`
+`)),e(A||(A=L`
   .page-rotateCubeBottomOut {
     transform-origin: 50% 0%;
     animation: rotateCubeBottomOut 0.6s both ease-in;
@@ -350,7 +350,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateX(-90deg);
     }
   }
-`));let ne,re,le=t=>t;const de=a(ne||(ne=le`
+`));let $,Z,N=t=>t;const U=e($||($=N`
   .page-fadeIn {
     animation: fadeIn 0.7s ease both;
   }
@@ -361,7 +361,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
     to {
     }
   }
-`)),he=a(re||(re=le`
+`)),D=e(Z||(Z=N`
   .page-fadeOut {
     animation: fadeOut 0.7s ease both;
     z-index: -1;
@@ -373,7 +373,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`));let me,ce,pe,ue,fe,ge,ve,ye,_e=t=>t;a(me||(me=_e`
+`));let z,E,j,q,M,H,J,W,G=t=>t;e(z||(z=G`
   .page-flipInLeft {
     transform-origin: 50% 50%;
     animation: flipInLeft 0.5s both ease-out;
@@ -384,7 +384,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(ce||(ce=_e`
+`)),e(E||(E=G`
   .page-flipInRight {
     transform-origin: 50% 50%;
     animation: flipInRight 0.5s both ease-out;
@@ -395,7 +395,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(pe||(pe=_e`
+`)),e(j||(j=G`
   .page-flipInTop {
     transform-origin: 50% 50%;
     animation: flipInTop 0.5s both ease-out;
@@ -406,7 +406,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(ue||(ue=_e`
+`)),e(q||(q=G`
   .page-flipInBottom {
     transform-origin: 50% 50%;
     animation: flipInBottom 0.5s both ease-out;
@@ -417,7 +417,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(fe||(fe=_e`
+`)),e(M||(M=G`
   .page-flipOutLeft {
     transform-origin: 50% 50%;
     animation: flipOutLeft 0.5s both ease-in;
@@ -430,7 +430,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(ge||(ge=_e`
+`)),e(H||(H=G`
   .page-flipOutRight {
     transform-origin: 50% 50%;
     animation: flipOutRight 0.5s both ease-in;
@@ -443,7 +443,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(ve||(ve=_e`
+`)),e(J||(J=G`
   .page-flipOutTop {
     transform-origin: 50% 50%;
     animation: flipOutTop 0.5s both ease-in;
@@ -456,7 +456,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`)),a(ye||(ye=_e`
+`)),e(W||(W=G`
   .page-flipOutBottom {
     transform-origin: 50% 50%;
     animation: flipOutBottom 0.5s both ease-in;
@@ -469,7 +469,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0.2;
     }
   }
-`));let $e,be,Ae,Ce,xe,Se,Te,we,ke=t=>t;a($e||($e=ke`
+`));let V,K,Q,tt,et,ot,at,it,rt=t=>t;e(V||(V=rt`
   .page-rotateUnfoldLeft {
     transform-origin: 100% 50%;
     animation: rotateUnfoldLeft 0.7s both ease;
@@ -480,7 +480,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%) rotateY(-90deg);
     }
   }
-`)),a(be||(be=ke`
+`)),e(K||(K=rt`
   .page-rotateUnfoldRight {
     transform-origin: 0% 50%;
     animation: rotateUnfoldRight 0.7s both ease;
@@ -491,7 +491,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%) rotateY(90deg);
     }
   }
-`)),a(Ae||(Ae=ke`
+`)),e(Q||(Q=rt`
   .page-rotateUnfoldTop {
     transform-origin: 50% 100%;
     animation: rotateUnfoldTop 0.7s both ease;
@@ -502,7 +502,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%) rotateX(90deg);
     }
   }
-`)),a(Ce||(Ce=ke`
+`)),e(tt||(tt=rt`
   .page-rotateUnfoldBottom {
     transform-origin: 50% 0%;
     animation: rotateUnfoldBottom 0.7s both ease;
@@ -513,7 +513,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateX(-90deg);
     }
   }
-`)),a(xe||(xe=ke`
+`)),e(et||(et=rt`
   .page-rotateFoldLeft {
     transform-origin: 100% 50%;
     animation: rotateFoldLeft 0.7s both ease;
@@ -526,7 +526,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%) rotateY(-90deg);
     }
   }
-`)),a(Se||(Se=ke`
+`)),e(ot||(ot=rt`
   .page-rotateFoldRight {
     transform-origin: 0% 50%;
     animation: rotateFoldRight 0.7s both ease;
@@ -539,7 +539,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%) rotateY(90deg);
     }
   }
-`)),a(Te||(Te=ke`
+`)),e(at||(at=rt`
   .page-rotateFoldTop {
     transform-origin: 50% 100%;
     animation: rotateFoldTop 0.7s both ease;
@@ -552,7 +552,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%) rotateX(90deg);
     }
   }
-`)),a(we||(we=ke`
+`)),e(it||(it=rt`
   .page-rotateFoldBottom {
     transform-origin: 50% 0%;
     animation: rotateFoldBottom 0.7s both ease;
@@ -565,7 +565,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateX(-90deg);
     }
   }
-`));let Ie,Re,Oe,Ee,Fe,Pe,Le,Ne,Ue,Be,He,Xe,Ye,Me,De,ze,Ze=t=>t;a(Ie||(Ie=Ze`
+`));let nt,st,mt,lt,dt,pt,ct,ht,ft,gt,ut,yt,bt,vt,Ct,_t,xt=t=>t;e(nt||(nt=xt`
   .page-moveFromLeft {
     animation: moveFromLeft 0.6s ease both;
   }
@@ -574,7 +574,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%);
     }
   }
-`)),a(Re||(Re=Ze`
+`)),e(st||(st=xt`
   .page-moveFromRight {
     animation: moveFromRight 0.6s ease both;
   }
@@ -583,7 +583,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%);
     }
   }
-`)),a(Oe||(Oe=Ze`
+`)),e(mt||(mt=xt`
   .page-moveFromTop {
     animation: moveFromTop 0.6s ease both;
   }
@@ -592,7 +592,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%);
     }
   }
-`)),a(Ee||(Ee=Ze`
+`)),e(lt||(lt=xt`
   .page-moveFromBottom {
     animation: moveFromBottom 0.6s ease both;
   }
@@ -601,7 +601,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%);
     }
   }
-`)),a(Fe||(Fe=Ze`
+`)),e(dt||(dt=xt`
   .page-moveFromLeftFade {
     animation: moveFromLeftFade 0.6s ease both;
   }
@@ -611,7 +611,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%);
     }
   }
-`)),a(Pe||(Pe=Ze`
+`)),e(pt||(pt=xt`
   .page-moveFromRightFade {
     animation: moveFromRightFade 0.6s ease both;
   }
@@ -621,7 +621,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%);
     }
   }
-`)),a(Le||(Le=Ze`
+`)),e(ct||(ct=xt`
   .page-moveFromTopFade {
     animation: moveFromTopFade 0.6s ease both;
   }
@@ -631,7 +631,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%);
     }
   }
-`)),a(Ne||(Ne=Ze`
+`)),e(ht||(ht=xt`
   .page-moveFromBottomFade {
     animation: moveFromBottomFade 0.6s ease both;
   }
@@ -641,7 +641,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%);
     }
   }
-`)),a(Ue||(Ue=Ze`
+`)),e(ft||(ft=xt`
   .page-moveToLeft {
     animation: moveToLeft 0.7s ease both;
   }
@@ -652,7 +652,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%);
     }
   }
-`)),a(Be||(Be=Ze`
+`)),e(gt||(gt=xt`
   .page-moveToRight {
     animation: moveToRight 0.7s ease both;
   }
@@ -663,7 +663,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%);
     }
   }
-`)),a(He||(He=Ze`
+`)),e(ut||(ut=xt`
   .page-moveToTop {
     animation: moveToTop 0.6s ease both;
   }
@@ -674,7 +674,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%);
     }
   }
-`)),a(Xe||(Xe=Ze`
+`)),e(yt||(yt=xt`
   .page-moveToBottom {
     animation: moveToBottom 0.6s ease both;
   }
@@ -685,7 +685,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%);
     }
   }
-`)),a(Ye||(Ye=Ze`
+`)),e(bt||(bt=xt`
   .page-moveToLeftFade {
     animation: moveToLeftFade 0.7s ease both;
   }
@@ -697,7 +697,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%);
     }
   }
-`)),a(Me||(Me=Ze`
+`)),e(vt||(vt=xt`
   .page-moveToRightFade {
     animation: moveToRightFade 0.7s ease both;
   }
@@ -709,7 +709,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%);
     }
   }
-`)),a(De||(De=Ze`
+`)),e(Ct||(Ct=xt`
   .page-moveToTopFade {
     animation: moveToTopFade 0.6s ease both;
   }
@@ -721,7 +721,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%);
     }
   }
-`)),a(ze||(ze=Ze`
+`)),e(_t||(_t=xt`
   .page-moveToBottomFade {
     animation: moveToBottomFade 0.6s ease both;
   }
@@ -733,7 +733,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%);
     }
   }
-`));let je,We,qe,Ve,Je,Ke,Ge,Qe,to=t=>t;a(je||(je=to`
+`));let kt,Ft,St,It,Tt,Rt,Ot,wt,At=t=>t;e(kt||(kt=At`
   .page-rotatePullLeft {
     transform-origin: 0% 50%;
     animation: rotatePullLeft 0.5s both ease;
@@ -744,7 +744,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateY(90deg);
     }
   }
-`)),a(We||(We=to`
+`)),e(Ft||(Ft=At`
   .page-rotatePullRight {
     transform-origin: 100% 50%;
     animation: rotatePullRight 0.5s both ease;
@@ -755,7 +755,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateY(-90deg);
     }
   }
-`)),a(qe||(qe=to`
+`)),e(St||(St=At`
   .page-rotatePullTop {
     transform-origin: 50% 0%;
     animation: rotatePullTop 0.5s both ease;
@@ -766,7 +766,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateX(-90deg);
     }
   }
-`)),a(Ve||(Ve=to`
+`)),e(It||(It=At`
   .page-rotatePullBottom {
     transform-origin: 50% 100%;
     animation: rotatePullBottom 0.5s both ease;
@@ -777,7 +777,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateX(90deg);
     }
   }
-`)),a(Je||(Je=to`
+`)),e(Tt||(Tt=At`
   .page-rotatePushLeft {
     transform-origin: 0% 50%;
     animation: rotatePushLeft 0.8s both ease;
@@ -790,7 +790,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateY(90deg);
     }
   }
-`)),a(Ke||(Ke=to`
+`)),e(Rt||(Rt=At`
   .page-rotatePushRight {
     transform-origin: 100% 50%;
     animation: rotatePushRight 0.8s both ease;
@@ -803,7 +803,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateY(-90deg);
     }
   }
-`)),a(Ge||(Ge=to`
+`)),e(Ot||(Ot=At`
   .page-rotatePushTop {
     transform-origin: 50% 0%;
     animation: rotatePushTop 0.8s both ease;
@@ -816,7 +816,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateX(-90deg);
     }
   }
-`)),a(Qe||(Qe=to`
+`)),e(wt||(wt=At`
   .page-rotatePushBottom {
     transform-origin: 50% 100%;
     animation: rotatePushBottom 0.8s both ease;
@@ -829,7 +829,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: rotateX(90deg);
     }
   }
-`));let eo,oo,io,ao,so,no,ro,lo,ho=t=>t;a(eo||(eo=ho`
+`));let Lt,Xt,Yt,Pt,Bt,$t,Zt,Nt,Ut=t=>t;e(Lt||(Lt=Ut`
   .page-rotateRoomLeftIn {
     transform-origin: 0% 50%;
     animation: rotateRoomLeftIn 0.8s both ease;
@@ -840,7 +840,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%) rotateY(-90deg);
     }
   }
-`)),a(oo||(oo=ho`
+`)),e(Xt||(Xt=Ut`
   .page-rotateRoomRightIn {
     transform-origin: 100% 50%;
     animation: rotateRoomRightIn 0.8s both ease;
@@ -851,7 +851,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%) rotateY(90deg);
     }
   }
-`)),a(io||(io=ho`
+`)),e(Yt||(Yt=Ut`
   .page-rotateRoomTopIn {
     transform-origin: 50% 0%;
     animation: rotateRoomTopIn 0.8s both ease;
@@ -862,7 +862,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateX(90deg);
     }
   }
-`)),a(ao||(ao=ho`
+`)),e(Pt||(Pt=Ut`
   .page-rotateRoomBottomIn {
     transform-origin: 50% 100%;
     animation: rotateRoomBottomIn 0.8s both ease;
@@ -873,7 +873,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%) rotateX(-90deg);
     }
   }
-`)),a(so||(so=ho`
+`)),e(Bt||(Bt=Ut`
   .page-rotateRoomLeftOut {
     transform-origin: 100% 50%;
     animation: rotateRoomLeftOut 0.8s both ease;
@@ -887,7 +887,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(-100%) rotateY(90deg);
     }
   }
-`)),a(no||(no=ho`
+`)),e($t||($t=Ut`
   .page-rotateRoomRightOut {
     transform-origin: 0% 50%;
     animation: rotateRoomRightOut 0.8s both ease;
@@ -901,7 +901,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateX(100%) rotateY(-90deg);
     }
   }
-`)),a(ro||(ro=ho`
+`)),e(Zt||(Zt=Ut`
   .page-rotateRoomTopOut {
     transform-origin: 50% 100%;
     animation: rotateRoomTopOut 0.8s both ease;
@@ -915,7 +915,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(-100%) rotateX(-90deg);
     }
   }
-`)),a(lo||(lo=ho`
+`)),e(Nt||(Nt=Ut`
   .page-rotateRoomBottomOut {
     transform-origin: 50% 0%;
     animation: rotateRoomBottomOut 0.8s both ease;
@@ -929,7 +929,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateX(90deg);
     }
   }
-`));let mo,co,po,uo,fo,go,vo,yo=t=>t;a(mo||(mo=yo`
+`));let Dt,zt,Et,jt,qt,Mt,Ht,Jt=t=>t;e(Dt||(Dt=Jt`
   .page-rotateInNewspaper {
     transform-origin: 50% 50%;
     animation: rotateInNewspaper 0.5s both ease-out;
@@ -940,7 +940,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`)),a(co||(co=yo`
+`)),e(zt||(zt=Jt`
   .page-rotateRightSideFirst {
     transform-origin: 0% 50%;
     animation: rotateRightSideFirst 0.8s both ease-in;
@@ -959,7 +959,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`)),a(po||(po=yo`
+`)),e(Et||(Et=Jt`
   .page-rotateLeftSideFirst {
     transform-origin: 100% 50%;
     animation: rotateLeftSideFirst 0.8s both ease-in;
@@ -978,7 +978,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`)),a(uo||(uo=yo`
+`)),e(jt||(jt=Jt`
   .page-rotateTopSideFirst {
     transform-origin: 50% 100%;
     animation: rotateTopSideFirst 0.8s both ease-in;
@@ -997,7 +997,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`)),a(fo||(fo=yo`
+`)),e(qt||(qt=Jt`
   .page-rotateBottomSideFirst {
     transform-origin: 50% 0%;
     animation: rotateBottomSideFirst 0.8s both ease-in;
@@ -1016,7 +1016,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`)),a(go||(go=yo`
+`)),e(Mt||(Mt=Jt`
   .page-rotateFall {
     transform-origin: 0% 0%;
     animation: rotateFall 1s both ease-in;
@@ -1040,7 +1040,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateY(100%) rotateZ(17deg);
     }
   }
-`)),a(vo||(vo=yo`
+`)),e(Ht||(Ht=Jt`
   .page-rotateOutNewspaper {
     transform-origin: 50% 50%;
     animation: rotateOutNewspaper 0.5s both ease-in;
@@ -1053,7 +1053,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       opacity: 0;
     }
   }
-`));let _o,$o,bo,Ao,Co,xo,So=t=>t;a(_o||(_o=So`
+`));let Wt,Gt,Vt,Kt,Qt,te,ee=t=>t;e(Wt||(Wt=ee`
   .page-scaleUp {
     animation: scaleUp 0.7s ease both;
     z-index: -1;
@@ -1064,7 +1064,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(0.8);
     }
   }
-`)),a($o||($o=So`
+`)),e(Gt||(Gt=ee`
   .page-scaleUpDown {
     animation: scaleUpDown 0.5s ease both;
   }
@@ -1074,7 +1074,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(1.2);
     }
   }
-`)),a(bo||(bo=So`
+`)),e(Vt||(Vt=ee`
   .page-scaleUpCenter {
     animation: scaleUpCenter 0.4s ease-out both;
   }
@@ -1084,7 +1084,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(0.7);
     }
   }
-`)),a(Ao||(Ao=So`
+`)),e(Kt||(Kt=ee`
   .page-scaleDown {
     animation: scaleDown 0.7s ease both;
     z-index: -1;
@@ -1097,7 +1097,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(0.8);
     }
   }
-`)),a(Co||(Co=So`
+`)),e(Qt||(Qt=ee`
   .page-scaleDownUp {
     animation: scaleDownUp 0.5s ease both;
   }
@@ -1109,7 +1109,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(1.2);
     }
   }
-`)),a(xo||(xo=So`
+`)),e(te||(te=ee`
   .page-scaleDownCenter {
     animation: scaleDownCenter 0.4s ease-in both;
   }
@@ -1121,7 +1121,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: scale(0.7);
     }
   }
-`));let To,wo,ko=t=>t;a(To||(To=ko`
+`));let oe,ae,ie=t=>t;e(oe||(oe=ie`
   .page-rotateSidesIn {
     transform-origin: 150% 50%;
     animation: rotateSidesIn 0.5s both ease-out;
@@ -1132,7 +1132,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateZ(-500px) rotateY(-90deg);
     }
   }
-`)),a(wo||(wo=ko`
+`)),e(ae||(ae=ie`
   .page-rotateSidesOut {
     transform-origin: -50% 50%;
     animation: rotateSidesOut 0.5s both ease-in;
@@ -1145,7 +1145,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateZ(-500px) rotateY(90deg);
     }
   }
-`));let Io,Ro,Oo=t=>t;a(Io||(Io=Oo`
+`));let re,ne,se=t=>t;e(re||(re=se`
   .page-rotateSlideIn {
     animation: rotateSlideIn 1s both ease;
   }
@@ -1164,7 +1164,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateZ(0) translateX(0);
     }
   }
-`)),a(Ro||(Ro=Oo`
+`)),e(ne||(ne=se`
   .page-rotateSlideOut {
     animation: rotateSlideOut 1s both ease;
   }
@@ -1184,7 +1184,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
       transform: translateZ(-500px) translateX(-200%);
     }
   }
-`));let Eo,Fo,Po=t=>t;window.customElements.define("settings-demo",class extends Tt{render(){return rt(Eo||(Eo=Po`
+`));let me,le,de=t=>t;window.customElements.define("settings-demo",class extends a{render(){return o(me||(me=de`
       <section>
         <h1>Animation Settings Demo</h1>
         <p>
@@ -1310,7 +1310,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           define your classes in the CSS for that component.
         </p>
       </section>
-    `),this._selectNoAttr,this._selectNoAttr,this._noAttrAnimationClasses,this._noAttrCode,JSON.stringify(this._noAttrAnimationClasses,null,2),this._selectAttr,this._selectAttr,this._attrAnimationClasses,this._attrCode,JSON.stringify(this._attrAnimationClasses,null,2))}static get properties(){return{_attrAnimationClasses:{state:!0},_noAttrAnimationClasses:{state:!0}}}static get styles(){return[kt,de,he,Dt,zt,Zt,jt,oe,ie,ae,se,a(Fo||(Fo=Po`
+    `),this._selectNoAttr,this._selectNoAttr,this._noAttrAnimationClasses,this._noAttrCode,JSON.stringify(this._noAttrAnimationClasses,null,2),this._selectAttr,this._selectAttr,this._attrAnimationClasses,this._attrCode,JSON.stringify(this._attrAnimationClasses,null,2))}static get properties(){return{_attrAnimationClasses:{state:!0},_noAttrAnimationClasses:{state:!0}}}static get styles(){return[r,U,D,C,_,x,k,X,Y,P,B,e(le||(le=de`
         :host {
           padding: 0 1rem;
         }
@@ -1319,7 +1319,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           height: 50px;
           position: relative;
         }
-      `))]}_selectNoAttr(t){const e=this.shadowRoot.querySelector("#noAttr"),{action:o}=t.target.dataset;this._select(e,o)}_selectAttr(t){const e=this.shadowRoot.querySelector("#attr"),{action:o}=t.target.dataset;this._select(e,o)}_select(t,e){"next"===e?t.selectNext():"previous"===e&&t.selectPrevious()}constructor(){super(),this._noAttrAnimationClasses={"0_1":{in:"page-rotateCubeLeftIn",out:"page-rotateCubeLeftOut"},"2_1":{in:"page-rotateCubeRightIn",out:"page-rotateCubeRightOut"},"*_0":{in:"page-rotateCubeRightIn",out:"page-rotateCubeRightOut"},"*_2":{in:"page-rotateCubeLeftIn",out:"page-rotateCubeLeftOut"},_0:{in:"page-fadeIn",out:"page-fadeOut"},_2:{in:"page-fadeIn",out:"page-fadeOut"},default:{in:"page-fadeIn",out:"page-fadeOut"}},this._attrAnimationClasses={first_second:{in:"page-rotateCarouselLeftIn",out:"page-rotateCarouselLeftOut"},third_second:{in:"page-rotateCarouselRightIn",out:"page-rotateCarouselRightOut"},"*_first":{in:"page-rotateCarouselRightIn",out:"page-rotateCarouselRightOut"},"*_third":{in:"page-rotateCarouselLeftIn",out:"page-rotateCarouselLeftOut"},_first:{in:"page-fadeIn",out:"page-fadeOut"},_third:{in:"page-fadeIn",out:"page-fadeOut"},default:{in:"page-fadeIn",out:"page-fadeOut"}},this._noAttrCode='\n<helium-animated-pages\n  .animationClasses="${this._noAttrAnimationClasses}"\n>\n  <div>Slide index: 0</div>\n  <div>Slide index: 1</div>\n  <div>Slide index: 2</div>\n</helium-animated-pages>'.trim(),this._attrCode='\n<helium-animated-pages\n  attrForSelected="name"\n  .animationClasses="${this._attrAnimationClasses}"\n>\n  <div name="first">First Slide</div>\n  <div name="second">Second Slide</div>\n  <div name="third">Third Slide</div>\n</helium-animated-pages>'.trim()}});let Lo,No,Uo=t=>t;window.customElements.define("property-demo",class extends Tt{render(){return rt(Lo||(Lo=Uo`
+      `))]}_selectNoAttr(t){const e=this.shadowRoot.querySelector("#noAttr"),{action:o}=t.target.dataset;this._select(e,o)}_selectAttr(t){const e=this.shadowRoot.querySelector("#attr"),{action:o}=t.target.dataset;this._select(e,o)}_select(t,e){"next"===e?t.selectNext():"previous"===e&&t.selectPrevious()}constructor(){super(),this._noAttrAnimationClasses={"0_1":{in:"page-rotateCubeLeftIn",out:"page-rotateCubeLeftOut"},"2_1":{in:"page-rotateCubeRightIn",out:"page-rotateCubeRightOut"},"*_0":{in:"page-rotateCubeRightIn",out:"page-rotateCubeRightOut"},"*_2":{in:"page-rotateCubeLeftIn",out:"page-rotateCubeLeftOut"},_0:{in:"page-fadeIn",out:"page-fadeOut"},_2:{in:"page-fadeIn",out:"page-fadeOut"},default:{in:"page-fadeIn",out:"page-fadeOut"}},this._attrAnimationClasses={first_second:{in:"page-rotateCarouselLeftIn",out:"page-rotateCarouselLeftOut"},third_second:{in:"page-rotateCarouselRightIn",out:"page-rotateCarouselRightOut"},"*_first":{in:"page-rotateCarouselRightIn",out:"page-rotateCarouselRightOut"},"*_third":{in:"page-rotateCarouselLeftIn",out:"page-rotateCarouselLeftOut"},_first:{in:"page-fadeIn",out:"page-fadeOut"},_third:{in:"page-fadeIn",out:"page-fadeOut"},default:{in:"page-fadeIn",out:"page-fadeOut"}},this._noAttrCode='\n<helium-animated-pages\n  .animationClasses="${this._noAttrAnimationClasses}"\n>\n  <div>Slide index: 0</div>\n  <div>Slide index: 1</div>\n  <div>Slide index: 2</div>\n</helium-animated-pages>'.trim(),this._attrCode='\n<helium-animated-pages\n  attrForSelected="name"\n  .animationClasses="${this._attrAnimationClasses}"\n>\n  <div name="first">First Slide</div>\n  <div name="second">Second Slide</div>\n  <div name="third">Third Slide</div>\n</helium-animated-pages>'.trim()}});let pe,ce,he=t=>t;window.customElements.define("property-demo",class extends a{render(){return o(pe||(pe=he`
       <section>
         <h1>Selected Property Demo</h1>
         <p>
@@ -1433,7 +1433,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <code>selected</code> property.
         </p>
       </section>
-    `),this._indexChanged,this._selectedIndex,this._propAnimationClasses,this._toggleDisabledIndex,this._toggleDisabledIndex,this._indexDemoCode,this._nameChanged,this._selectedName,this._propAnimationClasses,this._nameDemoCode,JSON.stringify(this._propAnimationClasses,null,2))}static get properties(){return{_selectedIndex:{state:!0},_selectedName:{state:!0},_propAnimationClasses:{state:!0}}}static get styles(){return[kt,de,he,a(No||(No=Uo`
+    `),this._indexChanged,this._selectedIndex,this._propAnimationClasses,this._toggleDisabledIndex,this._toggleDisabledIndex,this._indexDemoCode,this._nameChanged,this._selectedName,this._propAnimationClasses,this._nameDemoCode,JSON.stringify(this._propAnimationClasses,null,2))}static get properties(){return{_selectedIndex:{state:!0},_selectedName:{state:!0},_propAnimationClasses:{state:!0}}}static get styles(){return[r,U,D,e(ce||(ce=he`
         :host {
           padding: 0 1rem;
         }
@@ -1442,7 +1442,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           height: 50px;
           position: relative;
         }
-      `))]}constructor(){super(),this._propAnimationClasses={default:{in:"page-fadeIn",out:"page-fadeOut"}},this._indexDemoCode='\n<helium-animated-pages\n  selected="${this._selectedIndex}"\n  .animationClasses="${this._propAnimationClasses}"\n  @helium-start="${this._toggleDisabledIndex}"\n  @helium-end="${this._toggleDisabledIndex}"\n>\n  <div>Slide index: 0</div>\n  <div>Slide index: 1</div>\n  <div>Slide index: 2</div>\n</helium-animated-pages>'.trim(),this._nameDemoCode='\n<helium-animated-pages\n  attrForSelected="name"\n  selected="${this._selectedName}"\n  .animationClasses="${this._propAnimationClasses}"\n>\n  <div name="first">First Slide</div>\n  <div name="second">Second Slide</div>\n  <div name="third">Third Slide</div>\n</helium-animated-pages>'.trim()}_indexChanged(t){t.target.value&&(this._selectedIndex=parseInt(t.target.value,10))}_toggleDisabledIndex(){const t=this.shadowRoot.querySelector("#select-index");t.disabled=!t.disabled}_nameChanged(t){t.target.value&&(this._selectedName=t.target.value)}});let Bo,Ho,Xo=t=>t;window.customElements.define("demo-element",class extends St{render(){return rt(Bo||(Bo=Xo`
+      `))]}constructor(){super(),this._propAnimationClasses={default:{in:"page-fadeIn",out:"page-fadeOut"}},this._indexDemoCode='\n<helium-animated-pages\n  selected="${this._selectedIndex}"\n  .animationClasses="${this._propAnimationClasses}"\n  @helium-start="${this._toggleDisabledIndex}"\n  @helium-end="${this._toggleDisabledIndex}"\n>\n  <div>Slide index: 0</div>\n  <div>Slide index: 1</div>\n  <div>Slide index: 2</div>\n</helium-animated-pages>'.trim(),this._nameDemoCode='\n<helium-animated-pages\n  attrForSelected="name"\n  selected="${this._selectedName}"\n  .animationClasses="${this._propAnimationClasses}"\n>\n  <div name="first">First Slide</div>\n  <div name="second">Second Slide</div>\n  <div name="third">Third Slide</div>\n</helium-animated-pages>'.trim()}_indexChanged(t){t.target.value&&(this._selectedIndex=parseInt(t.target.value,10))}_toggleDisabledIndex(){const t=this.shadowRoot.querySelector("#select-index");t.disabled=!t.disabled}_nameChanged(t){t.target.value&&(this._selectedName=t.target.value)}});let fe,ge,ue=t=>t;window.customElements.define("demo-element",class extends t{render(){return o(fe||(fe=ue`
       <header>
         <div class="tag-name">&lt;helium-animated-pages&gt;</div>
         <a href="./index.html">Docs</a>
@@ -1466,7 +1466,7 @@ const t=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
         <settings-demo name="settings"></settings-demo>
         <property-demo name="property"></property-demo>
       </helium-animated-pages>
-    `),this._selectMainPage,this._mainAnimationClasses)}static get properties(){return{_mainAnimationClasses:{state:!0}}}static get styles(){return[kt,de,he,a(Ho||(Ho=Xo`
+    `),this._selectMainPage,this._mainAnimationClasses)}static get properties(){return{_mainAnimationClasses:{state:!0}}}static get styles(){return[r,U,D,e(ge||(ge=ue`
         :host {
           --primary-color: #138472;
           --primary-contrast-color: #ffffff;
