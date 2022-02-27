@@ -1,81 +1,177 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "helium-animated-pages",
-      "path": "./..\\src\\HeliumAnimatedPages.js",
-      "description": "A light spiritual successor to neon-animated-pages using only css animations",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "src/HeliumAnimatedPages.js",
+      "declarations": [
         {
-          "name": "selected",
-          "description": "The numerical index or the value of the attribute of the currently\r\nselected node. It's only the index if `attrForSelected` isn't defined.\r\nModifying this property achieves the same results as invoking\r\nthe `select(next)` method.\r\nWarning: using this property together with any of the selection\r\nmethods might cause state inconsistencies.",
-          "type": "string|number"
-        },
-        {
-          "name": "attrForSelected",
-          "description": "If set, it will be the name of the attribute used to identify\r\nthe pages added inside the instance of `helium-animated-pages`.\r\nOtherwise, the index of the children page will be used. Any page\r\nwithout this attribute will be ignored. If two pages with\r\nthe same value for the attribute exist, only the first one will be selectable.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "animationClasses",
-          "description": "This property is required for the animations to run, it maps which\r\nanimations to run depending on what the transition will be.\r\n\r\nIf the property isn't set the transitions will run without animations.\r\n\r\nThe properties of this object each represent a different transition rule.\r\nThe transition rules can be of one of the following types.\r\nThe rule types are listed in order of priority.\r\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\r\n- `from_to`: The most specific kind of transition.\r\n   It defines an animation which will run when both the newly selected\r\n   page and the previously selected page match with the rule. For\r\n   example: `page1_page2`.\r\n- `_to `: This is a special subtype of the previous rule applied when there was no\r\n   previously selected page. For example: `_page1`\r\n- `*_to`: It defines an animation that will run whenever the newly selected page\r\n   matches this rule. This rule will ignore the previously selected page.\r\n   For example: `*_page2`\r\n- `from_*`: It defines an animation that will run whenever the previously selected page\r\n   matches this rule. This rule will ignore the newly selected page.\r\n   For example: `page1_*`\r\n- `default`: It defines an animation which will run when none of the\r\n   other rules apply.\r\n\r\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\r\n\r\nAll transition rules must be an object with the following format:\r\n```javascript\r\n{\r\n   in: 'inbound_css_animation_class_name',\r\n   out: 'outbound_css_animation_class_name'\r\n}\r\n```",
-          "type": "AnimationClasses",
-          "default": "{}"
+          "kind": "class",
+          "description": "A light spiritual successor to neon-animated-pages using only css animations",
+          "name": "HeliumAnimatedPages",
+          "cssProperties": [
+            {
+              "description": "Whether this component should be visible if it's a children of another `helium-animated-pages`.",
+              "name": "--helium-children-visible",
+              "default": "visible"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slot for the pages to animate",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "isAnimating",
+              "description": "This property will get the state of the animation. Whether it's currently in the middle of an animation or not.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "description": "The numerical index or the value of the attribute of the currently\nselected node. It's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nWarning: using this property together with any of the selection\nmethods might cause state inconsistencies.",
+              "type": {
+                "text": "string|number"
+              },
+              "attribute": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "selectedItem",
+              "description": "The currently selected item's DOM node.",
+              "type": {
+                "text": "Element"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "select",
+              "parameters": [
+                {
+                  "name": "next",
+                  "description": "next page index or attribute value",
+                  "type": {
+                    "text": "string|number"
+                  }
+                }
+              ],
+              "description": "select - Makes a transition into the page identified with next.\n\n- If `next` is a string, the new page will be searched depending on\n  `attrForSelected`.\n- If next is a number or a string which can be parsed to an integer,\n  the new page will be searched by index.\n\nIt will do nothing if one of the following conditions applies:\n\n- No page is found corresponding to the identifier.\n- An animation is running.\n- The new page is the same as the previous page."
+            },
+            {
+              "kind": "method",
+              "name": "selectNext",
+              "description": "selectNext - Makes a transition to the page which is the next sibling of\nthe currently selected page.\n\nThe first page will be selected if no page was selected or\nthe currently selected page is the last page."
+            },
+            {
+              "kind": "method",
+              "name": "selectPrevious",
+              "description": "selectPrevious - Makes a transition to the page which is the previous sibling\nof the currently selected page.\n\nThe last page will be selected if no page was selected or\nthe currently selected page is the first page."
+            },
+            {
+              "kind": "field",
+              "name": "attrForSelected",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "privacy": "public",
+              "description": "If set, it will be the name of the attribute used to identify\nthe pages added inside the instance of `helium-animated-pages`.\nOtherwise, the index of the children page will be used. Any page\nwithout this attribute will be ignored. If two pages with\nthe same value for the attribute exist, only the first one will be selectable.",
+              "attribute": "attrForSelected"
+            },
+            {
+              "kind": "field",
+              "name": "animationClasses",
+              "type": {
+                "text": "AnimationClasses"
+              },
+              "default": "{}",
+              "privacy": "public",
+              "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf the property isn't set the transitions will run without animations.\n\nThe properties of this object each represent a different transition rule.\nThe transition rules can be of one of the following types.\nThe rule types are listed in order of priority.\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\n- `from_to`: The most specific kind of transition.\n  It defines an animation which will run when both the newly selected\n  page and the previously selected page match with the rule. For\n  example: `page1_page2`.\n- `_to `: This is a special subtype of the previous rule applied when there was no\n  previously selected page. For example: `_page1`\n- `*_to`: It defines an animation that will run whenever the newly selected page\n  matches this rule. This rule will ignore the previously selected page.\n  For example: `*_page2`\n- `from_*`: It defines an animation that will run whenever the previously selected page\n  matches this rule. This rule will ignore the newly selected page.\n  For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n  other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAll transition rules must be an object with the following format:\n```javascript\n{\n  in: 'inbound_css_animation_class_name',\n  out: 'outbound_css_animation_class_name'\n}\n```",
+              "attribute": "animationClasses"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fires when the page transition starts",
+              "name": "helium-start"
+            },
+            {
+              "description": "Fires when the page transition ends",
+              "name": "helium-end"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "animationClasses",
+              "description": "This property is required for the animations to run, it maps which\nanimations to run depending on what the transition will be.\n\nIf the property isn't set the transitions will run without animations.\n\nThe properties of this object each represent a different transition rule.\nThe transition rules can be of one of the following types.\nThe rule types are listed in order of priority.\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\n- `from_to`: The most specific kind of transition.\n  It defines an animation which will run when both the newly selected\n  page and the previously selected page match with the rule. For\n  example: `page1_page2`.\n- `_to `: This is a special subtype of the previous rule applied when there was no\n  previously selected page. For example: `_page1`\n- `*_to`: It defines an animation that will run whenever the newly selected page\n  matches this rule. This rule will ignore the previously selected page.\n  For example: `*_page2`\n- `from_*`: It defines an animation that will run whenever the previously selected page\n  matches this rule. This rule will ignore the newly selected page.\n  For example: `page1_*`\n- `default`: It defines an animation which will run when none of the\n  other rules apply.\n\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\n\nAll transition rules must be an object with the following format:\n```javascript\n{\n  in: 'inbound_css_animation_class_name',\n  out: 'outbound_css_animation_class_name'\n}\n```",
+              "type": {
+                "text": "AnimationClasses"
+              },
+              "fieldName": "animationClasses"
+            },
+            {
+              "name": "attrForSelected",
+              "description": "If set, it will be the name of the attribute used to identify\nthe pages added inside the instance of `helium-animated-pages`.\nOtherwise, the index of the children page will be used. Any page\nwithout this attribute will be ignored. If two pages with\nthe same value for the attribute exist, only the first one will be selectable.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "attrForSelected"
+            },
+            {
+              "name": "selected",
+              "description": "The numerical index or the value of the attribute of the currently\nselected node. It's only the index if `attrForSelected` isn't defined.\nModifying this property achieves the same results as invoking\nthe `select(next)` method.\nWarning: using this property together with any of the selection\nmethods might cause state inconsistencies.",
+              "type": {
+                "text": "string|number"
+              },
+              "fieldName": "selected"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "helium-animated-pages",
+          "customElement": true
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "isAnimating",
-          "description": "This property will get the state of the animation. Whether it's currently in the middle of an animation or not.",
-          "type": "Boolean"
-        },
-        {
-          "name": "selected",
-          "attribute": "selected",
-          "description": "The numerical index or the value of the attribute of the currently\r\nselected node. It's only the index if `attrForSelected` isn't defined.\r\nModifying this property achieves the same results as invoking\r\nthe `select(next)` method.\r\nWarning: using this property together with any of the selection\r\nmethods might cause state inconsistencies.",
-          "type": "string|number"
-        },
-        {
-          "name": "selectedItem",
-          "description": "The currently selected item's DOM node.",
-          "type": "Element"
-        },
-        {
-          "name": "attrForSelected",
-          "attribute": "attrForSelected",
-          "description": "If set, it will be the name of the attribute used to identify\r\nthe pages added inside the instance of `helium-animated-pages`.\r\nOtherwise, the index of the children page will be used. Any page\r\nwithout this attribute will be ignored. If two pages with\r\nthe same value for the attribute exist, only the first one will be selectable.",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "animationClasses",
-          "attribute": "animationClasses",
-          "description": "This property is required for the animations to run, it maps which\r\nanimations to run depending on what the transition will be.\r\n\r\nIf the property isn't set the transitions will run without animations.\r\n\r\nThe properties of this object each represent a different transition rule.\r\nThe transition rules can be of one of the following types.\r\nThe rule types are listed in order of priority.\r\nAll the examples assume you have at least two pages identified respectively as `page1` and `page2`.\r\n- `from_to`: The most specific kind of transition.\r\n   It defines an animation which will run when both the newly selected\r\n   page and the previously selected page match with the rule. For\r\n   example: `page1_page2`.\r\n- `_to `: This is a special subtype of the previous rule applied when there was no\r\n   previously selected page. For example: `_page1`\r\n- `*_to`: It defines an animation that will run whenever the newly selected page\r\n   matches this rule. This rule will ignore the previously selected page.\r\n   For example: `*_page2`\r\n- `from_*`: It defines an animation that will run whenever the previously selected page\r\n   matches this rule. This rule will ignore the newly selected page.\r\n   For example: `page1_*`\r\n- `default`: It defines an animation which will run when none of the\r\n   other rules apply.\r\n\r\nPlease bear in mind 'undefined' and 'null' are not valid identifiers.\r\n\r\nAll transition rules must be an object with the following format:\r\n```javascript\r\n{\r\n   in: 'inbound_css_animation_class_name',\r\n   out: 'outbound_css_animation_class_name'\r\n}\r\n```",
-          "type": "AnimationClasses",
-          "default": "{}"
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HeliumAnimatedPages",
+            "module": "src/HeliumAnimatedPages.js"
+          }
         }
-      ],
-      "events": [
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "helium-animated-pages.js",
+      "declarations": [],
+      "exports": [
         {
-          "name": "helium-start",
-          "description": "Fires when the page transition starts"
+          "kind": "custom-element-definition",
+          "name": "helium-animated-pages",
+          "declaration": {
+            "name": "HeliumAnimatedPages",
+            "module": "/src/HeliumAnimatedPages.js"
+          }
         },
         {
-          "name": "helium-end",
-          "description": "Fires when the page transition ends"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "The slot for the pages to animate"
-        }
-      ],
-      "cssProperties": [
-        {
-          "name": "--helium-children-visible",
-          "description": "Whether this component should be visible if it's a children of another `helium-animated-pages`."
+          "kind": "js",
+          "name": "HeliumAnimatedPages",
+          "declaration": {
+            "name": "HeliumAnimatedPages",
+            "module": "helium-animated-pages.js"
+          }
         }
       ]
     }

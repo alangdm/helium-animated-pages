@@ -27,27 +27,27 @@
     "lit": "2.2.0"
   },
   "devDependencies": {
+    "@api-viewer/docs": "1.0.0-pre.5",
+    "@custom-elements-manifest/analyzer": "0.5.7",
     "@open-wc/building-rollup": "2.0.1",
-    "@open-wc/eslint-config": "4.3.0",
-    "@web/dev-server": "0.1.29",
-    "api-viewer-element": "0.5.0",
+    "@open-wc/eslint-config": "7.0.0",
+    "@web/dev-server": "0.1.30",
     "deepmerge": "4.2.2",
     "eslint": "7.32.0",
-    "eslint-config-prettier": "8.3.0",
-    "lint-staged": "11.2.6",
+    "eslint-config-prettier": "8.4.0",
+    "lint-staged": "12.3.4",
     "prettier": "2.5.1",
     "rimraf": "3.0.2",
     "rollup": "2.68.0",
     "rollup-plugin-copy": "3.4.0",
     "simple-git-hooks": "2.7.0",
     "standard-version": "9.3.2",
-    "typescript": "4.4.3",
-    "web-component-analyzer": "1.1.6"
+    "typescript": "4.5.5"
   },
   "scripts": {
     "start": "npm run analyze && npm run types && web-dev-server --node-resolve --open --watch",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "analyze": "wca analyze src/HeliumAnimatedPages.js --format json --outFile ./demo/custom-elements.json",
+    "analyze": "cem analyze --globs src/HeliumAnimatedPages.js helium-animated-pages.js --outdir ./demo --litelement",
     "types": "tsc",
     "release": "standard-version",
     "lint:eslint": "eslint --ext .js . --ignore-path .gitignore",
@@ -86,5 +86,6 @@
     "css",
     "animation",
     "neon-animation"
-  ]
+  ],
+  "customElements": "demo/custom-elements.json"
 }

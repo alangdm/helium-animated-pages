@@ -7,21 +7,22 @@ const _isString = next => {
 };
 
 /**
+ * @typedef {{in: string, out: string}} AnimationRule - An animation rule with in and out classes to apply
+ * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
+ */
+
+/**
  * A light spiritual successor to neon-animated-pages using only css animations
  *
- * @element helium-animated-pages
+ * @tagname helium-animated-pages
  *
  * @slot - The slot for the pages to animate
  *
  * @fires helium-start - Fires when the page transition starts
  * @fires helium-end - Fires when the page transition ends
  *
- * @cssprop --helium-children-visible - Whether this component should be visible if it's a children of another `helium-animated-pages`.
+ * @cssprop [--helium-children-visible=visible] - Whether this component should be visible if it's a children of another `helium-animated-pages`.
  *
- * @prop {Boolean} isAnimating - This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
- *
- * @typedef {{in: string, out: string}} AnimationRule - An animation rule with in and out classes to apply
- * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
  */
 export default class HeliumAnimatedPages extends LitElement {
   render() {
@@ -134,6 +135,11 @@ export default class HeliumAnimatedPages extends LitElement {
     this.animationClasses = {};
   }
 
+  /**
+   * This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
+   * @type boolean
+   * @readonly
+   */
   get isAnimating() {
     return this._animating;
   }
@@ -249,7 +255,7 @@ export default class HeliumAnimatedPages extends LitElement {
   }
 
   /**
-   *
+   * @internal
    * @param {string|number} next
    * @param {string|number} prev
    */
@@ -276,6 +282,9 @@ export default class HeliumAnimatedPages extends LitElement {
     }
   }
 
+  /**
+   * @internal
+   */
   _beginAnimation() {
     this._animating = true;
     this._inPage.addEventListener('animationend', this._inAnimation, {
@@ -294,7 +303,7 @@ export default class HeliumAnimatedPages extends LitElement {
   }
 
   /**
-   *
+   * @internal
    * @param {string|number} next
    * @param {string|number} prev
    */
@@ -314,16 +323,25 @@ export default class HeliumAnimatedPages extends LitElement {
     return this.animationClasses.default;
   }
 
+  /**
+   * @internal
+   */
   _inAnimation() {
     this._inAnimationEnded = true;
     this._onAnimationEnd();
   }
 
+  /**
+   * @internal
+   */
   _outAnimation() {
     this._outAnimationEnded = true;
     this._onAnimationEnd();
   }
 
+  /**
+   * @internal
+   */
   _onAnimationEnd() {
     if (this._inAnimationEnded && this._outAnimationEnded) {
       this._inAnimationEnded = false;

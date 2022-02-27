@@ -1,19 +1,19 @@
 /**
+ * @typedef {{in: string, out: string}} AnimationRule - An animation rule with in and out classes to apply
+ * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
+ */
+/**
  * A light spiritual successor to neon-animated-pages using only css animations
  *
- * @element helium-animated-pages
+ * @tagname helium-animated-pages
  *
  * @slot - The slot for the pages to animate
  *
  * @fires helium-start - Fires when the page transition starts
  * @fires helium-end - Fires when the page transition ends
  *
- * @cssprop --helium-children-visible - Whether this component should be visible if it's a children of another `helium-animated-pages`.
+ * @cssprop [--helium-children-visible=visible] - Whether this component should be visible if it's a children of another `helium-animated-pages`.
  *
- * @prop {Boolean} isAnimating - This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
- *
- * @typedef {{in: string, out: string}} AnimationRule - An animation rule with in and out classes to apply
- * @typedef {Object.<string, AnimationRule>} AnimationClasses - The ruleset of animations to apply
  */
 export default class HeliumAnimatedPages extends LitElement {
     static get styles(): import("lit").CSSResult[];
@@ -78,12 +78,23 @@ export default class HeliumAnimatedPages extends LitElement {
          */
         selected: string | number;
     };
+    /**
+     * @internal
+     */
     _inAnimation(): void;
+    /**
+     * @internal
+     */
     _outAnimation(): void;
     attrForSelected: string;
     /** @type {AnimationClasses} */
     animationClasses: AnimationClasses;
-    get isAnimating(): boolean;
+    /**
+     * This property will get the state of the animation. Whether it's currently in the middle of an animation or not.
+     * @type boolean
+     * @readonly
+     */
+    readonly get isAnimating(): boolean;
     set selected(arg: string | number);
     get selected(): string | number;
     _inPage: any;
@@ -131,22 +142,28 @@ export default class HeliumAnimatedPages extends LitElement {
      */
     selectPrevious(): void;
     /**
-     *
+     * @internal
      * @param {string|number} next
      * @param {string|number} prev
      */
     _changeActive(next: string | number, prev: string | number): void;
     _currentClasses: AnimationRule;
+    /**
+     * @internal
+     */
     _beginAnimation(): void;
     _animating: boolean;
     _outAnimationEnded: boolean;
     /**
-     *
+     * @internal
      * @param {string|number} next
      * @param {string|number} prev
      */
     _animationClasses(next: string | number, prev: string | number): AnimationRule;
     _inAnimationEnded: boolean;
+    /**
+     * @internal
+     */
     _onAnimationEnd(): void;
 }
 /**
