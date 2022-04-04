@@ -2,7 +2,7 @@
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/helium-animated-pages)[![npm version](https://badge.fury.io/js/helium-animated-pages.svg)](https://badge.fury.io/js/helium-animated-pages)
 
-###### [Docs/Demo](https://helium-animated-pages.glitch.me/demo/)
+###### [Docs/Demo](https://alangdm.github.io/helium-animated-pages/demo/)
 
 This is a light spiritual successor to the now deprecated [`<neon-animated-pages>`](https://www.webcomponents.org/element/PolymerElements/neon-animation/elements/neon-animated-pages).
 
@@ -98,7 +98,7 @@ To begin using it follow these simple steps:
       Here we define the "rules" about which CSS classes
         should be applied on the different page transitions.
       For more info go to:
-        https://helium-animated-pages.glitch.me/demo/
+        https://alangdm.github.io/helium-animated-pages/demo/
       I'm using CSS classes that aren't actually defined in
         this context for illustrative purposes.
       You must define every class that you want to use.
