@@ -42,7 +42,7 @@
     "rollup-plugin-copy": "3.4.0",
     "simple-git-hooks": "2.7.0",
     "standard-version": "9.3.2",
-    "typescript": "4.5.5"
+    "typescript": "4.9.5"
   },
   "scripts": {
     "start": "npm run analyze && npm run types && web-dev-server --node-resolve --open --watch",
