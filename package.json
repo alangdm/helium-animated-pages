@@ -27,7 +27,7 @@
     "lit": "2.2.0"
   },
   "devDependencies": {
-    "@api-viewer/docs": "1.0.0-pre.5",
+    "@api-viewer/docs": "1.0.0-pre.9",
     "@custom-elements-manifest/analyzer": "0.5.7",
     "@open-wc/building-rollup": "2.0.1",
     "@open-wc/eslint-config": "7.0.0",
