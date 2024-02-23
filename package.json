@@ -33,7 +33,7 @@
     "@open-wc/eslint-config": "7.0.0",
     "@web/dev-server": "0.1.30",
     "deepmerge": "4.2.2",
-    "eslint": "7.32.0",
+    "eslint": "8.57.0",
     "eslint-config-prettier": "8.5.0",
     "lint-staged": "12.3.7",
     "prettier": "2.6.2",
