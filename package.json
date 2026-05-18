@@ -24,7 +24,7 @@
   "author": "alangdm",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "lit": "2.2.0"
+    "lit": "2.8.0"
   },
   "devDependencies": {
     "@api-viewer/docs": "1.0.0-pre.5",
